@@ -5,6 +5,7 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/home_test.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboard_column_widget.dart';
 
@@ -37,7 +38,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('completedOnboarding', true);
 
-      Navigate.toReplace(context, const MyHomePage());
+      Navigate.toReplace(context, const LoginScreen());
     }
   }
 
@@ -45,12 +46,12 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
     if (_currentPage < 2) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('completedOnboarding', false);
-      Navigate.to(context, const MyHomePage());
+      Navigate.toReplace(context, const LoginScreen());
     } else {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('completedOnboarding', true);
       // ignore: use_build_context_synchronously
-      Navigate.to(context, const MyHomePage());
+      Navigate.toReplace(context, const LoginScreen());
     }
   }
 
@@ -123,11 +124,11 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                     width: 0.8.sw,
                     height: 0.07.sh,
                     child: ElevatedButton(
-                      onPressed: _nextPage,
+                      onPressed: _currentPage < 2 ? _nextPage : _skipPage,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                       child: Text(
