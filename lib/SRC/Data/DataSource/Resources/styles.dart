@@ -10,6 +10,7 @@ class Styles {
       FontWeight? fontWeight,
       double? letterSpacing}) {
     return TextStyle(
+        fontStyle: FontStyle.italic,
         fontSize: (fontSize ?? 16.0.sp),
         letterSpacing: letterSpacing ?? 0,
         color: color ?? AppColors.blackColor,

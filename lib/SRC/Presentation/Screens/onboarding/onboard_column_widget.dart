@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 
@@ -28,13 +29,14 @@ class OnboardColumnWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(30.sp),
+      padding: EdgeInsets.symmetric(horizontal: 30.sp),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Image.asset(
             asset!,
+            fit: BoxFit.cover,
           ),
           Column(
             children: [
@@ -46,6 +48,7 @@ class OnboardColumnWidget extends StatelessWidget {
                     fontWeight: FontWeight.w700),
                 textAlign: TextAlign.center,
               ),
+              5.y,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,

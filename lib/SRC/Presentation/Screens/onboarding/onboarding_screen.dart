@@ -11,7 +11,6 @@ import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboard_colum
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingSreen extends StatefulWidget {
-  static const String routeName = '/onboard_screen';
   const OnboardingSreen({super.key});
 
   @override
@@ -64,6 +63,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
           color: Colors.white,
           child: Column(
             children: [
+              60.y,
               Expanded(
                 child: PageView(
                   padEnds: false,
@@ -104,18 +104,18 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                 children: [
                   for (int i = 0; i < 3; i++)
                     Container(
-                      margin: const EdgeInsets.all(5),
-                      width: 10,
-                      height: 10,
+                      margin: const EdgeInsets.all(2),
+                      width: _currentPage == i ? 30.0 : 10.0,
+                      height: 7,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(30),
                           color: _currentPage == i
                               ? AppColors.primaryColor
                               : Colors.grey),
                     ),
                 ],
               ),
-              5.y,
+              6.y,
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -130,9 +130,9 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                           borderRadius: BorderRadius.circular(13),
                         ),
                       ),
-                      child: const Text(
-                        "Next",
-                        style: TextStyle(color: AppColors.white),
+                      child: Text(
+                        _currentPage < 2 ? "Next" : "Get Started",
+                        style: const TextStyle(color: AppColors.white),
                       ),
                     ),
                   ),
