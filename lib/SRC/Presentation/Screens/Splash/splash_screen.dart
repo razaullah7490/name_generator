@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
+<<<<<<< HEAD
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/home_test.dart';
+=======
+import 'package:name_generator/SRC/Presentation/Screens/Home/home.dart';
+>>>>>>> 1901a2184a45f43d6ae674cab90324500387026c
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
