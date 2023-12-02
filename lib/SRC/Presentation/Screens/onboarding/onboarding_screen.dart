@@ -1,16 +1,11 @@
-import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-<<<<<<< HEAD
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/home_test.dart';
-=======
-import 'package:name_generator/SRC/Presentation/Screens/Home/home.dart';
->>>>>>> 1901a2184a45f43d6ae674cab90324500387026c
+
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboard_column_widget.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';

@@ -16,12 +16,4 @@ class Validate {
     }
     return null;
   }
-
-  static String? email(v) {
-    if (v.trim().isEmpty) {
-      return "Please provide email";
-    }
-
-    return null;
-  }
 }

@@ -42,10 +42,9 @@ class OnboardColumnWidget extends StatelessWidget {
             children: [
               Text(
                 text1,
-                style: Styles.plusJakartaSans(context,
-                    color: AppColors.blackColor,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700),
+                style: Styles.largePlusJakartaSans(
+                  context,
+                ),
                 textAlign: TextAlign.center,
               ),
               5.y,
@@ -59,10 +58,8 @@ class OnboardColumnWidget extends StatelessWidget {
                   Expanded(
                     child: Text(
                       "$text2\n$text3\n$text4",
-                      style: Styles.plusJakartaSans(
+                      style: Styles.mediumPlusJakartaSans(
                         context,
-                        color: AppColors.grey,
-                        fontSize: 16,
                       ),
                       textAlign: TextAlign.center,
                     ),
