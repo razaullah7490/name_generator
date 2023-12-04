@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Splash/splash_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const BusinessCategory(),
+        home: const FormScreen(),
       ),
     );
   }
