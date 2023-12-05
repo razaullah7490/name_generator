@@ -1,14 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Appbar/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Categories/Components/cat_icon.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Customwrap/custom_wrap.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -74,7 +73,7 @@ TextEditingController inputcontroller = TextEditingController();
                       children: [
                         CarouselSlider(
                           options: CarouselOptions(
-                            height: 200.0, // Adjust the height as needed
+                            height: 200.h, 
                             enlargeCenterPage: true,
                             autoPlay: true,
                             aspectRatio: 16 / 9,
@@ -113,20 +112,7 @@ TextEditingController inputcontroller = TextEditingController();
                         physics: BouncingScrollPhysics(),
                           child: Padding(
                             padding: EdgeInsets.only(top: 10.sp, left: 30.sp ),
-                            child: Wrap(
-
-                              // spacing: 20.sp,
-                              alignment: WrapAlignment.spaceBetween,
-                              // runSpacing: 9.sp,
-                          
-                              children: [
-                                for (int i = 0; i < categorynames.length; i++)
-                                  CategoryTile(
-                                    title: categorynames[i],
-                                    icon: categoryimages[i],
-                                  )
-                              ],
-                            ),
+                            child: CustomWrap(categorynames: categorynames, categoryimages: categoryimages),
                           ),
                         )
                       ],
@@ -148,6 +134,7 @@ TextEditingController inputcontroller = TextEditingController();
     );
   }
 }
+
 
 
 

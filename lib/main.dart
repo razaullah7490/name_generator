@@ -17,8 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return 
-    
-
      ScreenUtilInit(
         minTextAdapt: true,
         splitScreenMode: true,
@@ -32,16 +30,5 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
           );
         });
-    
-    // MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   title: 'Name Generator',
-    //   theme: ThemeData(
-         
-    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    //     useMaterial3: true,
-    //   ),
-    //   home: const MyHomePage(),
-    // );
   }
 }
