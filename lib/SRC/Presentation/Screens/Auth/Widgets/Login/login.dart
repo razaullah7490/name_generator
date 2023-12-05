@@ -10,7 +10,9 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/bottom_navigation.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
@@ -113,7 +115,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                CustomButton(text: "Login", ontap: () {}),
+                Button(
+                  ontap: () {},
+                  textColor: AppColors.blackColor,
+                  svg: SvgPicture.asset(
+                    Assets.facebook,
+                    height: 100,
+                    width: 70,
+                  ),
+                  text: "Login with Facebook",
+                ),
                 10.y,
                 Button(
                   ontap: () {
