@@ -10,6 +10,8 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
 
@@ -84,7 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 14.y,
                 Button(
-                  ontap: () {},
+                  ontap: () {
+                    Navigate.to(context, const FormScreen());
+                  },
                   svg: SizedBox(
                     height: 100,
                     width: 0.35.sw,
@@ -134,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 10.y,
                 Button(
                   ontap: () {
-                    Navigate.to(context, const SignupScreen());
+                    Navigate.to(context, const BusinessCategory());
                   },
                   textColor: AppColors.blackColor,
                   svg: SvgPicture.asset(
@@ -142,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 100,
                     width: 70,
                   ),
-                  text: "Login with Facebook",
+                  text: "Login with Google",
                   border: Border.all(color: AppColors.grey),
                 ),
                 65.y,
