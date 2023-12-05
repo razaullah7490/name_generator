@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -6,8 +5,10 @@ class Navigate {
   Navigate._();
 
   static to(BuildContext context, Widget child) {
-    Navigator.push(context,
-        PageTransition(type: PageTransitionType.topToBottom, child: child));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => child),
+    );
   }
 
   static toReplace(BuildContext context, Widget child) {
@@ -19,15 +20,11 @@ class Navigate {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => child),
-          (route) => false,
+      (route) => false,
     );
   }
 
-
-  static pop(BuildContext context
-      )
-  {
-Navigator.pop(context);
-
+  static pop(BuildContext context) {
+    Navigator.pop(context);
   }
 }
