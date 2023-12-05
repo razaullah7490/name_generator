@@ -147,7 +147,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           SvgPicture.asset(
                               state == 2 ? Assets.robotfilled : Assets.robot),
                           AppText("Chat",
-                              style: Styles.smallPlusJakartaSans(context,
+                              style: Styles.largePlusJakartaSans(context,
                                   color: state == 2
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,

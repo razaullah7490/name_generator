@@ -11,7 +11,6 @@ import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.d
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
@@ -86,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 14.y,
+                CustomButton(text: "Login", ontap: () {}),
                 Row(
                   children: [
                     Expanded(
