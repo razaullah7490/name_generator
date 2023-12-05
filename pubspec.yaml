@@ -66,10 +66,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
  
   assets:
-    
     - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -83,6 +81,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  
+  # fonts:
+  #   - family: CircularStd Regular
+  #     fonts:
+  #       - asset: assets/fonts/circular_std_regular.ttf
+  #   - family: CircularStd Medium
+  #     fonts:
+  #       - asset: assets/fonts/CircularStd-Medium.ttf
+  #   - family: circularStd Bold
+  #     fonts:
+  #       - asset: assets/fonts/CircularStd-Bold.ttf
+ 
   fonts:
     - family: plus jakarta sans 
       fonts:
@@ -93,6 +103,8 @@ flutter:
     - family: plus jakarta bold
       fonts:
         - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
