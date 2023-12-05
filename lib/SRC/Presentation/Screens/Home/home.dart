@@ -103,15 +103,15 @@ TextEditingController inputcontroller = TextEditingController();
                         ),
                               
                         Padding(
-                          padding:  EdgeInsets.only(top: 10.sp, left: 15.sp),
-                          child: AppText('Name Categories', style: Styles.plusJakartaSans(context, fontSize: 20.sp, 
+                          padding:  EdgeInsets.only(top: 10.sp, left: 25.sp),
+                          child: AppText('Name Categories', style: Styles.plusJakartaRegular(context, fontSize: 20.sp,
                           fontWeight: FontWeight.w600,
                            )),
                         ),
                         SingleChildScrollView(scrollDirection: Axis.vertical, 
                         physics: BouncingScrollPhysics(),
                           child: Padding(
-                            padding: EdgeInsets.only(top: 10.sp, left: 20.sp ),
+                            padding: EdgeInsets.only(top: 10.sp, left: 30.sp ),
                             child: Wrap(
                               // spacing: 20.sp,
                               alignment: WrapAlignment.spaceBetween,

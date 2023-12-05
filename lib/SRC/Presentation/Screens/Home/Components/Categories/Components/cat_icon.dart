@@ -30,9 +30,9 @@ class CategoryTile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 2.sp, top: 4.sp),
+            padding: EdgeInsets.only(left: 2.sp, top: 0.sp),
             child: AppText(title,
-                style: Styles.plusJakartaSans(context, fontSize: 14.sp)),
+                style: Styles.plusJakartaRegular(context, fontSize: 14.sp)),
           ),
         ],
       ),
