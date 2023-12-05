@@ -11,10 +11,10 @@ class CategoryTile extends StatelessWidget {
   final String icon;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 75.w,
       height: 80.h,
-      color: Colors.white,
+      // color: Colors.white,
       child: Column(
         children: [
           Container(
@@ -30,7 +30,7 @@ class CategoryTile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 2.sp, top: 4.sp),
+            padding: EdgeInsets.only(left: 2.sp, top: 0.sp),
             child: AppText(title,
                 style: Styles.plusJakartaBold(context, fontSize: 14.sp)),
           ),

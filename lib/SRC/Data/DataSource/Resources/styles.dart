@@ -61,4 +61,21 @@ class Styles {
         fontStyle: fontStyle,
         fontWeight: fontWeight);
   }
+
+  static TextStyle plusJakartaMedium(BuildContext context,
+      {double? fontSize,
+      Color? color,
+      FontStyle? fontStyle,
+      double height = 1.4,
+      FontWeight fontWeight = FontWeight.bold,
+      double? letterSpacing}) {
+    return TextStyle(
+        letterSpacing: letterSpacing ?? 0,
+        fontSize: (fontSize ?? 14.0.sp),
+        color: color ?? AppColors.blackColor,
+        fontFamily: "plus jakarta medium",
+        height: height,
+        fontStyle: fontStyle,
+        fontWeight: fontWeight);
+  }
 }
