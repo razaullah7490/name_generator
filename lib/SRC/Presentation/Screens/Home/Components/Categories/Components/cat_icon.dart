@@ -14,7 +14,7 @@ class CategoryTile extends StatelessWidget {
     return Container(
       width: 75.w,
       height: 80.h,
-      color: Colors.white,
+      // color: Colors.white,
       child: Column(
         children: [
           Container(
@@ -29,6 +29,7 @@ class CategoryTile extends StatelessWidget {
               height: 25,
             ),
           ),
+          
           Padding(
             padding: EdgeInsets.only(left: 2.sp, top: 0.sp),
             child: AppText(title,

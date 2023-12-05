@@ -63,6 +63,7 @@ TextEditingController inputcontroller = TextEditingController();
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Scaffold(
+        backgroundColor: Color(0xffE8E7E7),
         appBar: CustomAppbar(title: 'Hello 👋', subtitle: 'Farooq Ahmad', icon: Assets.notifications,),
         body: SingleChildScrollView(
           child: Column(
@@ -113,6 +114,7 @@ TextEditingController inputcontroller = TextEditingController();
                           child: Padding(
                             padding: EdgeInsets.only(top: 10.sp, left: 30.sp ),
                             child: Wrap(
+
                               // spacing: 20.sp,
                               alignment: WrapAlignment.spaceBetween,
                               // runSpacing: 9.sp,
