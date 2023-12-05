@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/home.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
+
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 10));
 
     completedOnboarding
-        ? Navigate.to(context, const MyHomePage())
+        ? Navigate.toReplace(context, const LoginScreen())
         : Navigate.toReplace(context, const OnboardingSreen());
   }
 

@@ -5,13 +5,11 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
- 
 
 class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
-
-  final String? title; 
-  final String? subtitle; 
-  final String? icon; 
+  final String? title;
+  final String? subtitle;
+  final String? icon;
 
   const CustomAppbar({super.key, this.title, this.subtitle, this.icon});
 
@@ -23,14 +21,10 @@ class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppbarState extends State<CustomAppbar> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-          
         Expanded(
           child: Container(
             child: Column(
@@ -40,40 +34,39 @@ class _CustomAppbarState extends State<CustomAppbar> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15.sp),
                       child: Column(
-                        
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
-                          SizedBox(height: 10.h,), 
+                          SizedBox(
+                            height: 10.h,
+                          ),
                           AppText(widget.title!,
-                              style: Styles.plusJakartaRegular(
+                              style: Styles.plusJakartaBold(
                                 context,
                                 fontSize: 16.sp,
                               )),
                           AppText(widget.subtitle!,
-                              style: Styles.plusJakartaRegular(context,
-                                  fontSize: 20.sp, fontWeight: FontWeight.w600)),
+                              style: Styles.plusJakartaBold(context,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w600)),
                         ],
                       ),
                     ),
-
-                    Spacer(),
-                   
-          Container(
-            
-            padding:  EdgeInsets.all(6.sp),
-            decoration: BoxDecoration(
-
-                color: Colors.white,
-                shape: BoxShape.circle,
-                border: Border.all(color: const Color(0xffDBE7F5))),
-            child: SvgPicture.asset(
-              widget.icon!,
-              width: 25,
-              height: 25,
-            ),
-          ),
-                    SizedBox(width: 10.w,), 
+                    const Spacer(),
+                    Container(
+                      padding: EdgeInsets.all(6.sp),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: const Color(0xffDBE7F5))),
+                      child: SvgPicture.asset(
+                        widget.icon!,
+                        width: 25,
+                        height: 25,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
                   ],
                 ),
               ],

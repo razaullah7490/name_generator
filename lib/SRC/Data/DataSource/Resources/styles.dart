@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'color.dart';
-  
-
 
 class Styles {
-  static TextStyle plusJakartaRegular(BuildContext context,
+  static TextStyle largePlusJakartaSans(BuildContext context,
+      {double? fontSize,
+      Color? color,
+      FontWeight? fontWeight,
+      double? letterSpacing}) {
+    return TextStyle(
+        fontStyle: FontStyle.normal,
+        fontSize: (fontSize ?? 28.0.sp),
+        letterSpacing: letterSpacing ?? 0,
+        color: color ?? AppColors.blackColor,
+        fontFamily: "Plus Jakarta Sans",
+        fontWeight: fontWeight ?? FontWeight.w700);
+  }
+
+  static TextStyle mediumPlusJakartaSans(BuildContext context,
       {double? fontSize,
       Color? color,
       FontWeight? fontWeight,
@@ -13,6 +25,20 @@ class Styles {
     return TextStyle(
         fontStyle: FontStyle.normal,
         fontSize: (fontSize ?? 16.0.sp),
+        letterSpacing: letterSpacing ?? 0,
+        color: color ?? AppColors.grey,
+        fontFamily: "Plus Jakarta Sans",
+        fontWeight: fontWeight ?? FontWeight.w500);
+  }
+
+  static TextStyle smallPlusJakartaSans(BuildContext context,
+      {double? fontSize,
+      Color? color,
+      FontWeight? fontWeight,
+      double? letterSpacing}) {
+    return TextStyle(
+        fontStyle: FontStyle.normal,
+        fontSize: (fontSize ?? 14.0.sp),
         letterSpacing: letterSpacing ?? 0,
         color: color ?? AppColors.blackColor,
         fontFamily: "Plus Jakarta Sans",
@@ -36,14 +62,13 @@ class Styles {
         fontWeight: fontWeight);
   }
 
-
   static TextStyle plusJakartaMedium(BuildContext context,
       {double? fontSize,
-        Color? color,
-        FontStyle? fontStyle,
-        double height = 1.4,
-        FontWeight fontWeight = FontWeight.bold,
-        double? letterSpacing}) {
+      Color? color,
+      FontStyle? fontStyle,
+      double height = 1.4,
+      FontWeight fontWeight = FontWeight.bold,
+      double? letterSpacing}) {
     return TextStyle(
         letterSpacing: letterSpacing ?? 0,
         fontSize: (fontSize ?? 14.0.sp),
@@ -53,8 +78,4 @@ class Styles {
         fontStyle: fontStyle,
         fontWeight: fontWeight);
   }
-
-
-
-
 }
