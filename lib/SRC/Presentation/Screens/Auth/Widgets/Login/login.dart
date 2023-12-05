@@ -10,6 +10,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Dashboard/BottomNavigation/bottom_navigation.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
 
@@ -87,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 14.y,
                 Button(
                   ontap: () {
-                    Navigate.to(context, const FormScreen());
+                    Navigate.to(context, const BottomNavigationScreen());
                   },
                   svg: SizedBox(
                     height: 100,

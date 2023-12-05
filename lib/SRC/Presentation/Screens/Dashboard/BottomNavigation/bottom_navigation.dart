@@ -23,6 +23,8 @@ class BottomNavigationScreen extends StatefulWidget {
 }
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+
+   
   @override
   void initState() {
   
@@ -102,7 +104,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             state == 0 ? Assets.homefilled : Assets.home,
                           ),
                           AppText("Home",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.largePlusJakartaSans(context,
                                   color: state == 0
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
@@ -127,7 +129,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                               ? Assets.bookmarkfilled
                               : Assets.bookmark),
                           AppText("Saved",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.largePlusJakartaSans(context,
                                   color: state == 1
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
@@ -151,7 +153,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           SvgPicture.asset(
                               state == 2 ? Assets.robotfilled: Assets.robot),
                           AppText("Chat",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.largePlusJakartaSans(context,
                                   color: state == 2
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
@@ -176,7 +178,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                               ? Assets.profilefilled
                               : Assets.profile),
                           AppText("Profile",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.largePlusJakartaSans(context,
                                   color: state == 3
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
