@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 
 class Button extends StatelessWidget {
-  Color? background;
   String text;
   Widget? svg;
   Color textColor;
-  BoxBorder? border;
 
   Function() ontap;
 
@@ -16,8 +15,6 @@ class Button extends StatelessWidget {
     required this.textColor,
     this.svg,
     required this.text,
-    this.background,
-    this.border,
     super.key,
   });
 
@@ -29,9 +26,9 @@ class Button extends StatelessWidget {
           width: 0.8.sw,
           height: 0.055.sh,
           decoration: BoxDecoration(
-              color: background,
-              borderRadius: BorderRadius.circular(8),
-              border: border),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: AppColors.grey),
+          ),
           child: Row(
             children: [
               svg!,

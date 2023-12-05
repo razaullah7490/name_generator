@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,12 +6,10 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Chat/chat.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Dashboard/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/home.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/my_home_page.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Profile/profile.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/saved.dart';
-
-
 
 class BottomNavigationScreen extends StatefulWidget {
   final int? initialPage;
@@ -25,16 +22,12 @@ class BottomNavigationScreen extends StatefulWidget {
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   void initState() {
-  
-    WidgetsBinding.instance.addPostFrameCallback((_)
-    
-     {
- 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       BottomNotifier.bottomNavigationNotifier.value = 0;
     });
     BottomNotifier.bottomPageController =
-        new PageController(initialPage: widget.initialPage ?? 0);
- 
+        PageController(initialPage: widget.initialPage ?? 0);
+
     BottomNotifier.checkExitTimes.value = 2;
 
     super.initState();
@@ -48,13 +41,11 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           BottomNotifier.bottomNavigationNotifier.value = 0;
           BottomNotifier.checkExitTimes.value = 2;
           BottomNotifier.bottomPageController!.jumpToPage(0);
-        } 
-         
+        }
+
         return false;
       },
       child: Scaffold(
-        
-       
           body: SizedBox(
             height: 1.sh,
             width: 1.sw,
@@ -69,16 +60,15 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 MyHomePage(),
                 Saved(),
                 Chat(),
-                Profile(), 
+                Profile(),
               ],
             ),
           ),
           bottomNavigationBar: BottomAppBar(
             height: 60,
             color: AppColors.white,
-            shape: const CircularNotchedRectangle(),  
-            notchMargin:
-                5,  
+            shape: const CircularNotchedRectangle(),
+            notchMargin: 5,
             child: ValueListenableBuilder(
               builder: (context, state, ss) {
                 return Row(
@@ -102,15 +92,18 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             state == 0 ? Assets.homefilled : Assets.home,
                           ),
                           AppText("Home",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.smallPlusJakartaSans(context,
                                   color: state == 0
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8.sp, fontWeight: FontWeight.w600))
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.w600))
                         ],
                       ),
                     ),
-                    SizedBox(width: 10.w,), 
+                    SizedBox(
+                      width: 10.w,
+                    ),
 
                     ///Saved
                     GestureDetector(
@@ -127,15 +120,18 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                               ? Assets.bookmarkfilled
                               : Assets.bookmark),
                           AppText("Saved",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.smallPlusJakartaSans(context,
                                   color: state == 1
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8.sp, fontWeight: FontWeight.w600 ))
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.w600))
                         ],
                       ),
                     ),
-                    SizedBox(width: 10.w,),
+                    SizedBox(
+                      width: 10.w,
+                    ),
 
                     ///Chat
                     GestureDetector(
@@ -149,17 +145,20 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SvgPicture.asset(
-                              state == 2 ? Assets.robotfilled: Assets.robot),
+                              state == 2 ? Assets.robotfilled : Assets.robot),
                           AppText("Chat",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.smallPlusJakartaSans(context,
                                   color: state == 2
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                   fontSize: 8.sp, fontWeight: FontWeight.w600))
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.w600))
                         ],
                       ),
                     ),
-                    SizedBox(width: 10.w,),
+                    SizedBox(
+                      width: 10.w,
+                    ),
 
                     ///Profile
                     GestureDetector(
@@ -176,11 +175,12 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                               ? Assets.profilefilled
                               : Assets.profile),
                           AppText("Profile",
-                              style: Styles.plusJakartaRegular(context,
+                              style: Styles.smallPlusJakartaSans(context,
                                   color: state == 3
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8, fontWeight: FontWeight.w600))
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.w600))
                         ],
                       ),
                     )

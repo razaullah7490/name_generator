@@ -10,6 +10,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
 
@@ -78,16 +79,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 PasswordField(
                     controller: _passwordController, isObscured: _isObscured),
                 24.y,
-                Button(
-                  ontap: () {},
-                  svg: SizedBox(
-                    height: 100,
-                    width: 0.35.sw,
-                  ),
-                  textColor: AppColors.white,
-                  text: "SignUp",
-                  background: AppColors.primaryColor,
-                ),
+                CustomButton(text: "SignUp", ontap: () {}),
                 Row(
                   children: [
                     Expanded(
@@ -120,11 +112,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   textColor: AppColors.blackColor,
                   svg: SvgPicture.asset(
                     Assets.facebook,
-                    height: 100,
+                    height: 70,
                     width: 70,
                   ),
                   text: "Login with Facebook",
-                  border: Border.all(color: AppColors.grey),
                 ),
                 10.y,
                 Button(
@@ -132,11 +123,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   textColor: AppColors.blackColor,
                   svg: SvgPicture.asset(
                     Assets.google,
-                    height: 100,
+                    height: 70,
                     width: 70,
                   ),
                   text: "Login with Facebook",
-                  border: Border.all(color: AppColors.grey),
                 ),
                 40.y,
                 GestureDetector(

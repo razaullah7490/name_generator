@@ -40,12 +40,12 @@ class _CustomAppbarState extends State<CustomAppbar> {
                             height: 10.h,
                           ),
                           AppText(widget.title!,
-                              style: Styles.plusJakartaBold(
+                              style: Styles.smallPlusJakartaSans(
                                 context,
                                 fontSize: 16.sp,
                               )),
                           AppText(widget.subtitle!,
-                              style: Styles.plusJakartaBold(context,
+                              style: Styles.smallPlusJakartaSans(context,
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w600)),
                         ],

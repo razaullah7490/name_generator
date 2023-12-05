@@ -4,6 +4,7 @@ import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -37,9 +38,9 @@ class _FormScreenState extends State<FormScreen> {
       'Marketing',
       'Other',
     ];
+
     return SafeArea(
       child: Scaffold(
-        extendBodyBehindAppBar: true,
         backgroundColor: AppColors.white.withOpacity(0.94),
         body: Form(
           key: _formKey,
@@ -47,9 +48,11 @@ class _FormScreenState extends State<FormScreen> {
             physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 backgroundColor: Colors.transparent,
-                floating: false,
-                pinned: true,
+                foregroundColor: AppColors.white.withOpacity(0.94),
+                floating: true,
+                pinned: false,
                 title: Text(
                   "Fill the form",
                   style: Styles.mediumPlusJakartaSans(context,
@@ -58,10 +61,10 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 actions: [
                   IconButton(
-                    icon: Image.asset(
-                      Assets.close,
-                      width: 24.0,
-                      height: 24.0,
+                    icon: const Icon(
+                      Icons.highlight_remove_sharp,
+                      color: AppColors.lebelTextColor,
+                      size: 24,
                     ),
                     onPressed: () {},
                   ),
@@ -79,7 +82,7 @@ class _FormScreenState extends State<FormScreen> {
                           textAlign: TextAlign.start,
                           style: Styles.smallPlusJakartaSans(context,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.lebelTextColor),
+                              color: AppColors.lightgrey),
                         ),
                         5.y,
                         SizedBox(
@@ -89,15 +92,24 @@ class _FormScreenState extends State<FormScreen> {
                             decoration: InputDecoration(
                               hintText: hintText[index],
                               hintStyle: Styles.smallPlusJakartaSans(context,
-                                  color: AppColors.lebelTextColor
-                                      .withOpacity(0.2)),
-                              suffix: Text(
-                                "Options",
-                                style: Styles.smallPlusJakartaSans(context,
-                                    color: AppColors.lebelTextColor
-                                        .withOpacity(0.6)),
-                                textAlign: TextAlign.center,
-                              ),
+                                  color: AppColors.lebelTextColor),
+                              suffixIcon: index == 0
+                                  ? Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 16.sp, vertical: 10),
+                                      child: Text(
+                                        "Options",
+                                        style: Styles.smallPlusJakartaSans(
+                                            context,
+                                            color: AppColors.lebelTextColor),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    )
+                                  : const Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: AppColors.lebelTextColor,
+                                      size: 20,
+                                    ),
                               border: OutlineInputBorder(
                                 borderSide:
                                     const BorderSide(color: AppColors.grey),
@@ -119,6 +131,14 @@ class _FormScreenState extends State<FormScreen> {
                 ),
               ),
             ],
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: CustomButton(
+            text: "Generate ",
+            ontap: () {},
+            iconData: const Icon(Icons.abc),
           ),
         ),
       ),

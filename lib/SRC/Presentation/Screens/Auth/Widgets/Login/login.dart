@@ -12,6 +12,7 @@ import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.d
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
 
@@ -85,18 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 14.y,
-                Button(
-                  ontap: () {
-                    Navigate.to(context, const FormScreen());
-                  },
-                  svg: SizedBox(
-                    height: 100,
-                    width: 0.35.sw,
-                  ),
-                  textColor: AppColors.white,
-                  text: "Login",
-                  background: AppColors.primaryColor,
-                ),
                 Row(
                   children: [
                     Expanded(
@@ -124,17 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                Button(
-                  ontap: () {},
-                  textColor: AppColors.blackColor,
-                  svg: SvgPicture.asset(
-                    Assets.facebook,
-                    height: 100,
-                    width: 70,
-                  ),
-                  text: "Login with Facebook",
-                  border: Border.all(color: AppColors.grey),
-                ),
+                CustomButton(text: "Login", ontap: () {}),
                 10.y,
                 Button(
                   ontap: () {
@@ -147,7 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 70,
                   ),
                   text: "Login with Google",
-                  border: Border.all(color: AppColors.grey),
                 ),
                 65.y,
                 GestureDetector(

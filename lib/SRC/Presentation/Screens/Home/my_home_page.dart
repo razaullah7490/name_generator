@@ -1,14 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Appbar/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Categories/Components/cat_icon.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -74,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: 200.0, // Adjust the height as needed
+                      height: 200.0,
                       enlargeCenterPage: true,
                       autoPlay: true,
                       aspectRatio: 16 / 9,
@@ -92,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             margin: EdgeInsets.symmetric(horizontal: 5.w),
                             decoration: BoxDecoration(
                               color: Colors.amber,
-                              borderRadius: BorderRadius.circular(80.sp), //
+                              borderRadius: BorderRadius.circular(80.sp),
                             ),
                             child: Image.asset(
                               url,
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: EdgeInsets.only(top: 10.sp, left: 15.sp),
                     child: AppText('Name Categories',
-                        style: Styles.plusJakartaBold(
+                        style: Styles.smallPlusJakartaSans(
                           context,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w600,
@@ -142,7 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
           foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50.sp)),
-          onPressed: () {},
+          onPressed: () {
+            Navigate.to(context, const FormScreen());
+          },
           tooltip: 'Add',
           child: const Icon(Icons.add),
         ),
