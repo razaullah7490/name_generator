@@ -175,7 +175,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                               ? Assets.profilefilled
                               : Assets.profile),
                           AppText("Profile",
-                              style: Styles.smallPlusJakartaSans(context,
+                              style: Styles.plusJakartaSans(context,
                                   color: state == 3
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
