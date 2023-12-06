@@ -86,7 +86,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   textColor: AppColors.white,
                   text: "SignUp",
-                  background: AppColors.primaryColor,
                 ),
                 Row(
                   children: [
@@ -124,7 +123,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     width: 70,
                   ),
                   text: "Login with Facebook",
-                  border: Border.all(color: AppColors.grey),
                 ),
                 10.y,
                 Button(
@@ -136,7 +134,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     width: 70,
                   ),
                   text: "Login with Facebook",
-                  border: Border.all(color: AppColors.grey),
                 ),
                 40.y,
                 GestureDetector(
