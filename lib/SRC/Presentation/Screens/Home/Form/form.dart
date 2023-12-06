@@ -138,7 +138,10 @@ class _FormScreenState extends State<FormScreen> {
           child: CustomButton(
             text: "Generate ",
             ontap: () {},
-            iconData: const Icon(Icons.abc),
+            iconData: const Icon(
+              Icons.switch_access_shortcut_add_rounded,
+              color: AppColors.white,
+            ),
           ),
         ),
       ),

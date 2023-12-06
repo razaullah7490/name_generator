@@ -87,7 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 14.y,
-                CustomButton(text: "Login", ontap: () {}),
+                CustomButton(
+                    iconData: const SizedBox(),
+                    text: "Login",
+                    ontap: () {
+                      Navigate.toReplace(
+                          context, const BottomNavigationScreen());
+                    }),
                 Row(
                   children: [
                     Expanded(

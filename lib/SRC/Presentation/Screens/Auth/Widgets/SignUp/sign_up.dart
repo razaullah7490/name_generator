@@ -79,7 +79,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 PasswordField(
                     controller: _passwordController, isObscured: _isObscured),
                 24.y,
-                CustomButton(text: "SignUp", ontap: () {}),
+                CustomButton(
+                  text: "SignUp",
+                  ontap: () {},
+                  iconData: const SizedBox(),
+                ),
                 Row(
                   children: [
                     Expanded(

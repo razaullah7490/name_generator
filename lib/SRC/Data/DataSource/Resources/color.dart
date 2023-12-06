@@ -6,7 +6,7 @@ class AppColors {
   static const Color white = Colors.white;
   static const Color grey = Colors.grey;
 
-  static Color scaffoldColor = const Color.fromARGB(255, 254, 254, 254);
+  static Color scaffoldColor = const Color.fromARGB(255, 233, 233, 233);
   static const Color lebelTextColor = Color(0xff94A3B8);
 
   static const Color lightgrey = Color(0xff475569);

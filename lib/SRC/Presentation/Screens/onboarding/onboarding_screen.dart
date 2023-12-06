@@ -117,6 +117,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
               ),
               6.y,
               CustomButton(
+                iconData: const SizedBox(),
                 text: _currentPage < 2 ? "Next" : "Get Started",
                 ontap: _currentPage < 2 ? _nextPage : _skipPage,
               ),
@@ -159,7 +160,6 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
 //     );
 //   }
 // }
-
 class CustomButton extends StatelessWidget {
   String text;
   Function() ontap;
@@ -177,7 +177,7 @@ class CustomButton extends StatelessWidget {
     return SizedBox(
       width: 0.8.sw,
       height: 0.07.sh,
-      child: ElevatedButton.icon(
+      child: ElevatedButton(
         onPressed: ontap,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
@@ -185,12 +185,18 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        label: iconData != null
-            ? const Icon(Icons.star, color: AppColors.white)
-            : Container(),
-        icon: Text(
-          text,
-          style: const TextStyle(color: AppColors.white),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                text,
+                style: const TextStyle(color: AppColors.white),
+                textAlign: TextAlign.center,
+              ),
+              iconData!
+            ],
+          ),
         ),
       ),
     );
