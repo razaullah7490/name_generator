@@ -58,7 +58,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               },
               children: const [
                 MyHomePage(),
-                Saved(),
+                SavedScreen(),
                 Chat(),
                 Profile(),
               ],
