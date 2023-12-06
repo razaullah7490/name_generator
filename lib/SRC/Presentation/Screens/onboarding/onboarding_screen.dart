@@ -5,9 +5,7 @@ import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
-
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboard_column_widget.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingSreen extends StatefulWidget {
@@ -21,11 +19,15 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
+
+
   void _updatePage(int page) {
     setState(() {
       _currentPage = page;
     });
   }
+
+
 
   void _nextPage() async {
     if (_currentPage < 2) {
@@ -49,7 +51,6 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
     } else {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('completedOnboarding', true);
-      // ignore: use_build_context_synchronously
       Navigate.toReplace(context, const LoginScreen());
     }
   }
