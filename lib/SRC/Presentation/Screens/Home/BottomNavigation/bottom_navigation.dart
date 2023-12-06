@@ -5,10 +5,6 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Chat/chat.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Dashboard/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/home.dart';
-
 import 'package:name_generator/SRC/Presentation/Screens/Chat/chatbot_screen.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/my_home_page.dart';
