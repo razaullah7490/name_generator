@@ -117,31 +117,81 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                 ],
               ),
               6.y,
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 0.8.sw,
-                    height: 0.07.sh,
-                    child: ElevatedButton(
-                      onPressed: _currentPage < 2 ? _nextPage : _skipPage,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Text(
-                        _currentPage < 2 ? "Next" : "Get Started",
-                        style: const TextStyle(color: AppColors.white),
-                      ),
-                    ),
-                  ),
-                ],
+              CustomButton(
+                text: _currentPage < 2 ? "Next" : "Get Started",
+                ontap: _currentPage < 2 ? _nextPage : _skipPage,
               ),
               24.y,
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+// class CustomButton extends StatelessWidget {
+//   String text;
+//   Function() ontap;
+//   CustomButton({
+//     super.key,
+//     required this.text,
+//     required this.ontap,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       width: 0.8.sw,
+//       height: 0.07.sh,
+//       child: ElevatedButton(
+//         onPressed: ontap,
+//         style: ElevatedButton.styleFrom(
+//           backgroundColor: AppColors.primaryColor,
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(8),
+//           ),
+//         ),
+//         child: Text(
+//           text,
+//           style: const TextStyle(color: AppColors.white),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class CustomButton extends StatelessWidget {
+  String text;
+  Function() ontap;
+  Widget? iconData;
+
+  CustomButton({
+    super.key,
+    required this.text,
+    required this.ontap,
+    this.iconData,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 0.8.sw,
+      height: 0.07.sh,
+      child: ElevatedButton.icon(
+        onPressed: ontap,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        label: iconData != null
+            ? const Icon(Icons.star, color: AppColors.white)
+            : Container(),
+        icon: Text(
+          text,
+          style: const TextStyle(color: AppColors.white),
         ),
       ),
     );

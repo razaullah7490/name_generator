@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Saved extends StatefulWidget {
-  const Saved({super.key});
+class SavedScreen extends StatelessWidget {
+  const SavedScreen({super.key});
 
-  @override
-  State<Saved> createState() => _SavedState();
-}
-
-class _SavedState extends State<Saved> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Saved'),),);
+    return const Placeholder();
   }
 }

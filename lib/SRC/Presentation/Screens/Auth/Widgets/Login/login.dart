@@ -13,6 +13,7 @@ import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign
 import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/bottom_navigation.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
 
@@ -86,17 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 14.y,
-                Button(
-                  ontap: () {
-                    Navigate.to(context, const BottomNavigationScreen());
-                  },
-                  svg: SizedBox(
-                    height: 100,
-                    width: 0.35.sw,
-                  ),
-                  textColor: AppColors.white,
-                  text: "Login",
-                ),
+                CustomButton(text: "Login", ontap: () {}),
                 Row(
                   children: [
                     Expanded(

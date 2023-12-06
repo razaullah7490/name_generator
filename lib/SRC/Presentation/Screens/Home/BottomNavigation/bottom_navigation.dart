@@ -8,6 +8,11 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Chat/chat.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Dashboard/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/home.dart';
+
+import 'package:name_generator/SRC/Presentation/Screens/Chat/chatbot_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/my_home_page.dart';
+
 import 'package:name_generator/SRC/Presentation/Screens/Profile/profile.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/saved.dart';
 
@@ -58,8 +63,8 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               },
               children: const [
                 MyHomePage(),
-                Saved(),
-                Chat(),
+                SavedScreen(),
+                ChatbotScreen(),
                 Profile(),
               ],
             ),
@@ -175,7 +180,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                               ? Assets.profilefilled
                               : Assets.profile),
                           AppText("Profile",
-                              style: Styles.smallPlusJakartaSans(context,
+                              style: Styles.plusJakartaSans(context,
                                   color: state == 3
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
