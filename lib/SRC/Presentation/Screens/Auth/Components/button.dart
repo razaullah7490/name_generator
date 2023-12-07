@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
 class Button extends StatelessWidget {
   String text;
@@ -33,7 +34,7 @@ class Button extends StatelessWidget {
             children: [
               svg!,
               Center(
-                child: Text(
+                child: AppText(
                   text,
                   style: Styles.mediumPlusJakartaSans(
                     context,

@@ -4,9 +4,11 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
 
-import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboard_column_widget.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/Components/onboard_column_widget.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,7 +37,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
       );
     } else {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('completedOnboarding', true);
+      await prefs.setBool(AppStrings.completedOnboarding, true);
 
       Navigate.toReplace(context, const LoginScreen());
     }
@@ -44,11 +46,11 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
   void _skipPage() async {
     if (_currentPage < 2) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('completedOnboarding', false);
+      await prefs.setBool(AppStrings.completedOnboarding, false);
       Navigate.toReplace(context, const LoginScreen());
     } else {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('completedOnboarding', true);
+      await prefs.setBool(AppStrings.completedOnboarding, true);
       // ignore: use_build_context_synchronously
       Navigate.toReplace(context, const LoginScreen());
     }
@@ -72,29 +74,27 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                   children: [
                     OnboardColumnWidget(
                       asset: Assets.onboardImg,
-                      text1: "Your One-Stop Name Solution",
+                      text1: AppStrings.oneStop,
                       span: const TextSpan(text: "\n"),
-                      text2:
-                          "Simplify the process of finding the perfect and professional name.",
+                      text2: AppStrings.processFinding,
                       text3: "",
                       text4: "",
                     ),
                     OnboardColumnWidget(
                       asset: Assets.onboardImg,
-                      text1: "Customize or Discover Names",
+                      text1: AppStrings.discover,
                       span: const TextSpan(text: "\n"),
-                      text2:
-                          "Generate names tailored to your preferences or explore rand suggestions.",
+                      text2: AppStrings.genarateNamePreferences,
                       text3: "",
                       text4: " ",
                     ),
                     OnboardColumnWidget(
                       asset: Assets.thirdOnboard,
-                      text1: "AI-Powered Name Generation Process",
+                      text1: AppStrings.aiPowered,
                       span: const TextSpan(text: "\n"),
-                      text2: "• Choose a Category",
-                      text3: "• Choose a Subcategory",
-                      text4: "• Generate Names",
+                      text2: AppStrings.category,
+                      text3: AppStrings.subCategory,
+                      text4: AppStrings.generateName,
                     ),
                   ],
                 ),
@@ -118,7 +118,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
               6.y,
               CustomButton(
                 iconData: const SizedBox(),
-                text: _currentPage < 2 ? "Next" : "Get Started",
+                text: _currentPage < 2 ? AppStrings.next : AppStrings.started,
                 ontap: _currentPage < 2 ? _nextPage : _skipPage,
               ),
               24.y,
@@ -130,36 +130,6 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
   }
 }
 
-// class CustomButton extends StatelessWidget {
-//   String text;
-//   Function() ontap;
-//   CustomButton({
-//     super.key,
-//     required this.text,
-//     required this.ontap,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       width: 0.8.sw,
-//       height: 0.07.sh,
-//       child: ElevatedButton(
-//         onPressed: ontap,
-//         style: ElevatedButton.styleFrom(
-//           backgroundColor: AppColors.primaryColor,
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(8),
-//           ),
-//         ),
-//         child: Text(
-//           text,
-//           style: const TextStyle(color: AppColors.white),
-//         ),
-//       ),
-//     );
-//   }
-// }
 class CustomButton extends StatelessWidget {
   String text;
   Function() ontap;
@@ -189,7 +159,7 @@ class CustomButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              AppText(
                 text,
                 style: const TextStyle(color: AppColors.white),
                 textAlign: TextAlign.center,

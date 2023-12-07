@@ -6,12 +6,12 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-import 'package:name_generator/SRC/Presentation/Screens/Chat/chatbot_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Chat/Widgets/chatbot_screen.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/my_home_page.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Widgets/my_home_page.dart';
 
-import 'package:name_generator/SRC/Presentation/Screens/Profile/profile.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Saved/saved.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Profile/Widgets/profile.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Saved/Widgets/saved.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   final int? initialPage;

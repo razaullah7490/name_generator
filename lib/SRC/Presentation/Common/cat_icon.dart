@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Business/Widgets/business_category.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({required this.title, required this.icon, super.key});

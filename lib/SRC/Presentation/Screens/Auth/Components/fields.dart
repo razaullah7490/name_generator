@@ -1,5 +1,3 @@
-// login_fields.dart
-
 import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/validator.dart';

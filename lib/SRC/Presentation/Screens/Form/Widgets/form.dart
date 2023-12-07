@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
-import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -31,13 +32,15 @@ class _FormScreenState extends State<FormScreen> {
     ];
 
     List<String> hintText = [
-      'Startup',
-      'Restaurant',
-      'Web development',
-      'Fashion',
-      'Marketing',
-      'Other',
+      'StarMaking, etc',
+      'English, etc',
+      'Business, etc',
+      'Fashion, etc',
+      'Branded, etc',
+      'TwoWords, etc',
     ];
+    List<String> categoryList = ['category1', 'category2', "category3"];
+    String? selectedCategory;
 
     return SafeArea(
       child: Scaffold(
@@ -85,41 +88,28 @@ class _FormScreenState extends State<FormScreen> {
                               color: AppColors.lightgrey),
                         ),
                         5.y,
-                        SizedBox(
-                          height: 0.06.sh,
-                          child: TextFormField(
-                            controller: _keywordController,
-                            decoration: InputDecoration(
-                              hintText: hintText[index],
-                              hintStyle: Styles.smallPlusJakartaSans(context,
-                                  color: AppColors.lebelTextColor),
-                              suffixIcon: index == 0
-                                  ? Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 16.sp, vertical: 10),
-                                      child: Text(
-                                        "Options",
-                                        style: Styles.smallPlusJakartaSans(
-                                            context,
-                                            color: AppColors.lebelTextColor),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    )
-                                  : const Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: AppColors.lebelTextColor,
-                                      size: 20,
-                                    ),
-                              border: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: AppColors.grey),
-                                borderRadius: BorderRadius.circular(10),
+                        CustomDropDownWidget(
+                          isBorderRequired: true,
+                          prefixIcon: null,
+                          hintText: hintText[index],
+                          value: selectedCategory,
+                          validationText: 'Please Select Category',
+                          onChanged: (value) {
+                            setState(() {
+                              selectedCategory = value;
+                            });
+                          },
+                          itemsMap: [
+                            for (int i = 0; i < categoryList.length; i++)
+                              DropdownMenuItem(
+                                value: categoryList[i],
+                                child: AppText(
+                                  categoryList[i],
+                                  style: Styles.plusJakartaSans(context,
+                                      color: AppColors.lebelTextColor),
+                                ),
                               ),
-                            ),
-                            validator: (value) {
-                              return null;
-                            },
-                          ),
+                          ],
                         ),
                       ],
                     );

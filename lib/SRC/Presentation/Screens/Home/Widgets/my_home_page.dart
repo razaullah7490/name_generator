@@ -7,9 +7,9 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Categories/Components/cat_icon.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
+import 'package:name_generator/SRC/Presentation/Common/cat_icon.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Form/Widgets/form.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Components/custom_home_appbar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -62,11 +62,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Scaffold(
-        // appBar: const CustomAppbar(
-        //   title: 'Hello 👋',
-        //   subtitle: 'Farooq Ahmad',
-        //   icon: Assets.notifications,
-        // ),
+        appBar: const CustomHomeAppbar(
+          title: 'Hello 👋',
+          subtitle: 'Farooq Ahmad',
+          icon: Assets.notifications,
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [

@@ -7,10 +7,10 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
-import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
 
@@ -49,14 +49,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: 108.h,
                 ),
                 10.y,
-                Text(
+                AppText(
                   "Welcome Back!",
                   style: Styles.largePlusJakartaSans(
                     context,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Text(
+                AppText(
                   "Enter your SignUp details",
                   style: Styles.mediumPlusJakartaSans(
                     context,
@@ -95,7 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.sp),
-                      child: Text(
+                      child: AppText(
                         "Or",
                         style: Styles.smallPlusJakartaSans(context,
                             fontSize: 11, color: AppColors.grey),
