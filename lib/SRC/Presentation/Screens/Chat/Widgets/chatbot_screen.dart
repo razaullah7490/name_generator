@@ -57,7 +57,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                   final bool isUserMessage = message.isUser;
 
                   return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.1),
                       child: Align(
                         alignment: isUserMessage
                             ? Alignment.centerRight
