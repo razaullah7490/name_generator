@@ -5,35 +5,19 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/bottom_navigation.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Form/Components/generated_name_container.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/Components/saved_word.dart';
+import '../Home/BottomNavigation/Widgets/bottom_navigation.dart';
+
 
 class SavedScreen extends StatelessWidget {
-  const SavedScreen({super.key});
+const SavedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Saved',
-          style: Styles.plusJakartaBold(context, fontSize: 16.sp),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigate.to(context, BottomNavigationScreen());
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: SvgPicture.asset(Assets.dots),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      
+              appBar: CustomAppbar( title: 'Saved', icon: Icons.abc),
       body: Column(
         children: [
           Expanded(
@@ -45,6 +29,7 @@ class SavedScreen extends StatelessWidget {
                   Center(
                     child: GestureDetector(
                       onTap: () {
+
 //                        showDialog(
 //   context: context,
 //   builder: (BuildContext context) {
@@ -56,7 +41,7 @@ class SavedScreen extends StatelessWidget {
 //           width: 150,
 //           child: GeneratedNameContainer(
 //             height: 500, // You can adjust the height here if needed
-//             width: 50,   
+//             width: 50,
 //           ),
 //         ),
 //       ),

@@ -64,7 +64,7 @@ class _ProfileNotificationsState extends State<SupportAndHelp> {
                   style: Styles.plusJakartaSans(context,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.greyvariant2))
+                      color: AppColors.greyvariant2)), 
             ],
           ),
         ))

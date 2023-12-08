@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
 // ignore: must_be_immutable
 class OnboardColumnWidget extends StatelessWidget {
@@ -39,7 +40,7 @@ class OnboardColumnWidget extends StatelessWidget {
           ),
           Column(
             children: [
-              Text(
+              AppText(
                 text1,
                 style: Styles.largePlusJakartaSans(
                   context,
@@ -55,7 +56,7 @@ class OnboardColumnWidget extends StatelessWidget {
                     child: container,
                   ),
                   Expanded(
-                    child: Text(
+                    child: AppText(
                       "$text2\n$text3\n$text4",
                       style: Styles.mediumPlusJakartaSans(
                         context,

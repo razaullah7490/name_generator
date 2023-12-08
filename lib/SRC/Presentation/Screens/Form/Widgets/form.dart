@@ -5,9 +5,9 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
-import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
-
-import '../../../../Application/Services/Navigation/navigation.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -87,7 +87,6 @@ class _FormScreenState extends State<FormScreen> {
                               fontWeight: FontWeight.w500,
                               color: AppColors.lightgrey),
                         ),
-
                         5.y,
                         SizedBox(
                           height: 0.06.sh,
@@ -141,9 +140,7 @@ class _FormScreenState extends State<FormScreen> {
           padding: const EdgeInsets.all(16.0),
           child: CustomButton(
             text: "Generate ",
-            ontap: () {
-              Navigate.to(context, NameGenerated());
-            },
+            ontap: () {},
             iconData: const Icon(Icons.abc),
           ),
         ),

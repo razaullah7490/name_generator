@@ -6,7 +6,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Form/Widgets/form.dart';
 
 class BusinessCategory extends StatefulWidget {
   const BusinessCategory({super.key});

@@ -47,5 +47,5 @@ class Assets {
   static const String helpcirclefilled  = 'assets/images/helpcirclefilled.svg';
   static const String logoutfilled  = 'assets/images/logoutfilled.svg'; 
   static const String arrowright  = 'assets/images/arrowright.svg';
-    
+  static const String arrowleft = 'assets/images/arrowleft.svg';  
 }

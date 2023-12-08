@@ -7,13 +7,13 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/bottom_navigation.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Form/form.dart';
-import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Widgets/bottom_navigation.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Business/Widgets/business_category.dart';
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
 import '../../../../../Data/DataSource/Resources/assets.dart';
 
@@ -52,14 +52,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 108.h,
                 ),
                 10.y,
-                Text(
+                AppText(
                   "Welcome Back!",
                   style: Styles.largePlusJakartaSans(
                     context,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Text(
+                AppText(
                   "Enter your login details",
                   style: Styles.mediumPlusJakartaSans(
                     context,
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 10.y,
                 Align(
                   alignment: Alignment.bottomRight,
-                  child: Text(
+                  child: AppText(
                     "Forgot Password ?",
                     style: Styles.smallPlusJakartaSans(
                       context,
@@ -87,7 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 14.y,
-                CustomButton(text: "Login", ontap: () {}),
+                CustomButton(
+                    iconData: const SizedBox(),
+                    text: "Login",
+                    ontap: () {
+                      Navigate.toReplace(
+                          context, const BottomNavigationScreen());
+                    }),
                 Row(
                   children: [
                     Expanded(
@@ -99,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.sp),
-                      child: Text(
+                      child: AppText(
                         "Or",
                         style: Styles.smallPlusJakartaSans(context,
                             fontSize: 11, color: AppColors.grey),

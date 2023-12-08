@@ -5,7 +5,6 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/bottom_navigation.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Form/Components/generated_name_container.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/Components/saved_word.dart';
 

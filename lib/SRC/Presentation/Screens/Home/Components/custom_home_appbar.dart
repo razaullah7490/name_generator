@@ -2,26 +2,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
+class CustomHomeAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String? title;
   final String? subtitle;
   final String? icon;
-
-  const CustomAppbar({super.key, this.title, this.subtitle, this.icon});
-
+  const CustomHomeAppbar({super.key, this.title, this.subtitle, this.icon});
   @override
-  State<CustomAppbar> createState() => _CustomAppbarState();
-
+  State<CustomHomeAppbar> createState() => _CustomHomeAppbarState();
   @override
   Size get preferredSize => Size(0, 50.h);
 }
 
-class _CustomAppbarState extends State<CustomAppbar> {
+class _CustomHomeAppbarState extends State<CustomHomeAppbar> {
   @override
   Widget build(BuildContext context) {
     return Column(

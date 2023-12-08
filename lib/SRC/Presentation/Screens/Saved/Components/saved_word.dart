@@ -7,7 +7,8 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Categories/Components/round_avatar.dart';
+import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
+
 
 class SavedWord extends StatelessWidget {
   final double? height;

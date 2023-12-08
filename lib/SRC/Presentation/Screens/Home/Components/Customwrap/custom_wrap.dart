@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Categories/Components/cat_icon.dart';
+import 'package:name_generator/SRC/Presentation/Common/cat_icon.dart';
 
 class CustomWrap extends StatelessWidget {
   const CustomWrap({
