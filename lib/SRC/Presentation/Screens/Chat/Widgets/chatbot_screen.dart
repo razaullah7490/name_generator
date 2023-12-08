@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 
@@ -23,7 +24,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         chatMessages.addAll([
-          Message(text: "Hello?", isUser: false),
+          Message(text: AppStrings.hello, isUser: false),
         ]);
       });
     });
@@ -38,7 +39,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            CustomAppbar(title: "ChatBot AI", icon: Icons.message_outlined),
+            CustomAppbar(
+                title: AppStrings.chatBotAi, icon: Icons.message_outlined),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
@@ -124,7 +126,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                         controller: _messageController,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Type your message...",
+                          hintText: AppStrings.typeMessage,
                         ),
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
@@ -69,7 +70,9 @@ class _FormScreenState extends State<FormScreen> {
                       color: AppColors.lebelTextColor,
                       size: 24,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigate.pop(context);
+                    },
                   ),
                 ],
               ),

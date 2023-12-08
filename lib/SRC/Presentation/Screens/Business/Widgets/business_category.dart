@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Form/Widgets/form.dart';
 
 class BusinessCategory extends StatefulWidget {
   const BusinessCategory({super.key});
@@ -30,12 +30,11 @@ class _BusinessCategoryState extends State<BusinessCategory> {
   @override
   Widget build(BuildContext context) {
     List<String> radioTileTitles = [
-      'Startup',
-      'Restaurant',
-      'Web development',
-      'Fashion',
-      'Marketing',
-      'Other',
+      AppStrings.startup,
+      AppStrings.resturant,
+      AppStrings.webDevelopemt,
+      AppStrings.fashion,
+      AppStrings.other,
     ];
 
     return SafeArea(
@@ -50,7 +49,7 @@ class _BusinessCategoryState extends State<BusinessCategory> {
               floating: false,
               pinned: true,
               title: Text(
-                "Business - Choose a Subcategory",
+                AppStrings.businessSub,
                 style: Styles.mediumPlusJakartaSans(context,
                     color: AppColors.blackColor, fontWeight: FontWeight.w600),
                 textAlign: TextAlign.left,
@@ -62,7 +61,9 @@ class _BusinessCategoryState extends State<BusinessCategory> {
                     width: 24.0,
                     height: 24.0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigate.pop(context);
+                  },
                 ),
               ],
             ),
