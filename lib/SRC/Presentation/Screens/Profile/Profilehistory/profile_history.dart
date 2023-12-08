@@ -9,8 +9,8 @@ import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/bo
 import 'package:name_generator/SRC/Presentation/Screens/Home/Form/Components/generated_name_container.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/Components/saved_word.dart';
 
-class SavedScreen extends StatelessWidget {
-  const SavedScreen({super.key});
+class ProfileHistory extends StatelessWidget {
+  const ProfileHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,13 @@ class SavedScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Saved',
+          'History',
           style: Styles.plusJakartaBold(context, fontSize: 16.sp),
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigate.to(context, BottomNavigationScreen());
+            Navigator.pop(context);
           },
         ),
         actions: [
@@ -49,10 +49,9 @@ class SavedScreen extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return const AlertDialog(
-                              insetPadding: EdgeInsets.zero,
                               content: GeneratedNameContainer(
                                 height: 300,
-                                width: 150,
+                                width: 50,
                               ),
                             );
                           },
@@ -61,8 +60,8 @@ class SavedScreen extends StatelessWidget {
                       child: const SavedWord(),
                     ),
                   )
-                ],
-             ),
+              ],
+            ),
           ))
         ],
       ),

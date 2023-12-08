@@ -119,11 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Padding(
                             padding: EdgeInsets.only(top: 10.sp, left: 30.sp ),
                             child: Wrap(
-
-                              // spacing: 20.sp,
                               alignment: WrapAlignment.spaceBetween,
-                              // runSpacing: 9.sp,
-
                               children: [
                                 for (int i = 0; i < categorynames.length; i++)
                                   CategoryTile(

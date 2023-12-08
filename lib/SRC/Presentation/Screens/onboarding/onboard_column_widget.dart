@@ -10,7 +10,6 @@ class OnboardColumnWidget extends StatelessWidget {
   String text1;
   String? text2;
   String? text4;
-
   String text3;
   Widget? container;
   TextSpan? span;

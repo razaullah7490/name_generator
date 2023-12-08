@@ -4,7 +4,6 @@ class Assets {
   static const String thirdOnboard = "assets/images/thirdOnboard.webp";
   static const String google = "assets/images/google.svg";
   static const String facebook = "assets/images/facebook.svg";
-
   static const String shuttle = "assets/images/shuttle.png";
   static const String resturant = "assets/images/resturant.png";
   static const String web = "assets/images/web.png";
@@ -14,14 +13,13 @@ class Assets {
   static const String close = "assets/images/close.png";
   static const String book = 'assets/images/book.png';
   static const String briefcase = 'assets/images/briefcase.png';
+  static const String briefcasesvg  = 'assets/images/briefcase.svg'; 
   static const String chickenrice = 'assets/images/chickenrice.png';
   static const String game = 'assets/images/game.png';
   static const String document = 'assets/images/document.png';
   static const String dog = 'assets/images/dog.png';
-
   static const String man = 'assets/images/man.png';
   static const String notifications = 'assets/images/notifications.svg';
-
   static const String slider1 = 'assets/images/slider1.png';
   static const String slider2 = 'assets/images/slider2.png';
   static const String team = 'assets/images/team.png';
@@ -38,4 +36,16 @@ class Assets {
   static const String bookmarkfilled = 'assets/images/bookmarkfilled.svg';
   static const String profilefilled = 'assets/images/profilefilled.svg';
   static const String home = 'assets/images/home.svg';
+  static const String volume  ='assets/images/volume.svg';
+  static const String copy = 'assets/images/copy.svg'; 
+  static const String clock = 'assets/images/clock.svg'; 
+  static const String dots  = 'assets/images/dots.svg'; 
+  static const String profileimage = 'assets/images/profileimage.png'; 
+  static const String settingsfilled  = 'assets/images/settingsfilled.svg'; 
+  static const String notificationsfilled = 'assets/images/notificationsfilled.svg';
+  static const String clockfilled  = 'assets/images/clockfilled.svg';
+  static const String helpcirclefilled  = 'assets/images/helpcirclefilled.svg';
+  static const String logoutfilled  = 'assets/images/logoutfilled.svg'; 
+  static const String arrowright  = 'assets/images/arrowright.svg';
+    
 }

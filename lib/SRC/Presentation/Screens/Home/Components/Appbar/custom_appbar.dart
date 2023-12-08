@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,7 +40,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
                           SizedBox(
                             height: 10.h,
                           ),
-                          AppText(widget.title!,
+                          AppText(widget.title??'',
                               style: Styles.smallPlusJakartaSans(
                                 context,
                                 fontSize: 16.sp,

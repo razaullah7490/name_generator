@@ -5,6 +5,7 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Business/business_category.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/Components/Categories/Components/round_avatar.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({required this.title, required this.icon, super.key});
@@ -26,18 +27,7 @@ class CategoryTile extends StatelessWidget {
             child: Card(
               shape: const CircleBorder(),
               elevation: 1,
-              child: Container(
-                padding: EdgeInsets.all(15.sp),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xffDBE7F5))),
-                child: Image.asset(
-                  icon,
-                  width: 25,
-                  height: 25,
-                ),
-              ),
+              child: RoundAvatar(icon: icon, issvg: false, imageheight: 20.h, imagewidth: 20.w, padding: 15.sp, ),
             ),
           ),
           Padding(

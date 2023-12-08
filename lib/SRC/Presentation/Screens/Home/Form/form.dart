@@ -4,7 +4,10 @@ import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/onboarding_screen.dart';
+
+import '../../../../Application/Services/Navigation/navigation.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -138,7 +141,9 @@ class _FormScreenState extends State<FormScreen> {
           padding: const EdgeInsets.all(16.0),
           child: CustomButton(
             text: "Generate ",
-            ontap: () {},
+            ontap: () {
+              Navigate.to(context, NameGenerated());
+            },
             iconData: const Icon(Icons.abc),
           ),
         ),
