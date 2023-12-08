@@ -7,6 +7,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 
 class BusinessCategory extends StatefulWidget {
   const BusinessCategory({super.key});
@@ -44,29 +45,8 @@ class _BusinessCategoryState extends State<BusinessCategory> {
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            SliverAppBar(
-              backgroundColor: Colors.transparent,
-              floating: false,
-              pinned: true,
-              title: Text(
-                AppStrings.businessSub,
-                style: Styles.mediumPlusJakartaSans(context,
-                    color: AppColors.blackColor, fontWeight: FontWeight.w600),
-                textAlign: TextAlign.left,
-              ),
-              actions: [
-                IconButton(
-                  icon: Image.asset(
-                    Assets.close,
-                    width: 24.0,
-                    height: 24.0,
-                  ),
-                  onPressed: () {
-                    Navigate.pop(context);
-                  },
-                ),
-              ],
-            ),
+            CustomAppbar(
+                title: AppStrings.businessSub, icon: Icons.cancel_outlined),
             SliverPadding(
               padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
               sliver: SliverList.separated(

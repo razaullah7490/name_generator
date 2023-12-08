@@ -8,6 +8,8 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
+import '../../../Common/custom_appbar.dart';
+
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
 
@@ -51,30 +53,10 @@ class _FormScreenState extends State<FormScreen> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                backgroundColor: Colors.transparent,
-                foregroundColor: AppColors.white.withOpacity(0.94),
-                floating: true,
-                pinned: false,
-                title: Text(
-                  "Fill the form",
-                  style: Styles.mediumPlusJakartaSans(context,
-                      color: AppColors.blackColor, fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.left,
-                ),
-                actions: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.highlight_remove_sharp,
-                      color: AppColors.lebelTextColor,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      Navigate.pop(context);
-                    },
-                  ),
-                ],
+              CustomAppbar(
+                title: "Fill the form",
+                icon: Icons.cancel_outlined,
+                boolean: false,
               ),
               SliverPadding(
                 padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
@@ -92,6 +74,20 @@ class _FormScreenState extends State<FormScreen> {
                         ),
                         5.y,
                         CustomDropDownWidget(
+                          icon: index == 0
+                              ? AppText(
+                                  "Options",
+                                  style: Styles.smallPlusJakartaSans(
+                                    context,
+                                    color: AppColors.lightgrey,
+                                    fontSize: 14.sp,
+                                  ),
+                                )
+                              : const Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: AppColors.lightgrey,
+                                  size: 16,
+                                ),
                           isBorderRequired: true,
                           prefixIcon: null,
                           hintText: hintText[index],

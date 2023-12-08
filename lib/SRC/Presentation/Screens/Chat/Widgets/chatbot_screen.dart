@@ -16,6 +16,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   final TextEditingController _messageController = TextEditingController();
   List<Message> chatMessages = [];
 
+  final ScrollController _scrollController = ScrollController();
+
   void _sendMessage(String message) {
     setState(() {
       chatMessages.add(Message(text: message, isUser: true));
@@ -27,6 +29,13 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           Message(text: AppStrings.hello, isUser: false),
         ]);
       });
+
+      // Scroll to the latest message
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
     });
   }
 
@@ -37,10 +46,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         extendBodyBehindAppBar: true,
         backgroundColor: AppColors.scaffoldColor,
         body: CustomScrollView(
+          controller: _scrollController,
           physics: const BouncingScrollPhysics(),
           slivers: [
-            CustomAppbar(
-                title: AppStrings.chatBotAi, icon: Icons.message_outlined),
+            CustomAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {

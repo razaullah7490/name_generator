@@ -56,7 +56,7 @@ class Styles {
         letterSpacing: letterSpacing ?? 0,
         color: color ?? AppColors.blackColor,
         fontFamily: "Plus Jakarta Sans",
-        fontWeight: fontWeight ?? FontWeight.w400);
+        fontWeight: fontWeight ?? FontWeight.w600);
   }
 
   static TextStyle plusJakartaBold(BuildContext context,
