@@ -57,11 +57,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                   final bool isUserMessage = message.isUser;
 
                   return Padding(
-<<<<<<< HEAD
-                      padding: const EdgeInsets.all(8.1),
-=======
                       padding: EdgeInsets.all(8.0.sp),
->>>>>>> rimsha
                       child: Align(
                         alignment: isUserMessage
                             ? Alignment.centerRight
