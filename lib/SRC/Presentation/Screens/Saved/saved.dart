@@ -45,18 +45,25 @@ class SavedScreen extends StatelessWidget {
                   Center(
                     child: GestureDetector(
                       onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const AlertDialog(
-                              insetPadding: EdgeInsets.zero,
-                              content: GeneratedNameContainer(
-                                height: 300,
-                                width: 150,
-                              ),
-                            );
-                          },
-                        );
+//                        showDialog(
+//   context: context,
+//   builder: (BuildContext context) {
+//     return AlertDialog(
+//       insetPadding: EdgeInsets.zero,
+//       content: SingleChildScrollView(
+//         child: Container(
+//           height: 300,
+//           width: 150,
+//           child: GeneratedNameContainer(
+//             height: 500, // You can adjust the height here if needed
+//             width: 50,   
+//           ),
+//         ),
+//       ),
+//     );
+//   },
+// );
+
                       },
                       child: const SavedWord(),
                     ),
