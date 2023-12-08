@@ -93,7 +93,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                                 icon: const Icon(
                                   Icons.content_copy,
                                   size: 20,
-                                  color: AppColors.blackColor,
+                                  color: AppColors.grey,
                                 ),
                               )
                           ],
@@ -110,15 +110,23 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           child: Row(
             children: [
               Expanded(
-                child: TextField(
-                  controller: _messageController,
-                  decoration: InputDecoration(
-                    hintText: "Type your message...",
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.red,
+                child: Card(
+                  elevation: 4,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(12)),
+                    height: 0.064.sh,
+                    width: 1.sw,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: TextField(
+                        controller: _messageController,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Type your message...",
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
