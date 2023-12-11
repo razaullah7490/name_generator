@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< HEAD
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+=======
+>>>>>>> 03955fdf48af103fce7b3c64efd640f4dd7b23bd
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
+<<<<<<< HEAD
 import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
+=======
+import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
+
+
+
+
+>>>>>>> 03955fdf48af103fce7b3c64efd640f4dd7b23bd
 import '../../../Common/custom_appbar.dart';
 
 class FormScreen extends StatefulWidget {
@@ -46,6 +56,10 @@ class _FormScreenState extends State<FormScreen> {
     ];
     List<String> categoryList = ['category1', 'category2', "category3"];
     String? selectedCategory;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03955fdf48af103fce7b3c64efd640f4dd7b23bd
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white.withOpacity(0.94),
@@ -60,6 +74,7 @@ class _FormScreenState extends State<FormScreen> {
                 boolean: false,
               ),
               SliverPadding(
+<<<<<<< HEAD
                 padding:
                     const EdgeInsets.only(top: 42.0, right: 24.0, left: 24.0),
                 sliver: SliverList.separated(
@@ -83,6 +98,96 @@ class _FormScreenState extends State<FormScreen> {
                                       context,
                                       color: AppColors.lightgrey,
                                       fontSize: 14.sp,
+=======
+                padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
+                sliver: SliverList.separated(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          fieldText[index],
+                          textAlign: TextAlign.start,
+                          style: Styles.smallPlusJakartaSans(context,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.lightgrey),
+                        ),
+                        5.y,
+                        CustomDropDownWidget(
+                          icon: index == 0
+                              ? AppText(
+                                  "Options",
+                                  style: Styles.smallPlusJakartaSans(
+                                    context,
+                                    color: AppColors.lightgrey,
+                                    fontSize: 14.sp,
+                                  ),
+                                )
+                              : const Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: AppColors.lightgrey,
+                                  size: 16,
+                                ),
+                          isBorderRequired: true,
+                          prefixIcon: null,
+                          hintText: hintText[index],
+                          value: selectedCategory,
+                          validationText: 'Please Select Category',
+                          onChanged: (value) {
+                            setState(() {
+                              selectedCategory = value;
+                            });
+                          },
+                          itemsMap: [
+                            for (int i = 0; i < categoryList.length; i++)
+                              DropdownMenuItem(
+                                value: categoryList[i],
+                                child: AppText(
+                                  categoryList[i],
+                                  style: Styles.plusJakartaSans(context,
+                                      color: AppColors.lebelTextColor),
+                                ),
+                              ),
+                          ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        index == 0
+                            ? CustomDropdownFormField(
+                                hintText: hintText[index],
+                                options: const ["Option 1", "Option 2", "Option 3"],
+                                controller: _keywordController,
+                              )
+                            : SizedBox(
+                                // height: 0.06 * MediaQuery.of(context).size.height,
+                                child: TextFormField(
+                                  controller: index == 0
+                                      ? _keywordController
+                                      : _passwordController,
+                                  decoration: InputDecoration(
+                                    hintText: hintText[index],
+                                    hintStyle: Styles.smallPlusJakartaSans(context,
+                                        color: AppColors.lebelTextColor),
+                                    suffixIcon: index == 0
+                                        ? Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16.0, vertical: 10.0),
+                                            child: Text(
+                                              "Options",
+                                              style: Styles.smallPlusJakartaSans(
+                                                  context,
+                                                  color: AppColors.lebelTextColor),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        : const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: AppColors.lebelTextColor,
+
+                                          ),
+                                    border: OutlineInputBorder(
+                                      borderSide: const BorderSide(color: AppColors.grey),
+                                      borderRadius: BorderRadius.circular(10.0),
+>>>>>>> 03955fdf48af103fce7b3c64efd640f4dd7b23bd
                                     ),
                                   )
                                 : const Icon(
@@ -109,6 +214,12 @@ class _FormScreenState extends State<FormScreen> {
                                     style: Styles.plusJakartaSans(context,
                                         color: AppColors.lebelTextColor),
                                   ),
+<<<<<<< HEAD
+=======
+                                  validator: (value) {
+                                    return null;
+                                  },
+>>>>>>> 03955fdf48af103fce7b3c64efd640f4dd7b23bd
                                 ),
                             ],
                           )
@@ -137,3 +248,14 @@ class _FormScreenState extends State<FormScreen> {
     );
   }
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+>>>>>>> 03955fdf48af103fce7b3c64efd640f4dd7b23bd
