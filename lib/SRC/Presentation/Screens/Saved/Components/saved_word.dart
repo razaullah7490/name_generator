@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,19 +8,21 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 
-
 class SavedWord extends StatelessWidget {
   final double? height;
   final double? width;
+  final Widget? tapoption;
   const SavedWord({
-this.height, this.width, 
+    this.height,
+    this.width,
+    this.tapoption,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:   EdgeInsets.only(top:10.sp),
+      padding: EdgeInsets.only(top: 10.sp),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.sp),
@@ -29,8 +30,8 @@ this.height, this.width,
             border: Border.all(
               color: Colors.grey,
             )),
-        width: width ??300.w,
-        height: height ??100.h,
+        width: width ?? 300.w,
+        height: height ?? 100.h,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
@@ -40,8 +41,7 @@ this.height, this.width,
                 children: <Widget>[
                   AppText('Sole craft',
                       style: Styles.smallPlusJakartaSans(context,
-                          fontSize: 16.sp,
-                          color: AppColors.blackvariant1))
+                          fontSize: 16.sp, color: AppColors.blackvariant1))
                 ],
               ),
               Row(
@@ -54,14 +54,9 @@ this.height, this.width,
                   5.x,
                   AppText('Business name',
                       style: Styles.mediumPlusJakartaSans(context,
-                          fontSize: 14.sp,
-                          color: AppColors.greyvariant)),
-      
+                          fontSize: 14.sp, color: AppColors.greyvariant)),
                   Spacer(),
-                 
-      
-                  RoundAvatar( issvg: true, icon: Assets.bookmarkfilled, padding: 10.sp, imageheight: 12.h, imagewidth: 12.w,),
-                
+                  tapoption ?? SizedBox(),
                 ],
               ),
               Row(
@@ -70,8 +65,7 @@ this.height, this.width,
                   5.x,
                   AppText('2 hours ago',
                       style: Styles.smallPlusJakartaSans(context,
-                          fontSize: 12.sp,
-                          color: AppColors.lebelTextColor))
+                          fontSize: 12.sp, color: AppColors.lebelTextColor))
                 ],
               ),
             ],

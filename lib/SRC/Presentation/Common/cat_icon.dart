@@ -15,7 +15,7 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 75.w,
-      height: 80.h,
+      height: 84.h,
       // color: Colors.white,
       child: Column(
         children: [

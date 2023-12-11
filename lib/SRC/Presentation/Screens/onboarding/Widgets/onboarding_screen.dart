@@ -169,7 +169,7 @@ class CustomButton extends StatelessWidget {
                 style: const TextStyle(color: AppColors.white),
                 textAlign: TextAlign.center,
               ),
-              iconData!
+              iconData??SizedBox(), 
             ],
           ),
         ),

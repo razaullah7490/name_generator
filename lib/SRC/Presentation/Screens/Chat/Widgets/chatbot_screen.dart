@@ -44,7 +44,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                 (BuildContext context, int index) {
                   final Message message = chatMessages[index];
                   final bool isUserMessage = message.isUser;
-
                   return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Align(

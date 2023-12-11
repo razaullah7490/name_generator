@@ -14,7 +14,7 @@ class AppText extends StatelessWidget {
     required this.style,
     this.overflow,
     this.maxLine = 1,
-    this.textAlign = TextAlign.start,
+    this.textAlign,
   });
 
   @override

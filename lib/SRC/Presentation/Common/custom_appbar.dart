@@ -10,28 +10,25 @@ import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Wi
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   String title;
-  IconData icon;
+  IconData? icon;
   String? leading;
+  bool?   autoleading;
+  Widget? trailing; 
+
   CustomAppbar({
     required this.title,
-    required this.icon,
+    this.autoleading, 
+    this.trailing, 
+    this.icon,
     this.leading,
     super.key,
   });
 
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: true,
-     leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-        
-            Navigate.to(context, BottomNavigationScreen() );
-          },
-        ),
-
-
+      automaticallyImplyLeading: autoleading??false,
       elevation: 2,
       centerTitle: true,
       backgroundColor: AppColors.scaffoldColor,
@@ -41,20 +38,15 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             fontSize: 16.sp, fontWeight: FontWeight.w600),
         textAlign: TextAlign.center,
       ),
+      
       actions: [
-        IconButton(
-          icon: Icon(icon),
-          onPressed: () {},
-        ),
-      ],
+      Padding(
+        padding: EdgeInsets.only(right: 20.sp),
+        child: trailing??SizedBox(), 
+      ), 
+      ],   
     );
-
-
-
-
-    
   }
-
 
   @override
   Size get preferredSize => Size(0, 40.h);

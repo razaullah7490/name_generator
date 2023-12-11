@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Form/Components/custom_drop_down_form_field.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
-import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
+ 
+ 
+ 
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  const FormScreen({Key? key}) : super(key: key);
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -74,7 +78,7 @@ class _FormScreenState extends State<FormScreen> {
                 ],
               ),
               SliverPadding(
-                padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
+                padding: const EdgeInsets.only(top: 42.0, right: 24.0, left: 24.0),
                 sliver: SliverList.separated(
                   itemBuilder: (BuildContext context, int index) {
                     return Column(
@@ -87,48 +91,55 @@ class _FormScreenState extends State<FormScreen> {
                               fontWeight: FontWeight.w500,
                               color: AppColors.lightgrey),
                         ),
-                        5.y,
-                        SizedBox(
-                          height: 0.06.sh,
-                          child: TextFormField(
-                            controller: _keywordController,
-                            decoration: InputDecoration(
-                              hintText: hintText[index],
-                              hintStyle: Styles.smallPlusJakartaSans(context,
-                                  color: AppColors.lebelTextColor),
-                              suffixIcon: index == 0
-                                  ? Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 16.sp, vertical: 10),
-                                      child: Text(
-                                        "Options",
-                                        style: Styles.smallPlusJakartaSans(
-                                            context,
-                                            color: AppColors.lebelTextColor),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    )
-                                  : const Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: AppColors.lebelTextColor,
-                                      size: 20,
+                        const SizedBox(height: 5.0),
+                        index == 0
+                            ? CustomDropdownFormField(
+                                hintText: hintText[index],
+                                options: const ["Option 1", "Option 2", "Option 3"],
+                                controller: _keywordController,
+                              )
+                            : SizedBox(
+                                // height: 0.06 * MediaQuery.of(context).size.height,
+                                child: TextFormField(
+                                  controller: index == 0
+                                      ? _keywordController
+                                      : _passwordController,
+                                  decoration: InputDecoration(
+                                    hintText: hintText[index],
+                                    hintStyle: Styles.smallPlusJakartaSans(context,
+                                        color: AppColors.lebelTextColor),
+                                    suffixIcon: index == 0
+                                        ? Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16.0, vertical: 10.0),
+                                            child: Text(
+                                              "Options",
+                                              style: Styles.smallPlusJakartaSans(
+                                                  context,
+                                                  color: AppColors.lebelTextColor),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        : const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: AppColors.lebelTextColor,
+                                          
+                                          ),
+                                    border: OutlineInputBorder(
+                                      borderSide: const BorderSide(color: AppColors.grey),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
-                              border: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: AppColors.grey),
-                                borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  validator: (value) {
+                                    return null;
+                                  },
+                                ),
                               ),
-                            ),
-                            validator: (value) {
-                              return null;
-                            },
-                          ),
-                        ),
                       ],
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
-                    return 16.y;
+                    return const SizedBox(height: 16.0);
                   },
                   itemCount: fieldText.length,
                 ),
@@ -138,13 +149,23 @@ class _FormScreenState extends State<FormScreen> {
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: CustomButton(
+          child: CustomButton( iconData: Image.asset(Assets.sparkle),
             text: "Generate ",
-            ontap: () {},
-            iconData: const Icon(Icons.abc),
+            ontap: () {
+              Navigate.to(context, const NameGenerated()); 
+            },
           ),
         ),
       ),
     );
   }
 }
+
+
+  
+
+
+
+
+
+ 

@@ -24,7 +24,14 @@ class AppStrings {
   static const String subCategory = '• Choose a Sub Category';
   static const String generateName = '• Generate Names';
   static const String next = 'Next';
+  static const String emptynotication = "You don't have any notifications"; 
+  static const String generatenames  = 'Generate simple and unique names and share it with your family or friends..'; 
 
   static const String started = 'Get Started';
   static const String completedOnboarding = 'completedOnboarding';
+  static const String faq1  = 'How do I reset my password?';
+  static const String faq2 = 'Can I change my email adress?';
+  static const String faqanswer1  = '• Visit the password reset page and follow the instructions.';
+  static const String faqanswer2  = 'Yes, you can update your email in the account settings here';
+  
 }

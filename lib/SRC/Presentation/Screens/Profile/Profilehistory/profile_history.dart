@@ -47,8 +47,10 @@ class ProfileHistory extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return const AlertDialog(
-                              content: GeneratedNameContainer(
+                            return  AlertDialog(
+                              contentPadding: EdgeInsets.all(0.sp ),
+                              content: const GeneratedNameContainer(
+                                spaceinicons: 60,
                                 height: 300,
                                 width: 50,
                               ),
@@ -56,7 +58,7 @@ class ProfileHistory extends StatelessWidget {
                           },
                         );
                       },
-                      child: const SavedWord(),
+                      child: SavedWord(tapoption: SvgPicture.asset(Assets.dots),),
                     ),
                   )
               ],

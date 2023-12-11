@@ -16,6 +16,19 @@ class SupportAndHelp extends StatefulWidget {
 }
 
 class _ProfileNotificationsState extends State<SupportAndHelp> {
+  List<String> questions = [
+    AppStrings.faq1,
+    AppStrings.faq2,
+    AppStrings.faq2,
+    AppStrings.faq2
+  ];
+  List<String> answers = [
+    AppStrings.faqanswer1,
+    AppStrings.faqanswer2,
+    AppStrings.faqanswer2,
+    AppStrings.faqanswer2
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,36 +51,53 @@ class _ProfileNotificationsState extends State<SupportAndHelp> {
           ),
         ],
       ),
-      body: Column(children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.sp),
+          child: AppText(AppStrings.faq,
+              style: Styles.mediumPlusJakartaSans(
+                context,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.blackvariant,
+              )),
+        ),
         Expanded(
-            child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.sp),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppText(AppStrings.faq,
-                  style: Styles.mediumPlusJakartaSans(
-                    context,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.blackvariant,
-                  )),
-              20.y,
-              AppText('How do i reset my password?',
-                  style: Styles.plusJakartaSans(
-                    context,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  )),
-              AppText(
-                  'Visit the password reset page and follow the instructions.', maxLine: 3,
-                  style: Styles.plusJakartaSans(context,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.greyvariant2)), 
-            ],
+          child: ListView.builder(
+            itemCount: questions.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.sp),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    20.y,
+                    AppText(questions[index],
+                        style: Styles.plusJakartaSans(
+                          context,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.blackvariant,
+                        )),
+                    5.y,
+                    AppText(answers[index],
+                        maxLine: 3,
+                        style: Styles.plusJakartaSans(context,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.greyvariant)),
+                    10.y,
+                    Container(
+                      color: AppColors.outline,
+                      height: 1.0,
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
-        ))
+        )
       ]),
     );
   }

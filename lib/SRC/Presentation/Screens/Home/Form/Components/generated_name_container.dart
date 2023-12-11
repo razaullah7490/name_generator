@@ -12,9 +12,10 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 class GeneratedNameContainer extends StatelessWidget {
   final double? height; 
   final double? width; 
-
+  final double ? spaceinicons; 
   const GeneratedNameContainer({
-    this.height, this.width,
+
+    this.height, this.width,this.spaceinicons, 
     super.key,
   });
 
@@ -48,7 +49,8 @@ class GeneratedNameContainer extends StatelessWidget {
                     style: Styles.plusJakartaBold(context,
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold)),
-                80.x,
+                // 80.x,
+                  SizedBox(width: spaceinicons?? 80.sp,),
                 SvgPicture.asset(
                   Assets.volume,
                 ),

@@ -9,7 +9,6 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/Form/Components/generated_name_container.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-
 import '../../onboarding/Widgets/onboarding_screen.dart';
 
 class NameGenerated extends StatefulWidget {
@@ -41,7 +40,7 @@ class _FormScreenState extends State<NameGenerated> {
               child: Column(
                 children: <Widget>[
                   20.y,
-                  Center(
+                  const Center(
                     child: GeneratedNameContainer(),
                   ),
                 ],
@@ -54,7 +53,7 @@ class _FormScreenState extends State<NameGenerated> {
           child: CustomButton(
             text: "Generate ",
             ontap: () {},
-            iconData: const Icon(Icons.abc),
+            iconData: Image.asset(Assets.sparkle),
           ),
         ),
       ),

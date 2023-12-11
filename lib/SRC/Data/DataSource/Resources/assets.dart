@@ -48,4 +48,7 @@ class Assets {
   static const String logoutfilled  = 'assets/images/logoutfilled.svg'; 
   static const String arrowright  = 'assets/images/arrowright.svg';
   static const String arrowleft = 'assets/images/arrowleft.svg';  
+  static const String emptynotication = 'assets/images/EmptyNotification.svg'; 
+  static const String sparkle = 'assets/images/sparkles.png';
+  
 }

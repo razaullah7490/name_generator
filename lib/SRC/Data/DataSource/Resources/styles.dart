@@ -5,11 +5,13 @@ import 'color.dart';
 class Styles {
   static TextStyle largePlusJakartaSans(BuildContext context,
       {double? fontSize,
+      final TextAlign? textAlign,
       Color? color,
       FontWeight? fontWeight,
       double? letterSpacing}) {
     return TextStyle(
         fontStyle: FontStyle.normal,
+        
         fontSize: (fontSize ?? 28.0.sp),
         letterSpacing: letterSpacing ?? 0,
         color: color ?? AppColors.blackColor,
@@ -20,6 +22,7 @@ class Styles {
   static TextStyle mediumPlusJakartaSans(BuildContext context,
       {double? fontSize,
       Color? color,
+      final TextAlign? textAlign,
       FontWeight? fontWeight,
       double? letterSpacing}) {
     return TextStyle(
@@ -34,6 +37,7 @@ class Styles {
   static TextStyle smallPlusJakartaSans(BuildContext context,
       {double? fontSize,
       Color? color,
+      final TextAlign? textAlign,
       FontWeight? fontWeight,
       double? letterSpacing}) {
     return TextStyle(
@@ -48,6 +52,7 @@ class Styles {
   static TextStyle plusJakartaSans(BuildContext context,
       {double? fontSize,
       Color? color,
+      final TextAlign? textAlign,
       FontWeight? fontWeight,
       double? letterSpacing}) {
     return TextStyle(
@@ -62,6 +67,7 @@ class Styles {
   static TextStyle plusJakartaBold(BuildContext context,
       {double? fontSize,
       Color? color,
+      final TextAlign? textAlign,
       FontStyle? fontStyle,
       double height = 1.4,
       FontWeight fontWeight = FontWeight.bold,

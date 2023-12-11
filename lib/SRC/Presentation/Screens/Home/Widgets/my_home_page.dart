@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
@@ -63,7 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: const EdgeInsets.only(top: 0),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Hello 👋\nFarooq Ahmad'),
+          automaticallyImplyLeading: false,
+          title: AppText('Hello 👋\nFarooq Ahmad',  maxLine: 2, style: Styles.plusJakartaBold(context, fontSize: 16.sp )),
+
           actions: [
             RoundAvatar(
               icon: Assets.notifications,
@@ -72,7 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
               imageheight: 23.h,
               imagewidth: 23.h,
               padding: 9.sp,
-            )
+            ), 
+          10.x,   
           ],
         ),
         body: SingleChildScrollView(
@@ -127,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 10.sp, left: 20.sp),
                       child: Wrap(
-                        // spacing: 20.sp,
+                      
                         alignment: WrapAlignment.spaceBetween,
                         children: [
                           for (int i = 0; i < categorynames.length; i++)
