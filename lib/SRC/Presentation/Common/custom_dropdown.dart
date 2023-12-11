@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_shadow.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
@@ -9,6 +10,7 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 class CustomDropDownWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final String hintText;
+  final Widget? icon;
   dynamic value;
   final double vMargin;
   final double hMargin;
@@ -19,6 +21,7 @@ class CustomDropDownWidget extends StatelessWidget {
   final bool isBorderRequired;
   final bool isShadowRequired;
   CustomDropDownWidget({
+    this.icon,
     super.key,
     this.hMargin = 8,
     this.vMargin = 0,
@@ -118,11 +121,7 @@ class CustomDropDownWidget extends StatelessWidget {
             ),
           ),
           dropdownColor: Colors.white,
-          icon: const Icon(
-            Icons.arrow_forward_ios,
-            color: AppColors.lightgrey,
-            size: 16,
-          ),
+          icon: icon,
           iconSize: 28.r,
           isExpanded: true,
           style: Styles.smallPlusJakartaSans(

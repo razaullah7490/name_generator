@@ -69,8 +69,10 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
           height: 1.sh,
           color: Colors.white,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              60.y,
+              20.y,
               Expanded(
                 child: PageView(
                   padEnds: false,
@@ -120,7 +122,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                     ),
                 ],
               ),
-              6.y,
+              2.y,
               CustomButton(
                 iconData: const SizedBox(),
                 text: _currentPage < 2 ? AppStrings.next : AppStrings.started,

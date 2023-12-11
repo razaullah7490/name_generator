@@ -29,9 +29,40 @@ class AppStrings {
 
   static const String started = 'Get Started';
   static const String completedOnboarding = 'completedOnboarding';
+ 
   static const String faq1  = 'How do I reset my password?';
   static const String faq2 = 'Can I change my email adress?';
   static const String faqanswer1  = '• Visit the password reset page and follow the instructions.';
   static const String faqanswer2  = 'Yes, you can update your email in the account settings here';
   
+ 
+
+  static const String wellcome = 'Welcome Back!';
+  static const String enterLogin = 'Enter your login details';
+  static const String email = 'Email';
+  static const String forgot = 'Forgot Password ?';
+
+  static const String or = 'Or';
+  static const String facebook = 'Login with Facebook';
+  static const String google = 'Login with Google';
+  static const String dontAccount = 'Don’t have an account?';
+  static const String signup = 'Signup';
+  static const String enterSignup = 'Enter your SignUp details';
+
+  static const String name = 'Name';
+  static const String alreadyAccount = 'Already have an account?';
+
+  static const String startup = "startup";
+  static const String resturant = "Restaurant";
+  static const String webDevelopemt = "Web development";
+  static const String fashion = "Fashion";
+  static const String marketing = "Marketing";
+  static const String other = "Other";
+
+  static const String businessSub = "Business - Choose a Subcategory";
+
+  static const String hello = "Hello?";
+  static const String chatBotAi = "ChatBot AI";
+  static const String typeMessage = "Type your message...";
+>>>>>>> rimsha
 }

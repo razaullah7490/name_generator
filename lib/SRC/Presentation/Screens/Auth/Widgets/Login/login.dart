@@ -7,6 +7,7 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
@@ -53,14 +54,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 10.y,
                 AppText(
-                  "Welcome Back!",
+                  AppStrings.wellcome,
                   style: Styles.largePlusJakartaSans(
                     context,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 AppText(
-                  "Enter your login details",
+                  AppStrings.enterLogin,
                   style: Styles.mediumPlusJakartaSans(
                     context,
                   ),
@@ -70,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 EmailField(
                   icon: Icons.email_outlined,
                   controller: _emailController,
-                  text: "Email",
+                  text: AppStrings.email,
                 ),
                 20.y,
                 PasswordField(
@@ -79,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: AppText(
-                    "Forgot Password ?",
+                    AppStrings.forgot,
                     style: Styles.smallPlusJakartaSans(
                       context,
                     ),
@@ -89,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 14.y,
                 CustomButton(
                     iconData: const SizedBox(),
-                    text: "Login",
+                    text: AppStrings.login,
                     ontap: () {
                       Navigate.toReplace(
                           context, const BottomNavigationScreen());
@@ -106,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.sp),
                       child: AppText(
-                        "Or",
+                        AppStrings.or,
                         style: Styles.smallPlusJakartaSans(context,
                             fontSize: 11, color: AppColors.grey),
                         textAlign: TextAlign.center,
@@ -129,12 +130,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 100,
                     width: 70,
                   ),
-                  text: "Login with Facebook",
+                  text: AppStrings.facebook,
                 ),
                 10.y,
                 Button(
                   ontap: () {
-                    Navigate.to(context, const BusinessCategory());
+                    Navigate.to(context, const BottomNavigationScreen());
                   },
                   textColor: AppColors.blackColor,
                   svg: SvgPicture.asset(
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 100,
                     width: 70,
                   ),
-                  text: "Login with Google",
+                  text: AppStrings.google,
                 ),
                 65.y,
                 GestureDetector(
@@ -152,13 +153,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      text: "Don’t have an account? ",
+                      text: AppStrings.dontAccount,
                       style: Styles.smallPlusJakartaSans(
                         context,
                       ),
                       children: [
                         TextSpan(
-                          text: 'Signup',
+                          text: AppStrings.signup,
                           style: Styles.smallPlusJakartaSans(context,
                               color: AppColors.primaryColor.withOpacity(0.8)),
                         ),

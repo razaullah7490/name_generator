@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,44 +12,45 @@ import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Wi
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   String title;
-  IconData? icon;
-  String? leading;
-  bool?   autoleading;
-  Widget? trailing; 
+
+  IconData icon;
+  bool? boolean;
 
   CustomAppbar({
     required this.title,
-    this.autoleading, 
-    this.trailing, 
-    this.icon,
-    this.leading,
+    required this.icon,
     super.key,
+    this.boolean,
   });
-
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: autoleading??false,
+    return SliverAppBar(
+      automaticallyImplyLeading: false,
       elevation: 2,
-      centerTitle: true,
+      centerTitle: boolean,
       backgroundColor: AppColors.scaffoldColor,
+      floating: true,
+      pinned: true,
       title: AppText(
         title,
-        style: Styles.plusJakartaSans(context,
-            fontSize: 16.sp, fontWeight: FontWeight.w600),
+        style: Styles.plusJakartaSans(
+          context,
+        ),
         textAlign: TextAlign.center,
       ),
-      
       actions: [
-      Padding(
-        padding: EdgeInsets.only(right: 20.sp),
-        child: trailing??SizedBox(), 
-      ), 
-      ],   
+        Padding(
+          padding: EdgeInsets.only(right: 20.sp),
+          child: const SizedBox(),
+        ),
+      ],
     );
   }
 
   @override
-  Size get preferredSize => Size(0, 40.h);
+  Size get preferredSize => RepositoryProvider(
+        create: (context) => SubjectRepository(),
+        child: Size(0, 40.h),
+      );
 }
