@@ -42,23 +42,38 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   }
 
   void _openMicBottomSheet() {
-    showBottomSheet(
+    showModalBottomSheet(
+      backgroundColor: AppColors.white,
+      shape: const BeveledRectangleBorder(),
+      elevation: 0,
       context: context,
       builder: (context) {
-        return Container(
-          height: 200.0,
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'You can ask me everything about names',
-                style: TextStyle(fontSize: 20.0),
-              ),
-              IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.mic_none_outlined)),
-            ],
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: FractionallySizedBox(
+            heightFactor: 0.3,
+            widthFactor: 0.9,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'You can ask me everything about names',
+                  style: TextStyle(fontSize: 20.0),
+                  textAlign: TextAlign.center,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.white,
+                      border: Border.all()),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.mic_none_outlined),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -170,8 +185,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                         },
                         controller: _messageController,
                         decoration: InputDecoration(
-                          prefixIcon: IconButton(
-                              onPressed: () {},
+                          suffixIcon: IconButton(
+                              onPressed: _openMicBottomSheet,
                               icon: const Icon(Icons.mic_none_outlined)),
                           border: InputBorder.none,
                           hintText: AppStrings.typeMessage,
