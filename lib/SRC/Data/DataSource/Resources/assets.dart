@@ -12,6 +12,8 @@ class Assets {
   static const String marketing = "assets/images/marketing.png";
   static const String plus = "assets/images/plus.png";
   static const String close = "assets/images/close.png";
+  static const String spark = "assets/images/spark.png";
+  static const String chatimage = "assets/images/chatimage.png";
   static const String book = 'assets/images/book.png';
   static const String briefcase = 'assets/images/briefcase.png';
   static const String chickenrice = 'assets/images/chickenrice.png';

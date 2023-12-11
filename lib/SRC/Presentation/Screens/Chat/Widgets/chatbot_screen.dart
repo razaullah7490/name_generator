@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
@@ -14,6 +16,7 @@ class ChatbotScreen extends StatefulWidget {
 
 class _ChatbotScreenState extends State<ChatbotScreen> {
   final TextEditingController _messageController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<Message> chatMessages = [];
 
   final ScrollController _scrollController = ScrollController();
@@ -30,7 +33,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         ]);
       });
 
-      // Scroll to the latest message
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300),
@@ -39,25 +41,69 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     });
   }
 
+  void _openMicBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: AppColors.white,
+      shape: const BeveledRectangleBorder(),
+      elevation: 0,
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: FractionallySizedBox(
+            heightFactor: 0.3,
+            widthFactor: 0.9,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'You can ask me everything about names',
+                  style: TextStyle(fontSize: 20.0),
+                  textAlign: TextAlign.center,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.white,
+                      border: Border.all()),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.mic_none_outlined),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: AppColors.scaffoldColor,
-        body: CustomScrollView(
-          controller: _scrollController,
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            CustomAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  final Message message = chatMessages[index];
-                  final bool isUserMessage = message.isUser;
+        body: Form(
+          key: _formKey,
+          child: CustomScrollView(
+            controller: _scrollController,
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              CustomAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  if (index == 0) {
+                    return const IntroMessage();
+                  }
 
+                  final Message message = chatMessages[index - 1];
+                  final bool isUserMessage = message.isUser;
                   return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0.sp),
                       child: Align(
                         alignment: isUserMessage
                             ? Alignment.centerRight
@@ -110,11 +156,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                           ],
                         ),
                       ));
-                },
-                childCount: chatMessages.length,
+                }, childCount: chatMessages.length + 1),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -122,18 +167,27 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             children: [
               Expanded(
                 child: Card(
-                  elevation: 4,
+                  elevation: 2,
                   child: Container(
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(12)),
-                    height: 0.064.sh,
+                    height: 0.07.sh,
                     width: 1.sw,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
                         controller: _messageController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: _openMicBottomSheet,
+                              icon: const Icon(Icons.mic_none_outlined)),
                           border: InputBorder.none,
                           hintText: AppStrings.typeMessage,
                         ),
@@ -146,7 +200,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
               GestureDetector(
                   onTap: () {
                     String message = _messageController.text.trim();
-                    if (message.isNotEmpty) {
+                    if (message.isNotEmpty &&
+                        _formKey.currentState!.validate()) {
                       _sendMessage(message);
                       _messageController.clear();
                     }
@@ -176,4 +231,52 @@ class Message {
   final bool isUser;
 
   Message({required this.text, required this.isUser});
+}
+
+class IntroMessage extends StatelessWidget {
+  const IntroMessage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8.0.sp),
+      child: Column(
+        children: [
+          Image.asset(
+            Assets.chatimage,
+            height: 153.h,
+            width: 137.w,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(height: 8.h),
+          Container(
+            height: 0.05.sh,
+            width: 0.9.sw,
+            decoration: BoxDecoration(
+                color: AppColors.lebelTextColor,
+                borderRadius: BorderRadius.circular(16)),
+            child: Row(
+              children: [
+                16.x,
+                Image.asset(
+                  Assets.spark,
+                  height: 16.h,
+                  width: 16.w,
+                  fit: BoxFit.contain,
+                ),
+                8.x,
+                AppText(
+                  "Hi, you can ask me anything about names",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.lightgrey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
