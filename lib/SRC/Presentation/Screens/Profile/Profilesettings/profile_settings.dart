@@ -12,8 +12,14 @@ class _ProfileNotificationsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(title: 'Profile Setting', autoleading: true,),
-      body:  const SizedBox());
-      
+      body: CustomScrollView(
+        slivers: [
+          CustomAppbar(
+            title: "Fill the form",
+            icon: Icons.cancel_outlined,
+          ),
+        ],
+      ),
+    );
   }
 }
