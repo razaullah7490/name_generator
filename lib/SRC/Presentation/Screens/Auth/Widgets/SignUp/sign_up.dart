@@ -7,6 +7,7 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
@@ -50,14 +51,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 10.y,
                 AppText(
-                  "Welcome Back!",
+                  AppStrings.wellcome,
                   style: Styles.largePlusJakartaSans(
                     context,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 AppText(
-                  "Enter your SignUp details",
+                  AppStrings.enterSignup,
                   style: Styles.mediumPlusJakartaSans(
                     context,
                   ),
@@ -67,20 +68,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 EmailField(
                   icon: Icons.person_outline,
                   controller: _nameController,
-                  text: 'name',
+                  text: AppStrings.name,
                 ),
                 20.y,
                 EmailField(
                   icon: Icons.email_outlined,
                   controller: _emailController,
-                  text: "Email",
+                  text: AppStrings.email,
                 ),
                 20.y,
                 PasswordField(
                     controller: _passwordController, isObscured: _isObscured),
                 24.y,
                 CustomButton(
-                  text: "SignUp",
+                  text: AppStrings.signup,
                   ontap: () {},
                   iconData: const SizedBox(),
                 ),
@@ -96,7 +97,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.sp),
                       child: AppText(
-                        "Or",
+                        AppStrings.or,
                         style: Styles.smallPlusJakartaSans(context,
                             fontSize: 11, color: AppColors.grey),
                         textAlign: TextAlign.center,
@@ -119,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     height: 70,
                     width: 70,
                   ),
-                  text: "Login with Facebook",
+                  text: AppStrings.facebook,
                 ),
                 10.y,
                 Button(
@@ -130,7 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     height: 70,
                     width: 70,
                   ),
-                  text: "Login with Facebook",
+                  text: AppStrings.google,
                 ),
                 40.y,
                 GestureDetector(
@@ -140,13 +141,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      text: "Already have an account? ",
+                      text: AppStrings.alreadyAccount,
                       style: Styles.smallPlusJakartaSans(
                         context,
                       ),
                       children: [
                         TextSpan(
-                          text: 'Login',
+                          text: AppStrings.login,
                           style: Styles.smallPlusJakartaSans(context,
                               color: AppColors.primaryColor.withOpacity(0.8)),
                         ),
