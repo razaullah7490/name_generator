@@ -48,94 +48,92 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        CustomAppbar(
-          title: 'Profile',
-          leading: false,
-        ),
-        Column(
-          children: [
-            Expanded(
-                child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Center(
-                    child: Column(
-                      children: [
-                        RoundAvatar(
-                          icon: Assets.profileimage,
-                          issvg: false,
-                          imageheight: 100.h,
-                          imagewidth: 100.w,
-                          padding: 10.sp,
+      body: Column(
+        children: [
+          CustomAppbar(
+            title: 'Profile',
+            icon: Icons.more,
+          ),
+          Expanded(
+              child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Center(
+                  child: Column(
+                    children: [
+                      RoundAvatar(
+                        icon: Assets.profileimage,
+                        issvg: false,
+                        imageheight: 100.h,
+                        imagewidth: 100.w,
+                        padding: 10.sp,
+                      ),
+                      AppText('Muhammad Taif',
+                          style: Styles.plusJakartaSans(
+                            context,
+                            fontSize: 16.sp,
+                          )),
+                      AppText('taif2115@gmail.com',
+                          style: Styles.smallPlusJakartaSans(context,
+                              fontSize: 12.sp,
+                              color: AppColors.lebelTextColor)),
+                      36.y,
+                      ListView.builder(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.sp,
                         ),
-                        AppText('Muhammad Taif',
-                            style: Styles.plusJakartaSans(
-                              context,
-                              fontSize: 16.sp,
-                            )),
-                        AppText('taif2115@gmail.com',
-                            style: Styles.smallPlusJakartaSans(context,
-                                fontSize: 12.sp,
-                                color: AppColors.lebelTextColor)),
-                        36.y,
-                        ListView.builder(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20.sp,
-                          ),
-                          shrinkWrap: true,
-                          itemCount: profileicons.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 8),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigate.to(context, screens[index]);
-                                },
-                                child: Container(
-                                  width: 380.w,
-                                  height: 52.h,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    color: AppColors.white,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
-                                    border: Border.all(
-                                      color: AppColors.greyvariant1,
-                                      width: 1.w,
-                                    ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      20.x,
-                                      SvgPicture.asset(
-                                        profileicons[index],
-                                        width: 20.w,
-                                        height: 20.h,
-                                      ),
-                                      10.x,
-                                      AppText(titles[index],
-                                          style: Styles.plusJakartaSans(context,
-                                              fontSize: 16.sp)),
-                                      const Spacer(),
-                                      SvgPicture.asset(Assets.arrowright),
-                                    ],
+                        shrinkWrap: true,
+                        itemCount: profileicons.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigate.to(context, screens[index]);
+                              },
+                              child: Container(
+                                width: 380.w,
+                                height: 52.h,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  color: AppColors.white,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  border: Border.all(
+                                    color: AppColors.greyvariant1,
+                                    width: 1.w,
                                   ),
                                 ),
+                                child: Row(
+                                  children: [
+                                    20.x,
+                                    SvgPicture.asset(
+                                      profileicons[index],
+                                      width: 20.w,
+                                      height: 20.h,
+                                    ),
+                                    10.x,
+                                    AppText(titles[index],
+                                        style: Styles.plusJakartaSans(context,
+                                            fontSize: 16.sp)),
+                                    const Spacer(),
+                                    SvgPicture.asset(Assets.arrowright),
+                                  ],
+                                ),
                               ),
-                            );
-                          },
-                        ),
-                        30.y,
-                      ],
-                    ),
+                            ),
+                          );
+                        },
+                      ),
+                      30.y,
+                    ],
                   ),
-                ],
-              ),
-            )),
-          ],
-        ),
-      ]),
+                ),
+              ],
+            ),
+          )),
+        ],
+      ),
     );
   }
 }
