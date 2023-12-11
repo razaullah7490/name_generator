@@ -11,9 +11,6 @@ class ProfileSettings extends StatefulWidget {
 class _ProfileNotificationsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppbar(title: 'Profile Setting', autoleading: true,),
-      body:  const SizedBox());
-      
+    return const Scaffold(body: SizedBox());
   }
 }

@@ -14,9 +14,6 @@ import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilenotificat
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilesettings/profile_settings.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Supportandhelp/support_and_help.dart';
 
-
-
-
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -41,7 +38,6 @@ class _ProfileState extends State<Profile> {
     'Logout'
   ];
 
-
   List<Widget> screens = [
     const ProfileSettings(),
     const ProfileNotifications(),
@@ -49,16 +45,15 @@ class _ProfileState extends State<Profile> {
     const SupportAndHelp(),
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(
-        title: 'Profile',
-        autoleading: false,
-      ),
       body: Column(
         children: [
+          CustomAppbar(
+            title: 'Profile',
+            icon: Icons.more,
+          ),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
@@ -102,16 +97,13 @@ class _ProfileState extends State<Profile> {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.rectangle,
                                   color: AppColors.white,
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   border: Border.all(
-                                    color: AppColors
-                                        .greyvariant1,  
-                                    width:
-                                        1.w,  
+                                    color: AppColors.greyvariant1,
+                                    width: 1.w,
                                   ),
                                 ),
-
                                 child: Row(
                                   children: [
                                     20.x,
@@ -133,7 +125,7 @@ class _ProfileState extends State<Profile> {
                           );
                         },
                       ),
-                 30.y, 
+                      30.y,
                     ],
                   ),
                 ),

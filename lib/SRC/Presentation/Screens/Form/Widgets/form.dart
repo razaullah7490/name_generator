@@ -7,7 +7,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
- import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
 import '../../../Common/custom_appbar.dart';
@@ -44,21 +44,13 @@ class _FormScreenState extends State<FormScreen> {
       'Marketing',
       'Other',
     ];
-
+    List<String> categoryList = ['category1', 'category2', "category3"];
+    String? selectedCategory;
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white.withOpacity(0.94),
         body: Form(
           key: _formKey,
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: CustomButton( iconData: Image.asset(Assets.sparkle),
-            text: "Generate ",
-            ontap: () {
-              Navigate.to(context, const NameGenerated()); 
-            },
-          ),
-        ),
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
@@ -68,77 +60,80 @@ class _FormScreenState extends State<FormScreen> {
                 boolean: false,
               ),
               SliverPadding(
-                padding: const EdgeInsets.only(top: 42.0, right: 24.0, left: 24.0),
+                padding:
+                    const EdgeInsets.only(top: 42.0, right: 24.0, left: 24.0),
                 sliver: SliverList.separated(
                   itemBuilder: (BuildContext context, int index) {
                     return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          fieldText[index],
-                          textAlign: TextAlign.start,
-                          style: Styles.smallPlusJakartaSans(context,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.lightgrey),
-                        ),
-                        5.y,
-                        CustomDropDownWidget(
-                          icon: index == 0
-                              ? AppText(
-                                  "Options",
-                                  style: Styles.smallPlusJakartaSans(
-                                    context,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            fieldText[index],
+                            textAlign: TextAlign.start,
+                            style: Styles.smallPlusJakartaSans(context,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.lightgrey),
+                          ),
+                          5.y,
+                          CustomDropDownWidget(
+                            icon: index == 0
+                                ? AppText(
+                                    "Options",
+                                    style: Styles.smallPlusJakartaSans(
+                                      context,
+                                      color: AppColors.lightgrey,
+                                      fontSize: 14.sp,
+                                    ),
+                                  )
+                                : const Icon(
+                                    Icons.arrow_forward_ios,
                                     color: AppColors.lightgrey,
-                                    fontSize: 14.sp,
+                                    size: 16,
                                   ),
-                                )
-                              : const Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: AppColors.lightgrey,
-                                  size: 16,
+                            isBorderRequired: true,
+                            prefixIcon: null,
+                            hintText: hintText[index],
+                            value: selectedCategory,
+                            validationText: 'Please Select Category',
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCategory = value;
+                              });
+                            },
+                            itemsMap: [
+                              for (int i = 0; i < categoryList.length; i++)
+                                DropdownMenuItem(
+                                  value: categoryList[i],
+                                  child: AppText(
+                                    categoryList[i],
+                                    style: Styles.plusJakartaSans(context,
+                                        color: AppColors.lebelTextColor),
+                                  ),
                                 ),
-                          isBorderRequired: true,
-                          prefixIcon: null,
-                          hintText: hintText[index],
-                          value: selectedCategory,
-                          validationText: 'Please Select Category',
-                          onChanged: (value) {
-                            setState(() {
-                              selectedCategory = value;
-                            });
-                          },
-                          itemsMap: [
-                            for (int i = 0; i < categoryList.length; i++)
-                              DropdownMenuItem(
-                                value: categoryList[i],
-                                child: AppText(
-                                  categoryList[i],
-                                  style: Styles.plusJakartaSans(context,
-                                      color: AppColors.lebelTextColor),
-                                ),
-                              ),
-                      ],
-                       
-                 },
+                            ],
+                          )
+                        ]);
+                  },
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 16.0);
                   },
                   itemCount: fieldText.length,
                 ),
-              
-            
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: CustomButton(
+            iconData: Image.asset(Assets.sparkle),
+            text: "Generate ",
+            ontap: () {
+              Navigate.to(context, const NameGenerated());
+            },
           ),
         ),
       ),
     );
   }
 }
-
-
-  
-
-
-
-
-
- 

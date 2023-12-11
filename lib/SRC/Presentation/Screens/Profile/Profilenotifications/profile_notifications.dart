@@ -10,8 +10,6 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilenotifications/empty_notifications.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilenotifications/profile_notifications_settings.dart';
 
 class ProfileNotifications extends StatefulWidget {
   const ProfileNotifications({super.key});
@@ -33,15 +31,9 @@ class _ProfileNotificationsState extends State<ProfileNotifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CustomAppbar(title: 'Notifications', autoleading: true,
-       trailing: GestureDetector(
-        onTap: (){
-          Navigate.to(context, ProfileNotificationSettings()); 
-        },
-         child: SvgPicture.asset(Assets.dots)),   
-       ),
       body: Column(
         children: [
+          CustomAppbar(title: 'Notifications', icon: Icons.more_vert),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
@@ -78,8 +70,8 @@ class _ProfileNotificationsState extends State<ProfileNotifications> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigate.to(
-                                      context, EmptyProfileNotification());
+                                  // Navigate.to(
+                                  //     context, EmptyProfileNotification());
                                 },
                                 child: RoundAvatar(
                                   icon: notificationIcon[index],

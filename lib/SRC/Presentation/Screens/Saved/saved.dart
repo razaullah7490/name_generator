@@ -15,13 +15,12 @@ class SavedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(
-        autoleading: true,
-        title: 'Saved',
-        trailing: SvgPicture.asset(Assets.dots),
-      ),
       body: Column(
         children: [
+          CustomAppbar(
+            title: 'Saved',
+            icon: Icons.more_vert_rounded,
+          ),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
