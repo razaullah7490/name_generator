@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
@@ -80,6 +81,13 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     );
   }
 
+  void _copyMessage(String messageText) {
+    Clipboard.setData(ClipboardData(text: messageText));
+    // You can also show a toast or snackbar indicating that the message has been copied.
+    // For simplicity, you can print a message to the console.
+    print('Message copied: $messageText');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -145,7 +153,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                             if (!isUserMessage)
                               IconButton(
                                 onPressed: () {
-                                  print('Copy Action');
+                                  _copyMessage(message.text);
                                 },
                                 icon: const Icon(
                                   Icons.content_copy,
