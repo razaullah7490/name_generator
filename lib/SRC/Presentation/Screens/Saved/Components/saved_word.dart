@@ -6,7 +6,8 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
+
+
 
 class SavedWord extends StatelessWidget {
   final double? height;
@@ -18,6 +19,7 @@ class SavedWord extends StatelessWidget {
     this.tapoption,
     super.key,
   });
+
 
   @override
   Widget build(BuildContext context) {
