@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
 
 
 
 import '../../../Common/custom_appbar.dart';
+import '../Components/custom_drop_down_form_field.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -58,7 +62,7 @@ class _FormScreenState extends State<FormScreen> {
               CustomAppbar(
                 title: "Fill the form",
                 icon: Icons.cancel_outlined,
-                boolean: false,
+
               ),
               SliverPadding(
                 padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
