@@ -101,6 +101,16 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                   }
 
                   final Message message = chatMessages[index - 1];
+=========
+        body: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            CustomAppbar(title: "ChatBot AI", icon: Icons.message_outlined),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  final Message message = chatMessages[index];
+>>>>>>>>> Temporary merge branch 2
                   final bool isUserMessage = message.isUser;
                   return Padding(
                       padding: EdgeInsets.all(8.0.sp),
@@ -159,7 +169,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                 }, childCount: chatMessages.length + 1),
               ),
             ],
-          ),
+          )
+return null;,
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16.0),
