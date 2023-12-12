@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-import '../../Data/DataSource/Resources/styles.dart';
 
-class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+class CustomSliverAppbar extends StatelessWidget implements PreferredSizeWidget {
   String title;
   IconData? icon;
-  String? leading;
-  bool?   autoleading;
-  Widget? trailing;
+  bool? leading;
 
-  CustomAppbar({
+  CustomSliverAppbar({
     required this.title,
-    this.autoleading,
-    this.trailing,
     this.icon,
     this.leading,
     super.key,
@@ -24,8 +20,8 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: autoleading??false,
+    return SliverAppBar(
+      automaticallyImplyLeading: leading??false,
       elevation: 2,
       centerTitle: true,
       backgroundColor: AppColors.scaffoldColor,
@@ -35,16 +31,12 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             fontSize: 16.sp, fontWeight: FontWeight.w600),
         textAlign: TextAlign.center,
       ),
-
       actions: [
-        Padding(
-          padding: EdgeInsets.only(right: 20.sp),
-          child: trailing??SizedBox(),
-        ),
+        Padding(padding: EdgeInsets.only(right: 20.sp), child: Icon(icon)),
       ],
     );
   }
 
   @override
-  Size get preferredSize => Size(0, 40.h);
+  Size get preferredSize =>  Size(0.w, 20.h);
 }

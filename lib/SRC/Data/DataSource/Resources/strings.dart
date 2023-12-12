@@ -59,5 +59,7 @@ class AppStrings {
   static const String faq2 = 'Can I change my email adress?';
   static const String faqanswer1  = '• Visit the password reset page and follow the instructions.';
   static const String faqanswer2  = 'Yes, you can update your email in the account settings here';
+  static const String emptynotif  = 'You don’t have any Notification..';
+  static const String emptynotif1 = 'Generate simple and unique names and share it with your  family or friends..';
 
 }

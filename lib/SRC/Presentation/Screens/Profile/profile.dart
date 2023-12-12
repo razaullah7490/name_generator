@@ -8,6 +8,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilehistory/profile_history.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilenotifications/profile_notifications.dart';
@@ -48,11 +49,9 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        CustomAppbar(
-          title: 'Profile',
-          leading: false,
-        ),
+      appBar: CustomAppbar(title: 'Profile',),
+      body:
+
         Column(
           children: [
             Expanded(
@@ -135,7 +134,7 @@ class _ProfileState extends State<Profile> {
             )),
           ],
         ),
-      ]),
+
     );
   }
 }

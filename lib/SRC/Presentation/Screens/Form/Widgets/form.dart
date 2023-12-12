@@ -9,8 +9,8 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
+import '../../../Common/custom_sliver_appbar.dart';
 
-import '../../../Common/custom_appbar.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -55,10 +55,12 @@ class _FormScreenState extends State<FormScreen> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              CustomAppbar(
+              CustomSliverAppbar(
                 title: "Fill the form",
                 icon: Icons.cancel_outlined,
+
               ),
+
               SliverPadding(
                 padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
                 sliver: SliverList.separated(
@@ -138,3 +140,11 @@ class _FormScreenState extends State<FormScreen> {
     );
   }
 }
+
+
+
+
+
+
+
+

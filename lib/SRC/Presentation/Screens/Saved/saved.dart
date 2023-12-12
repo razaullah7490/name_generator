@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dialog.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/Components/saved_word.dart';
+
+import '../../Common/custom_appbar.dart';
+
 
 class SavedScreen extends StatelessWidget {
   const SavedScreen({super.key});
@@ -13,12 +16,8 @@ class SavedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        CustomAppbar(
-          leading: true,
-          title: 'Saved',
-          icon: Icons.more_vert_outlined,
-        ),
+      appBar: CustomAppbar(title: 'Saved',  autoleading: true,  trailing: SvgPicture.asset(Assets.dots), ),
+      body:
         Column(
           children: [
             Expanded(
@@ -54,7 +53,6 @@ class SavedScreen extends StatelessWidget {
             ))
           ],
         ),
-      ]),
     );
   }
 }
