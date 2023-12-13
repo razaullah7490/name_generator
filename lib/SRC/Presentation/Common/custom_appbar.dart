@@ -19,9 +19,11 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      automaticallyImplyLeading: leading!,
+      automaticallyImplyLeading: leading??false,
       elevation: 2,
       centerTitle: true,
+pinned: true,
+      expandedHeight: 100,
       backgroundColor: AppColors.scaffoldColor,
       title: AppText(
         title,
