@@ -13,7 +13,7 @@ class CustomDIalog extends StatelessWidget {
       contentPadding: EdgeInsets.all(0.sp),
       insetPadding: EdgeInsets.zero,
       content: SingleChildScrollView(
-        child: Container(
+        child:  Container(
           height: 300,
           width: 150,
           child: const GeneratedNameContainer(

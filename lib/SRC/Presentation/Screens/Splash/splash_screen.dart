@@ -15,17 +15,19 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
   late AnimationController _controller;
-  late Animation<double> _animation;
+   Animation<double>? _animation;
+   bool? completedOnboarding=false;
+ _initFunction() async {
+final SharedPreferences prefs = await SharedPreferences.getInstance();
+completedOnboarding = prefs.getBool('completedOnboarding') ?? false;
+   // return completedOnboarding;
+  }
   @override
   void initState() {
-    super.initState();
-    _initFunction();
-  }
+    // _initFunction();
 
-  _initFunction() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final bool completedOnboarding =
-        prefs.getBool('completedOnboarding') ?? false;
+
+  // final bool completedOnboarding=_initFunction();
 
     _controller = AnimationController(
       vsync: this,
@@ -39,12 +41,17 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       if (status == AnimationStatus.completed) {
         // Navigate to another screen (e.g., HomeScreen)
 
-    completedOnboarding
-        ? Navigate.toReplace(context, const BottomNavigationScreen())
-        : Navigate.toReplace(context, const OnboardingSreen());
+        completedOnboarding!
+            ? Navigate.toReplace(context, const BottomNavigationScreen())
+            : Navigate.toReplace(context, const OnboardingSreen());
       }
-  });
+    });
+    super.initState();
+
+
   }
+
+
 @override
   void dispose() {
     // TODO: implement dispose
@@ -56,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     return Scaffold(
       body: FadeTransition(
         
-        opacity: _animation,
+        opacity: _animation!,
         child: Center(
           child: Image.asset(
             Assets.logo,
