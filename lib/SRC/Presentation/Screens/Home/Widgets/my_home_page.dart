@@ -61,97 +61,95 @@ int i=0;
   @override
   Widget build(BuildContext context) {
     print('rebuilddd ${ i++}');
-    return Padding(
-      padding: const EdgeInsets.only(top: 0),
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: AppText('Hello 👋\nFarooq Ahmad',  maxLine: 2, style: Styles.plusJakartaBold(context, fontSize: 16.sp )),
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: AppText('Hello 👋\nFarooq Ahmad',  maxLine: 2, style: Styles.plusJakartaBold(context, fontSize: 16.sp )),
 
-          actions: [
-            RoundAvatar(
-              icon: Assets.notifications,
-              issvg: true,
-              haveborder: true,
-              imageheight: 23.h,
-              imagewidth: 23.h,
-              padding: 9.sp,
-            ), 
-          10.x,   
-          ],
-        ),
-        body: SingleChildScrollView(
+        actions: [
+          RoundAvatar(
+            icon: Assets.notifications,
+            issvg: true,
+            haveborder: true,
+            imageheight: 23.h,
+            imagewidth: 23.h,
+            padding: 9.sp,
+          ),
+        10.x,
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 200.0,
-                      enlargeCenterPage: true,
-                      autoPlay: true,
-                      aspectRatio: 16 / 9,
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enableInfiniteScroll: true,
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
-                      viewportFraction: 1,
-                    ),
-                    items: carouselImages.map((String url) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width.w,
-                            margin: EdgeInsets.symmetric(horizontal: 5.w),
-                            decoration: BoxDecoration(
 
-                              color: Colors.amber,
-                              
-                              borderRadius: BorderRadius.all(Radius.circular(80.r)),
-                            ),
-                            child: Image.asset(
-                              url,
-                              fit: BoxFit.fill,
-                            ),
-                          );
-                        },
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              10.y,
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 200.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration:
+                  const Duration(milliseconds: 800),
+                  viewportFraction: 1,
+                ),
+                items: carouselImages.map((String url) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width.w,
+                        margin: EdgeInsets.symmetric(horizontal: 5.w),
+                        decoration: BoxDecoration(
+
+                          color: Colors.amber,
+
+                          borderRadius: BorderRadius.all(Radius.circular(80.r)),
+                        ),
+                        child: Image.asset(
+                          url,
+                          fit: BoxFit.fill,
+                        ),
                       );
-                    }).toList(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.sp, left: 15.sp),
-                    child: AppText('Name Categories',
-                        style: Styles.smallPlusJakartaSans(
-                          context,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w600,
-                        )),
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    physics: const BouncingScrollPhysics(),
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 10.sp, left: 20.sp),
-                      child: Wrap(
-                      
-                        alignment: WrapAlignment.spaceBetween,
-                        children: [
-                          for (int i = 0; i < categorynames.length; i++)
-                            CategoryTile(
-                              title: categorynames[i],
-                              icon: categoryimages[i],
-                            )
-                        ],
-                      ),
-                    ),
-                  )
+                    },
+                  );
+                }).toList(),
+              ),
+              10.y,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: AppText('Name Categories',
+                    style: Styles.smallPlusJakartaSans(
+                      context,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600,
+                    )),
+              ),
+              10.y,
+              Wrap(
+
+               // alignment: WrapAlignment.spaceBetween,
+                children: [
+                  for (int i = 0; i < categorynames.length; i++)
+                    CategoryTile(
+                      title: categorynames[i],
+                      icon: categoryimages[i],
+                    )
                 ],
               ),
+              //50.y,
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+      ),
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
           backgroundColor: AppColors.blue,
           foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
@@ -160,7 +158,8 @@ int i=0;
             Navigate.to(context, const FormScreen());
           },
           tooltip: 'Add',
-          child: const Icon(Icons.add),
+
+          child: const Icon(Icons.add,size: 30,),
         ),
       ),
     );

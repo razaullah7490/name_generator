@@ -15,7 +15,7 @@ class Assets {
   static const String chatimage = "assets/images/chatimage.png";
   static const String book = 'assets/images/book.png';
   static const String briefcase = 'assets/images/briefcase.png';
-  static const String briefcasesvg  = 'assets/images/briefcase.svg'; 
+  static const String briefcasesvg   = 'assets/images/briefcase.svg';
   static const String chickenrice = 'assets/images/chickenrice.png';
   static const String game = 'assets/images/game.png';
   static const String document = 'assets/images/document.png';

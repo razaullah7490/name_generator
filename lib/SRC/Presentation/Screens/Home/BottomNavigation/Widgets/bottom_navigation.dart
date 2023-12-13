@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
@@ -68,7 +69,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             ),
           ),
           bottomNavigationBar: BottomAppBar(
-            height: 60,
+            //height: 72,
             color: AppColors.white,
             shape: const CircularNotchedRectangle(),
             notchMargin: 5,
@@ -76,7 +77,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               builder: (context, state, ss) {
                 return Row(
                   //children inside bottom appbar
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     //5.x,
@@ -94,12 +95,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           SvgPicture.asset(
                             state == 0 ? Assets.homefilled : Assets.home,
                           ),
+                          5.y,
                           AppText("Home",
                               style: Styles.smallPlusJakartaSans(context,
                                   color: state == 0
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w600))
                         ],
                       ),
@@ -122,12 +124,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           SvgPicture.asset(state == 1
                               ? Assets.bookmarkfilled
                               : Assets.bookmark),
+                          5.y,
                           AppText("Saved",
                               style: Styles.smallPlusJakartaSans(context,
                                   color: state == 1
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w600))
                         ],
                       ),
@@ -149,12 +152,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                         children: [
                           SvgPicture.asset(
                               state == 2 ? Assets.robotfilled : Assets.robot),
+                          5.y,
                           AppText("Chat",
                               style: Styles.largePlusJakartaSans(context,
                                   color: state == 2
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w600))
                         ],
                       ),
@@ -177,12 +181,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           SvgPicture.asset(state == 3
                               ? Assets.profilefilled
                               : Assets.profile),
+                          5.y,
                           AppText("Profile",
                               style: Styles.plusJakartaSans(context,
                                   color: state == 3
                                       ? AppColors.primaryColor
                                       : AppColors.blackColor,
-                                  fontSize: 8,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w600))
                         ],
                       ),

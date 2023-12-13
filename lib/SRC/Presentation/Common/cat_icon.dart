@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Business/Widgets/business_category.dart';
@@ -43,10 +44,11 @@ class CategoryTile extends StatelessWidget {
               ),
             ),
           ),
+          5.y,
           Padding(
             padding: EdgeInsets.only(left: 5.sp, top: 0.sp),
             child: AppText(title,
-                style: Styles.smallPlusJakartaSans(context, fontSize: 14.sp,  fontWeight: FontWeight.w500)),
+                style: Styles.plusJakartaSans(context, fontSize: 14.sp,  fontWeight: FontWeight.w500)),
           ),
         ],
       ),
