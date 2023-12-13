@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 
 class ChatbotScreen extends StatefulWidget {
-  const ChatbotScreen({Key? key}) : super(key: key);
+  const ChatbotScreen({super.key});
 
   @override
   _ChatbotScreenState createState() => _ChatbotScreenState();
-
 }
 
-
 class _ChatbotScreenState extends State<ChatbotScreen> {
-
   final TextEditingController _messageController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<Message> chatMessages = [];
@@ -25,7 +29,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         chatMessages.addAll([
-          Message(text: 'Hello', isUser: false),
+          Message(text: AppStrings.hello, isUser: false),
         ]);
       });
 
@@ -39,7 +43,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
 
   void _openMicBottomSheet() {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       shape: const BeveledRectangleBorder(),
       elevation: 0,
       context: context,
@@ -61,7 +65,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                 Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white,
+                      color: AppColors.white,
                       border: Border.all()),
                   child: IconButton(
                     onPressed: () {},
@@ -81,84 +85,78 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: Colors.blue, // Replace with your desired color
+        backgroundColor: AppColors.scaffoldColor,
         body: Form(
           key: _formKey,
           child: CustomScrollView(
             controller: _scrollController,
             physics: const BouncingScrollPhysics(),
             slivers: [
-              SliverAppBar(
-                title: Text("ChatBot AI"),
-                iconTheme: IconThemeData(color: Colors.white),
-                backgroundColor: Colors.blue, // Replace with your desired color
-                expandedHeight: 200.0,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.asset(
-                    'assets/background_image.jpg', // Replace with your image asset
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-
+              // CustomAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    if (index == 0) {
-                      return const IntroMessage();
-                    }
+                        (BuildContext context, int index) {
+                      if (index == 0) {
+                        return const IntroMessage();
+                      }
 
-
-                    final Message message = chatMessages[index - 1];
-                    final bool isUserMessage = message.isUser;
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: isUserMessage
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        child: Row(
-                          mainAxisAlignment: isUserMessage
-                              ? MainAxisAlignment.end
-                              : MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 200.0, // Adjust the width as needed
-                              height: 50.0, // Adjust the height as needed
-                              padding: const EdgeInsets.all(12.0),
-                              decoration: BoxDecoration(
-                                color: isUserMessage
-                                    ? Colors.blue
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(19.0),
-                              ),
-                              child: Text(
-                                message.text,
-                                style: TextStyle(
-                                  color: isUserMessage
-                                      ? Colors.white
-                                      : Colors.black,
+                      final Message message = chatMessages[index - 1];
+                      final bool isUserMessage = message.isUser;
+                      return Padding(
+                          padding: EdgeInsets.all(8.0.sp),
+                          child: Align(
+                            alignment: isUserMessage
+                                ? Alignment.centerRight
+                                : Alignment.centerLeft,
+                            child: Row(
+                              mainAxisAlignment: isUserMessage
+                                  ? MainAxisAlignment.end
+                                  : MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 0.5.sw,
+                                  height: 0.06.sh,
+                                  padding: const EdgeInsets.all(12.0),
+                                  decoration: BoxDecoration(
+                                    color: isUserMessage
+                                        ? AppColors.primaryColor
+                                        : AppColors.white,
+                                    borderRadius: isUserMessage
+                                        ? const BorderRadius.only(
+                                      topLeft: Radius.circular(19),
+                                      topRight: Radius.circular(19),
+                                      bottomLeft: Radius.circular(19),
+                                    )
+                                        : const BorderRadius.only(
+                                      topLeft: Radius.circular(19),
+                                      topRight: Radius.circular(19),
+                                      bottomRight: Radius.circular(19),
+                                    ),
+                                  ),
+                                  child: AppText(
+                                    message.text,
+                                    style: TextStyle(
+                                      color: isUserMessage
+                                          ? AppColors.white
+                                          : AppColors.blackColor,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                if (!isUserMessage)
+                                  IconButton(
+                                    onPressed: () {
+                                      print('Copy Action');
+                                    },
+                                    icon: const Icon(
+                                      Icons.content_copy,
+                                      size: 20,
+                                      color: AppColors.grey,
+                                    ),
+                                  )
+                              ],
                             ),
-                            if (!isUserMessage)
-                              IconButton(
-                                onPressed: () {
-                                  print('Copy Action');
-                                },
-                                icon: const Icon(
-                                  Icons.content_copy,
-                                  size: 20,
-                                  color: Colors.grey,
-                                ),
-                              )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                  childCount: chatMessages.length + 1,
-                ),
+                          ));
+                    }, childCount: chatMessages.length + 1),
               ),
             ],
           ),
@@ -172,10 +170,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                   elevation: 2,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(12)),
-                    height: 50.0, // Adjust the height as needed
-                    width: MediaQuery.of(context).size.width - 32.0,
+                    height: 0.07.sh,
+                    width: 1.sw,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: TextFormField(
@@ -188,11 +186,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                         controller: _messageController,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
-                            onPressed: _openMicBottomSheet,
-                            icon: const Icon(Icons.mic_none_outlined),
-                          ),
+                              onPressed: _openMicBottomSheet,
+                              icon: const Icon(Icons.mic_none_outlined)),
                           border: InputBorder.none,
-                          hintText: 'Type a message...',
+                          hintText: AppStrings.typeMessage,
                         ),
                       ),
                     ),
@@ -201,28 +198,26 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
               ),
               const SizedBox(width: 16),
               GestureDetector(
-                onTap: () {
-                  String message = _messageController.text.trim();
-                  if (message.isNotEmpty &&
-                      _formKey.currentState!.validate()) {
-                    _sendMessage(message);
-                    _messageController.clear();
-                  }
-                },
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.blue, shape: BoxShape.circle),
-                  height: 40.0, // Adjust t
-                  width: 40.0, // Adjust the width as needed
-                  child: const Center(
-                    child: Icon(
-                      Icons.send,
-                      size: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    String message = _messageController.text.trim();
+                    if (message.isNotEmpty &&
+                        _formKey.currentState!.validate()) {
+                      _sendMessage(message);
+                      _messageController.clear();
+                    }
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: AppColors.primaryColor, shape: BoxShape.circle),
+                    height: 40.h,
+                    width: 40.w,
+                    child: const Center(
+                        child: Icon(
+                          Icons.send,
+                          size: 20,
+                          color: AppColors.white,
+                        )),
+                  )),
             ],
           ),
         ),
@@ -231,49 +226,53 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   }
 }
 
+
 class Message {
   final String text;
   final bool isUser;
+
   Message({required this.text, required this.isUser});
 }
 
+
+
 class IntroMessage extends StatelessWidget {
-  const IntroMessage({Key? key}) : super(key: key);
+  const IntroMessage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0.sp),
       child: Column(
         children: [
           Image.asset(
-            'assets/chat_image.jpg', // Replace with your image asset
-            height: 153.0, // Adjust the height as needed
-            width: 137.0, // Adjust the width as needed
+            Assets.chatimage,
+            height: 153.h,
+            width: 137.w,
             fit: BoxFit.contain,
           ),
-          SizedBox(height: 8.0),
+          SizedBox(height: 8.h),
           Container(
-            height: 25.0, // Adjust the height as needed
-            width: MediaQuery.of(context).size.width * 0.9,
+            height: 0.05.sh,
+            width: 0.9.sw,
             decoration: BoxDecoration(
-                color: Colors.grey,
+                color: AppColors.lebelTextColor,
                 borderRadius: BorderRadius.circular(16)),
             child: Row(
               children: [
-                SizedBox(width: 16.0),
+                16.x,
                 Image.asset(
-                  'assets/spark.png', // Replace with your image asset
-                  height: 16.0, // Adjust the height as needed
-                  width: 16.0, // Adjust the width as needed
+                  Assets.spark,
+                  height: 16.h,
+                  width: 16.w,
                   fit: BoxFit.contain,
                 ),
-                SizedBox(width: 8.0),
-                Text(
+                8.x,
+                AppText(
                   "Hi, you can ask me anything about names",
                   style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
+                    fontSize: 14.sp,
+                    color: AppColors.lightgrey,
                   ),
                 ),
               ],

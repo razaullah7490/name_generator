@@ -10,8 +10,6 @@ class AppStrings {
   static const String notificationSuccess = 'You have successfully generated your character name (jhon Skill)';
   static const String faq  = 'Frequently Asked Questions:';
 
-
-
   static const String oneStop = "Your One-Stop Name Solution";
   static const String processFinding =
       'Simplify the process of finding the perfect and professional name.';
@@ -49,9 +47,7 @@ class AppStrings {
   static const String fashion = "Fashion";
   static const String marketing = "Marketing";
   static const String other = "Other";
-
   static const String businessSub = "Business - Choose a Subcategory";
-
   static const String hello = "Hello?";
   static const String chatBotAi = "ChatBot AI";
   static const String typeMessage = "Type your message...";
