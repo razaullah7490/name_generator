@@ -30,7 +30,7 @@ class SavedScreen extends StatelessWidget {
               child: SingleChildScrollView(
             child: Column(
               children: [
-                10.y,
+                12.y,
                 for (int i = 0; i < 5; i++)
                   Center(
                     child: GestureDetector(
