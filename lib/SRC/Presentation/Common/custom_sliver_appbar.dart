@@ -4,8 +4,8 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-
-class CustomSliverAppbar extends StatelessWidget implements PreferredSizeWidget {
+class CustomSliverAppbar extends StatelessWidget
+    implements PreferredSizeWidget {
   String title;
   IconData? icon;
   bool? leading;
@@ -17,14 +17,12 @@ class CustomSliverAppbar extends StatelessWidget implements PreferredSizeWidget 
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      automaticallyImplyLeading: leading??false,
+      automaticallyImplyLeading: leading ?? false,
       elevation: 2,
-      centerTitle: true,
-      backgroundColor: AppColors.scaffoldColor,
+      backgroundColor: Colors.transparent,
       title: AppText(
         title,
         style: Styles.plusJakartaSans(context,
@@ -32,11 +30,11 @@ class CustomSliverAppbar extends StatelessWidget implements PreferredSizeWidget 
         textAlign: TextAlign.center,
       ),
       actions: [
-        Padding(padding: EdgeInsets.only(right: 20.sp), child: Icon(icon)),
+        Padding(padding: EdgeInsets.only(right: 10.sp), child: Icon(icon)),
       ],
     );
   }
 
   @override
-  Size get preferredSize =>  Size(0.w, 20.h);
+  Size get preferredSize => Size(0.w, 20.h);
 }

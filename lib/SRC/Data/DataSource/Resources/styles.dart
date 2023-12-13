@@ -11,7 +11,6 @@ class Styles {
       double? letterSpacing}) {
     return TextStyle(
         fontStyle: FontStyle.normal,
-        
         fontSize: (fontSize ?? 28.0.sp),
         letterSpacing: letterSpacing ?? 0,
         color: color ?? AppColors.blackColor,

@@ -23,15 +23,11 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
-
-
   void _updatePage(int page) {
     setState(() {
       _currentPage = page;
     });
   }
-
-
 
   void _nextPage() async {
     if (_currentPage < 2) {
@@ -69,10 +65,10 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
           height: 1.sh,
           color: Colors.white,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              20.y,
+              62.y,
               Expanded(
                 child: PageView(
                   padEnds: false,
@@ -112,8 +108,8 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                   for (int i = 0; i < 3; i++)
                     Container(
                       margin: const EdgeInsets.all(2),
-                      width: _currentPage == i ? 30.0 : 10.0,
-                      height: 7,
+                      width: _currentPage == i ? 20.w : 10.w,
+                      height: 6.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: _currentPage == i
@@ -122,7 +118,7 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                     ),
                 ],
               ),
-              2.y,
+              24.y,
               CustomButton(
                 iconData: const SizedBox(),
                 text: _currentPage < 2 ? AppStrings.next : AppStrings.started,
@@ -138,11 +134,11 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
 }
 
 class CustomButton extends StatelessWidget {
-  String text;
-  Function() ontap;
-  Widget? iconData;
+  final String text;
+  final Function() ontap;
+  final Widget? iconData;
 
-  CustomButton({
+  const CustomButton({
     super.key,
     required this.text,
     required this.ontap,
@@ -152,8 +148,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 0.8.sw,
-      height: 0.07.sh,
+      width: 1.sw,
+      height: 0.055.sh,
       child: ElevatedButton(
         onPressed: ontap,
         style: ElevatedButton.styleFrom(
@@ -171,7 +167,7 @@ class CustomButton extends StatelessWidget {
                 style: const TextStyle(color: AppColors.white),
                 textAlign: TextAlign.center,
               ),
-              iconData??SizedBox(), 
+              iconData ?? const SizedBox(),
             ],
           ),
         ),
