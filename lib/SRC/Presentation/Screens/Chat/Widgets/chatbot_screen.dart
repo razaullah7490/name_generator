@@ -6,7 +6,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 
 class ChatbotScreen extends StatefulWidget {
   const ChatbotScreen({super.key});
@@ -100,7 +100,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             controller: _scrollController,
             physics: const BouncingScrollPhysics(),
             slivers: [
-              CustomAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
+              CustomSliverAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
