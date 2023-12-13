@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dialog.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
@@ -15,12 +17,15 @@ class SavedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(centerTitle: true,title: AppText('Saved', style: Styles.mediumPlusJakartaSans(context),),actions: [
+        
+        
+        const Icon(Icons.more_vert_rounded),
+        10.x,
+      ], ),
       body: Column(
         children: [
-          CustomAppbar(
-            title: 'Saved',
-            icon: Icons.more_vert_rounded,
-          ),
+
           Expanded(
               child: SingleChildScrollView(
             child: Column(

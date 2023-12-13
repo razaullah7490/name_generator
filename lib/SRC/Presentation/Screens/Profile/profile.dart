@@ -48,12 +48,21 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+        centerTitle: true,
+        title: AppText("Profile",style: Styles.mediumPlusJakartaSans(context),),
+        actions: [
+          const Icon(Icons.more),
+          10.x
+        ],
+      ),
       body: Column(
         children: [
-          CustomAppbar(
-            title: 'Profile',
-            icon: Icons.more,
-          ),
+          // CustomAppbar(
+          //   title: 'Profile',
+          //   icon: Icons.more,
+          // ),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
