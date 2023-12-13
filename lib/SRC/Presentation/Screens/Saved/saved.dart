@@ -21,40 +21,42 @@ class SavedScreen extends StatelessWidget {
         autoleading: true,
         trailing: SvgPicture.asset(Assets.dots),
       ),
-      body: Column(
-        children: [
-          Expanded(
-              child: SingleChildScrollView(
-            child: Column(
-              children: [
-                10.y,
-                for (int i = 0; i < 5; i++)
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const CustomDIalog();
-                          },
-                        );
-                      },
-                      child: SavedWord(
-                        tapoption: RoundAvatar(
-                          issvg: true,
-                          icon: Assets.bookmarkfilled,
-                          haveborder: true,
-                          padding: 10.sp,
-                          imageheight: 12.h,
-                          imagewidth: 12.w,
+      body: Expanded(
+        child: Column(
+          children: [
+            Expanded(
+                child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  10.y,
+                  for (int i = 0; i < 5; i++)
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const CustomDIalog();
+                            },
+                          );
+                        },
+                        child: SavedWord(
+                          tapoption: RoundAvatar(
+                            issvg: true,
+                            icon: Assets.bookmarkfilled,
+                            haveborder: true,
+                            padding: 10.sp,
+                            imageheight: 12.h,
+                            imagewidth: 12.w,
+                          ),
                         ),
                       ),
-                    ),
-                  )
-              ],
-            ),
-          ))
-        ],
+                    )
+                ],
+              ),
+            ))
+          ],
+        ),
       ),
     );
   }

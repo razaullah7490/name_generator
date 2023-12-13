@@ -93,14 +93,16 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: AppColors.scaffoldColor,
+        backgroundColor:
+            const Color.fromARGB(255, 238, 238, 238).withOpacity(0.94),
         body: Form(
           key: _formKey,
           child: CustomScrollView(
             controller: _scrollController,
             physics: const BouncingScrollPhysics(),
             slivers: [
-              CustomSliverAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
+              CustomSliverAppbar(
+                  title: AppStrings.chatBotAi, icon: Icons.message),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
@@ -256,7 +258,7 @@ class IntroMessage extends StatelessWidget {
             width: 137.w,
             fit: BoxFit.contain,
           ),
-          SizedBox(height: 8.h),
+          8.y,
           Container(
             height: 0.05.sh,
             width: 0.9.sw,
@@ -278,6 +280,35 @@ class IntroMessage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: AppColors.lightgrey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          24.y,
+          Container(
+            height: 0.2.sh,
+            width: 0.9.sw,
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(16)),
+            child: Row(
+              children: [
+                16.x,
+                Image.asset(
+                  Assets.spark,
+                  height: 16.h,
+                  width: 16.w,
+                  fit: BoxFit.contain,
+                ),
+                8.x,
+                Expanded(
+                  child: AppText(
+                    "I suggest you some names you can ask me...",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: AppColors.lightgrey,
+                    ),
                   ),
                 ),
               ],
