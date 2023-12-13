@@ -9,6 +9,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
+
 class GeneratedNameContainer extends StatelessWidget {
   final double? height; 
   final double? width; 
@@ -35,6 +36,15 @@ class GeneratedNameContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Align(alignment: Alignment.topRight,
+              child: InkWell(onTap: ()=>Navigator.pop(context),
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.red,),
+                  child: Icon(Icons.close,color: AppColors.white,size: 14,),
+                ),),
+
+            ),
             Row(
               children: <Widget>[
                 AppText('Generated name',
@@ -43,6 +53,7 @@ class GeneratedNameContainer extends StatelessWidget {
                         color: AppColors.lebelTextColor))
               ],
             ),
+
             Row(
               children: [
                 AppText('SoleCraft',

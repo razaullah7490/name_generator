@@ -21,6 +21,5 @@ class AppColors {
   static const Color blue = Color(0xff6A53E7);
   static const Color outline = Color(0xffDBE7F5);
 
-
 }
 
