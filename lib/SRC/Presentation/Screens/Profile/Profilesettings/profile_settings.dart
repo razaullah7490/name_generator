@@ -11,15 +11,6 @@ class ProfileSettings extends StatefulWidget {
 class _ProfileNotificationsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          CustomAppbar(
-            title: "Fill the form",
-            icon: Icons.cancel_outlined,
-          ),
-        ],
-      ),
-    );
+    return const Scaffold(body: SizedBox());
   }
 }
