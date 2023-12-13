@@ -57,9 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Assets.slider1,
     Assets.slider2,
   ];
-
+int i=0;
   @override
   Widget build(BuildContext context) {
+    print('rebuilddd ${ i++}');
     return Padding(
       padding: const EdgeInsets.only(top: 0),
       child: Scaffold(
@@ -104,12 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             width: MediaQuery.of(context).size.width.w,
                             margin: EdgeInsets.symmetric(horizontal: 5.w),
                             decoration: BoxDecoration(
+
                               color: Colors.amber,
-                              borderRadius: BorderRadius.circular(80.sp),
+                              
+                              borderRadius: BorderRadius.all(Radius.circular(80.r)),
                             ),
                             child: Image.asset(
                               url,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ),
                           );
                         },

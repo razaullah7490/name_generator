@@ -9,6 +9,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
+
 class GeneratedNameContainer extends StatelessWidget {
   final double? height; 
   final double? width; 
@@ -43,6 +44,7 @@ class GeneratedNameContainer extends StatelessWidget {
                         color: AppColors.lebelTextColor))
               ],
             ),
+
             Row(
               children: [
                 AppText('SoleCraft',

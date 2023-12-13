@@ -6,7 +6,6 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dialog.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Saved/Components/saved_word.dart';
-
 import '../../Common/custom_appbar.dart';
 
 

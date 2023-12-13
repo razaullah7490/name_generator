@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
-import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 
 class ChatbotScreen extends StatefulWidget {
-  const ChatbotScreen({super.key});
+  const ChatbotScreen({Key? key}) : super(key: key);
 
   @override
   _ChatbotScreenState createState() => _ChatbotScreenState();
+
 }
 
+
 class _ChatbotScreenState extends State<ChatbotScreen> {
+
   final TextEditingController _messageController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<Message> chatMessages = [];
@@ -29,7 +25,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         chatMessages.addAll([
-          Message(text: AppStrings.hello, isUser: false),
+          Message(text: 'Hello', isUser: false),
         ]);
       });
 
@@ -43,7 +39,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
 
   void _openMicBottomSheet() {
     showModalBottomSheet(
-      backgroundColor: AppColors.white,
+      backgroundColor: Colors.white,
       shape: const BeveledRectangleBorder(),
       elevation: 0,
       context: context,
@@ -65,7 +61,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                 Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.white,
+                      color: Colors.white,
                       border: Border.all()),
                   child: IconButton(
                     onPressed: () {},
@@ -85,35 +81,38 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: AppColors.scaffoldColor,
+        backgroundColor: Colors.blue, // Replace with your desired color
         body: Form(
           key: _formKey,
           child: CustomScrollView(
             controller: _scrollController,
             physics: const BouncingScrollPhysics(),
             slivers: [
-              CustomSliverAppbar(title: AppStrings.chatBotAi, icon: Icons.message),
+              SliverAppBar(
+                title: Text("ChatBot AI"),
+                iconTheme: IconThemeData(color: Colors.white),
+                backgroundColor: Colors.blue, // Replace with your desired color
+                expandedHeight: 200.0,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Image.asset(
+                    'assets/background_image.jpg', // Replace with your image asset
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  if (index == 0) {
-                    return const IntroMessage();
-                  }
+                  (BuildContext context, int index) {
+                    if (index == 0) {
+                      return const IntroMessage();
+                    }
 
-                  final Message message = chatMessages[index - 1];
-=========
-        body: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            CustomAppbar(title: "ChatBot AI", icon: Icons.message_outlined),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  final Message message = chatMessages[index];
->>>>>>>>> Temporary merge branch 2
-                  final bool isUserMessage = message.isUser;
-                  return Padding(
-                      padding: EdgeInsets.all(8.0.sp),
+
+                    final Message message = chatMessages[index - 1];
+                    final bool isUserMessage = message.isUser;
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Align(
                         alignment: isUserMessage
                             ? Alignment.centerRight
@@ -124,31 +123,21 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                               : MainAxisAlignment.start,
                           children: [
                             Container(
-                              width: 0.5.sw,
-                              height: 0.06.sh,
+                              width: 200.0, // Adjust the width as needed
+                              height: 50.0, // Adjust the height as needed
                               padding: const EdgeInsets.all(12.0),
                               decoration: BoxDecoration(
                                 color: isUserMessage
-                                    ? AppColors.primaryColor
-                                    : AppColors.white,
-                                borderRadius: isUserMessage
-                                    ? const BorderRadius.only(
-                                        topLeft: Radius.circular(19),
-                                        topRight: Radius.circular(19),
-                                        bottomLeft: Radius.circular(19),
-                                      )
-                                    : const BorderRadius.only(
-                                        topLeft: Radius.circular(19),
-                                        topRight: Radius.circular(19),
-                                        bottomRight: Radius.circular(19),
-                                      ),
+                                    ? Colors.blue
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(19.0),
                               ),
-                              child: AppText(
+                              child: Text(
                                 message.text,
                                 style: TextStyle(
                                   color: isUserMessage
-                                      ? AppColors.white
-                                      : AppColors.blackColor,
+                                      ? Colors.white
+                                      : Colors.black,
                                 ),
                               ),
                             ),
@@ -160,17 +149,19 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                                 icon: const Icon(
                                   Icons.content_copy,
                                   size: 20,
-                                  color: AppColors.grey,
+                                  color: Colors.grey,
                                 ),
                               )
                           ],
                         ),
-                      ));
-                }, childCount: chatMessages.length + 1),
+                      ),
+                    );
+                  },
+                  childCount: chatMessages.length + 1,
+                ),
               ),
             ],
-          )
-return null;,
+          ),
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -181,10 +172,10 @@ return null;,
                   elevation: 2,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: AppColors.white,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(12)),
-                    height: 0.07.sh,
-                    width: 1.sw,
+                    height: 50.0, // Adjust the height as needed
+                    width: MediaQuery.of(context).size.width - 32.0,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: TextFormField(
@@ -197,10 +188,11 @@ return null;,
                         controller: _messageController,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
-                              onPressed: _openMicBottomSheet,
-                              icon: const Icon(Icons.mic_none_outlined)),
+                            onPressed: _openMicBottomSheet,
+                            icon: const Icon(Icons.mic_none_outlined),
+                          ),
                           border: InputBorder.none,
-                          hintText: AppStrings.typeMessage,
+                          hintText: 'Type a message...',
                         ),
                       ),
                     ),
@@ -209,26 +201,28 @@ return null;,
               ),
               const SizedBox(width: 16),
               GestureDetector(
-                  onTap: () {
-                    String message = _messageController.text.trim();
-                    if (message.isNotEmpty &&
-                        _formKey.currentState!.validate()) {
-                      _sendMessage(message);
-                      _messageController.clear();
-                    }
-                  },
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        color: AppColors.primaryColor, shape: BoxShape.circle),
-                    height: 40.h,
-                    width: 40.w,
-                    child: const Center(
-                        child: Icon(
+                onTap: () {
+                  String message = _messageController.text.trim();
+                  if (message.isNotEmpty &&
+                      _formKey.currentState!.validate()) {
+                    _sendMessage(message);
+                    _messageController.clear();
+                  }
+                },
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: Colors.blue, shape: BoxShape.circle),
+                  height: 40.0, // Adjust t
+                  width: 40.0, // Adjust the width as needed
+                  child: const Center(
+                    child: Icon(
                       Icons.send,
                       size: 20,
-                      color: AppColors.white,
-                    )),
-                  )),
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -240,47 +234,46 @@ return null;,
 class Message {
   final String text;
   final bool isUser;
-
   Message({required this.text, required this.isUser});
 }
 
 class IntroMessage extends StatelessWidget {
-  const IntroMessage({super.key});
+  const IntroMessage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0.sp),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           Image.asset(
-            Assets.chatimage,
-            height: 153.h,
-            width: 137.w,
+            'assets/chat_image.jpg', // Replace with your image asset
+            height: 153.0, // Adjust the height as needed
+            width: 137.0, // Adjust the width as needed
             fit: BoxFit.contain,
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 8.0),
           Container(
-            height: 0.05.sh,
-            width: 0.9.sw,
+            height: 25.0, // Adjust the height as needed
+            width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
-                color: AppColors.lebelTextColor,
+                color: Colors.grey,
                 borderRadius: BorderRadius.circular(16)),
             child: Row(
               children: [
-                16.x,
+                SizedBox(width: 16.0),
                 Image.asset(
-                  Assets.spark,
-                  height: 16.h,
-                  width: 16.w,
+                  'assets/spark.png', // Replace with your image asset
+                  height: 16.0, // Adjust the height as needed
+                  width: 16.0, // Adjust the width as needed
                   fit: BoxFit.contain,
                 ),
-                8.x,
-                AppText(
+                SizedBox(width: 8.0),
+                Text(
                   "Hi, you can ask me anything about names",
                   style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.lightgrey,
+                    fontSize: 14.0,
+                    color: Colors.grey,
                   ),
                 ),
               ],

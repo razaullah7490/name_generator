@@ -9,19 +9,15 @@ class CustomDIalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      contentPadding: EdgeInsets.all(0.sp),
-      insetPadding: EdgeInsets.zero,
-      content: SingleChildScrollView(
-        child: Container(
-          height: 300,
-          width: 150,
-          child: const GeneratedNameContainer(
-            spaceinicons: 60,
-            height: 500,  
-            width: 50,
-          ),
-        ),
+    return Dialog(
+      // scrollable: true,
+      // contentPadding: EdgeInsets.zero,
+      insetPadding: EdgeInsets.symmetric(horizontal: 24,vertical:MediaQuery.sizeOf(context).height*0.25),
+      child: const GeneratedNameContainer(
+        spaceinicons: 60,
+        height: 500,
+
+        // width: 50,
       ),
     );
   }
