@@ -13,7 +13,9 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
+  late AnimationController _controller;
+  late Animation<double> _animation;
   @override
   void initState() {
     super.initState();
@@ -25,21 +27,42 @@ class _SplashScreenState extends State<SplashScreen> {
     final bool completedOnboarding =
         prefs.getBool('completedOnboarding') ?? false;
 
-    await Future.delayed(const Duration(seconds: 10));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInExpo);
+    _controller.forward();
+
+    // Navigate to another screen after the splash animation finishes
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        // Navigate to another screen (e.g., HomeScreen)
 
     completedOnboarding
         ? Navigate.toReplace(context, const BottomNavigationScreen())
         : Navigate.toReplace(context, const OnboardingSreen());
+      }
+  });
   }
-
+@override
+  void dispose() {
+    // TODO: implement dispose
+  _controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Image.asset(
-          Assets.logo,
-          fit: BoxFit.contain,
-          height: 106,
+      body: FadeTransition(
+        
+        opacity: _animation,
+        child: Center(
+          child: Image.asset(
+            Assets.logo,
+            fit: BoxFit.contain,
+            height: 106,
+          ),
         ),
       ),
     );

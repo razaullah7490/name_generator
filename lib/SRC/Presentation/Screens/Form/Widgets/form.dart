@@ -7,6 +7,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Home/NameGenerated/name_generated.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
@@ -55,10 +56,10 @@ class _FormScreenState extends State<FormScreen> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              CustomAppbar(
+              CustomSliverAppbar(
                 title: "Fill the form",
                 icon: Icons.cancel_outlined,
-                autoleading: false,
+               // autoleading: false,
               ),
               SliverPadding(
                 padding:
