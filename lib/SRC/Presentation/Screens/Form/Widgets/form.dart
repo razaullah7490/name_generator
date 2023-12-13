@@ -58,62 +58,62 @@ class _FormScreenState extends State<FormScreen> {
               CustomAppbar(
                 title: "Fill the form",
                 icon: Icons.cancel_outlined,
+                autoleading: false,
               ),
               SliverPadding(
-                padding: EdgeInsets.only(top: 42.sp, right: 24.sp, left: 24.sp),
+                padding:
+                    const EdgeInsets.only(top: 42.0, right: 24.0, left: 24.0),
                 sliver: SliverList.separated(
                   itemBuilder: (BuildContext context, int index) {
                     return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          fieldText[index],
-                          textAlign: TextAlign.start,
-                          style: Styles.smallPlusJakartaSans(context,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.lightgrey),
-                        ),
-                        5.y,
-                        CustomDropDownWidget(
-                          icon: index == 0
-                              ? AppText(
-                                  "Options",
-                                  style: Styles.smallPlusJakartaSans(
-                                    context,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            fieldText[index],
+                            textAlign: TextAlign.start,
+                            style: Styles.smallPlusJakartaSans(context,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.lightgrey),
+                          ),
+                          5.y,
+                          CustomDropDownWidget(
+                            icon: index == 0
+                                ? AppText(
+                                    "Options",
+                                    style: Styles.smallPlusJakartaSans(
+                                      context,
+                                      color: AppColors.lightgrey,
+                                      fontSize: 14.sp,
+                                    ),
+                                  )
+                                : const Icon(
+                                    Icons.arrow_forward_ios,
                                     color: AppColors.lightgrey,
-                                    fontSize: 14.sp,
+                                    size: 16,
                                   ),
-                                )
-                              : const Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: AppColors.lightgrey,
-                                  size: 16,
+                            isBorderRequired: true,
+                            prefixIcon: null,
+                            hintText: hintText[index],
+                            value: selectedCategory,
+                            validationText: 'Please Select Category',
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCategory = value;
+                              });
+                            },
+                            itemsMap: [
+                              for (int i = 0; i < categoryList.length; i++)
+                                DropdownMenuItem(
+                                  value: categoryList[i],
+                                  child: AppText(
+                                    categoryList[i],
+                                    style: Styles.plusJakartaSans(context,
+                                        color: AppColors.lebelTextColor),
+                                  ),
                                 ),
-                          isBorderRequired: true,
-                          prefixIcon: null,
-                          hintText: hintText[index],
-                          value: selectedCategory,
-                          validationText: 'Please Select Category',
-                          onChanged: (value) {
-                            setState(() {
-                              selectedCategory = value;
-                            });
-                          },
-                          itemsMap: [
-                            for (int i = 0; i < categoryList.length; i++)
-                              DropdownMenuItem(
-                                value: categoryList[i],
-                                child: AppText(
-                                  categoryList[i],
-                                  style: Styles.plusJakartaSans(context,
-                                      color: AppColors.lebelTextColor),
-                                ),
-                              ),
-                          ],
-                        ),
-                        const SizedBox(height: 5.0),
-                      ],
-                    );
+                            ],
+                          )
+                        ]);
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 16.0);

@@ -8,6 +8,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilehistory/profile_history.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Profilenotifications/profile_notifications.dart';
@@ -49,13 +50,12 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         centerTitle: true,
-        title: AppText("Profile",style: Styles.mediumPlusJakartaSans(context),),
-        actions: [
-          const Icon(Icons.more),
-          10.x
-        ],
+        title: AppText(
+          "Profile",
+          style: Styles.mediumPlusJakartaSans(context),
+        ),
+        actions: [const Icon(Icons.more), 10.x],
       ),
       body: Column(
         children: [
