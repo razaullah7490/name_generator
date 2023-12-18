@@ -8,11 +8,13 @@ import '../../../Common/custom_appbar.dart';
 import '../Home/Form/Components/generated_name_container.dart';
 import 'Components/saved_word.dart';
 
+
 class SavedScreen extends StatelessWidget {
   const SavedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: CustomAppbar(
         title: 'Saved',
@@ -60,6 +62,9 @@ class SavedScreen extends StatelessWidget {
                             imagewidth: 12.w,
                           ),
                         ),
+
+
+
                       ),
                     ),
                 ],

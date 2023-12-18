@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
+import '../../../../../Data/DataSource/Resources/utils.dart';
+
+
 
 
 class ProfileNotificationSettings extends StatefulWidget {
@@ -13,11 +16,11 @@ class ProfileNotificationSettings extends StatefulWidget {
       _ProfileNotificationSettingsState();
 }
 
+
 class _ProfileNotificationSettingsState
     extends State<ProfileNotificationSettings> {
   bool soundswitch = false;
   bool vibrateswitch = false;
-  List<String> switchtitles = ['Sound', 'Vibrate'];
 
 
   @override
@@ -33,11 +36,11 @@ class _ProfileNotificationSettingsState
                       EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
                   child: Column(
                     children: [
-                      for (int i = 0; i < switchtitles.length; i++)
+                      for (int i = 0; i < Utils().switchtitles.length; i++)
                         Row(
                           children: [
                             Text(
-                              switchtitles[i],
+                             Utils().switchtitles[i],
                               style: Styles.plusJakartaSans(
                                 context,
                                 fontSize: 14.sp,
@@ -66,7 +69,7 @@ class _ProfileNotificationSettingsState
                           ],
                         ),
                     ],
-                  )))
+                  ))),
         ],
       ),
     );

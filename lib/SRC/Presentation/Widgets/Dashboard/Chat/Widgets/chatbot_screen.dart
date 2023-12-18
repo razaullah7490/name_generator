@@ -267,14 +267,17 @@ class IntroMessage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16)),
             child: Row(
               children: [
-                16.x,
+                1.x,
+                // 16.x,
+                // SizedBox(width:MediaQuery.of(context).size.width ),
                 Image.asset(
                   Assets.spark,
                   height: 16.h,
                   width: 16.w,
                   fit: BoxFit.contain,
                 ),
-                8.x,
+                // 8.x,
+                // 2.x,
                 AppText(
                   "Hi, you can ask me anything about names",
                   style: TextStyle(

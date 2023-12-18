@@ -10,8 +10,11 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
+import '../../../../../Data/DataSource/Resources/utils.dart';
 import 'empty_notifications.dart';
 import 'profile_notifications_settings.dart';
+
+
 
 class ProfileNotifications extends StatefulWidget {
   const ProfileNotifications({super.key});
@@ -21,14 +24,7 @@ class ProfileNotifications extends StatefulWidget {
 }
 
 class _ProfileNotificationsState extends State<ProfileNotifications> {
-  List<String> notificationIcon = [
-    Assets.briefcase,
-    Assets.man,
-    Assets.dog,
-  ];
 
-  List<String> titles = ['Name Generated', 'Name Shared', 'Name Saved'];
-  List<String> time = ['1h', '2h', '8h'];
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +64,7 @@ class _ProfileNotificationsState extends State<ProfileNotifications> {
                   ),
                   ListView.builder(
                     shrinkWrap: true,
-                    itemCount: titles.length,
+                    itemCount: Utils().notificationtitles.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15.sp),
@@ -83,7 +79,7 @@ class _ProfileNotificationsState extends State<ProfileNotifications> {
                                         const EmptyProfileNotification());
                                   },
                                   child: RoundAvatar(
-                                    icon: notificationIcon[index],
+                                    icon: Utils().profilenotification[index],
                                     issvg: false,
                                     haveborder: true,
                                     imageheight: 20.h,
@@ -97,7 +93,7 @@ class _ProfileNotificationsState extends State<ProfileNotifications> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      AppText(titles[index],
+                                      AppText(Utils().notificationtitles[index],
                                           style: Styles.largePlusJakartaSans(
                                               context,
                                               fontSize: 16.sp,
@@ -111,7 +107,7 @@ class _ProfileNotificationsState extends State<ProfileNotifications> {
                                     ],
                                   ),
                                 ),
-                                AppText(time[index],
+                                AppText( Utils().notificationtimes[index],
                                     style: Styles.smallPlusJakartaSans(context,
                                         fontSize: 14,
                                         color: AppColors.greyvariant))

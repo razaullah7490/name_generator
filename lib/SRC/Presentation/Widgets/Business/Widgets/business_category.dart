@@ -9,6 +9,8 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 
+import '../../../../Data/DataSource/Resources/utils.dart';
+
 class BusinessCategory extends StatefulWidget {
   const BusinessCategory({super.key});
 
@@ -19,24 +21,10 @@ class BusinessCategory extends StatefulWidget {
 class _BusinessCategoryState extends State<BusinessCategory> {
   int number = 0;
 
-  List<String> categoryImages = [
-    Assets.shuttle,
-    Assets.resturant,
-    Assets.web,
-    Assets.fashion,
-    Assets.marketing,
-    Assets.plus,
-  ];
 
   @override
   Widget build(BuildContext context) {
-    List<String> radioTileTitles = [
-      AppStrings.startup,
-      AppStrings.resturant,
-      AppStrings.webDevelopemt,
-      AppStrings.fashion,
-      AppStrings.other,
-    ];
+
 
     return SafeArea(
       child: Scaffold(
@@ -61,7 +49,7 @@ class _BusinessCategoryState extends State<BusinessCategory> {
                       title: Row(
                         children: [
                           Image.asset(
-                            categoryImages[index].trim(),
+                           Utils().businesscategoryImages[index].trim(),
                             color:
                                 number == index ? AppColors.primaryColor : null,
                             width: 24.0,
@@ -69,7 +57,7 @@ class _BusinessCategoryState extends State<BusinessCategory> {
                           ),
                           16.x,
                           Text(
-                            radioTileTitles[index],
+                           Utils().businessradioTileTitles[index],
                             style: Styles.mediumPlusJakartaSans(context,
                                 color: AppColors.blackColor,
                                 fontWeight: FontWeight.w500),
@@ -91,7 +79,7 @@ class _BusinessCategoryState extends State<BusinessCategory> {
                 separatorBuilder: (BuildContext context, int index) {
                   return 16.y;
                 },
-                itemCount: radioTileTitles.length,
+                itemCount: Utils().businessradioTileTitles.length,
               ),
             ),
           ],

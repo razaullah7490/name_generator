@@ -18,9 +18,7 @@ class EmptyProfileNotification extends StatefulWidget {
 
 class _ProfileNotificationSettingsState
     extends State<EmptyProfileNotification> {
-  bool soundswitch = false;
-  bool vibrateswitch = false;
-  List<String> switchtitles = ['Sound', 'Vibrate'];
+
 
   @override
   Widget build(BuildContext context) {
