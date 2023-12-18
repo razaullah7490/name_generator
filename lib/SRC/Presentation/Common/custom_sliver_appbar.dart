@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
@@ -15,11 +14,13 @@ class CustomSliverAppbar extends StatelessWidget
     this.icon,
     this.leading,
     super.key,
-  });
+  }
+  );
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+
       automaticallyImplyLeading: leading ?? false,
       elevation: 2,
       backgroundColor: Colors.transparent,
@@ -29,8 +30,11 @@ class CustomSliverAppbar extends StatelessWidget
             fontSize: 16.sp, fontWeight: FontWeight.w600),
         textAlign: TextAlign.center,
       ),
+
       actions: [
-        Padding(padding: EdgeInsets.only(right: 10.sp), child: Icon(icon)),
+        GestureDetector(
+            onTap: (){ Navigator.pop(context); },
+            child: Padding(padding: EdgeInsets.only(right: 10.sp), child: Icon(icon))),
       ],
     );
   }

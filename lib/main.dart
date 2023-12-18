@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Splash/splash_screen.dart';
+import 'SRC/Presentation/Widgets/Splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +13,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        minTextAdapt: true,
-        splitScreenMode: true,
-        useInheritedMediaQuery: true,
-        builder: (context, child) {
-          return MaterialApp(
-            title: 'Name Generator',
-            theme: ThemeData(primaryColor: AppColors.primaryColor),
-            home: const SplashScreen(),
-            debugShowCheckedModeBanner: false,
-          );
-        });
+      minTextAdapt: true,
+      splitScreenMode: true,
+      useInheritedMediaQuery: true,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Name Generator',
+          theme: ThemeData(
+            primaryColor: AppColors.primaryColor,
+            brightness: Brightness.light, // Set the default brightness to light
+          ),
+
+          themeMode: ThemeMode.system, // Use the system theme mode (light or dark)
+          home: const SplashScreen(),
+          debugShowCheckedModeBanner: false,
+        );
+      },
+    );
   }
 }
