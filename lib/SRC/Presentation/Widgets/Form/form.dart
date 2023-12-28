@@ -133,7 +133,7 @@ class _FormScreenState extends State<FormScreen> {
             iconData: Image.asset(Assets.sparkle),
             text: "Generate ",
             ontap: () {
-              Navigate.to(context, const NameGenerated());
+              Navigate.to(context, const NameGenerated(data: {},));
             },
           ),
         ),

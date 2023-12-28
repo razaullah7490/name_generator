@@ -8,12 +8,17 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
 
+
+
 class ChatbotScreen extends StatefulWidget {
   const ChatbotScreen({super.key});
+
 
   @override
   _ChatbotScreenState createState() => _ChatbotScreenState();
 }
+
+
 
 class _ChatbotScreenState extends State<ChatbotScreen> {
   final TextEditingController _messageController = TextEditingController();
@@ -34,6 +39,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         ]);
       });
 
+
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300),
@@ -41,6 +47,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
       );
     });
   }
+
 
   void _openMicBottomSheet() {
     showModalBottomSheet(
@@ -81,12 +88,16 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     );
   }
 
+
+
   void _copyMessage(String messageText) {
     Clipboard.setData(ClipboardData(text: messageText));
     // You can also show a toast or snackbar indicating that the message has been copied.
     // For simplicity, you can print a message to the console.
     print('Message copied: $messageText');
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -304,6 +315,7 @@ class IntroMessage extends StatelessWidget {
                   width: 16.w,
                   fit: BoxFit.contain,
                 ),
+
                 8.x,
                 Expanded(
                   child: AppText(

@@ -39,10 +39,10 @@ dependencies:
   flutter_screenutil: ^5.9.0 
   shared_preferences: ^2.2.2
   page_transition: ^2.1.0
- 
+  http: ^1.1.0
   carousel_slider: ^4.2.1
   flutter_svg: ^2.0.9
-
+  country_picker: ^2.0.23
  
 
 dev_dependencies:

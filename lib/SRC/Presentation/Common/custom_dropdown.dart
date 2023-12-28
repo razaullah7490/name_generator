@@ -1,4 +1,3 @@
-// ignore: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
@@ -6,6 +5,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_shadow.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+
 
 class CustomDropDownWidget extends StatelessWidget {
   final Widget? prefixIcon;

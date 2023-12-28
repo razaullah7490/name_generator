@@ -21,29 +21,24 @@ const CategoryTile({required this.title, required this.icon, super.key});
 
       child: Column(
         children: [
-          GestureDetector(
-            onTap: () {
-              Navigate.to(context, const BusinessCategory());
-            },
-            child: Card(
-              shape: const CircleBorder(),
-              elevation: 1,
-              child: Container(
-                padding: EdgeInsets.all(20.sp),
-                decoration: BoxDecoration(
+          Card(
+            shape: const CircleBorder(),
+            elevation: 1,
+            child: Container(
+              padding: EdgeInsets.all(20.sp),
+              decoration: BoxDecoration(
 
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xffDBE7F5))),
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: const Color(0xffDBE7F5))),
 
-                child: Image.asset(
+              child: Image.asset(
 
-                  icon,
-                  width: 28.w,
-                  height: 28.h,
+                icon,
+                width: 28.w,
+                height: 28.h,
 
 
-                ),
               ),
             ),
           ),

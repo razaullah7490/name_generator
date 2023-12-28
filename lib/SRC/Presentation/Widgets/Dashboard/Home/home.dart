@@ -9,6 +9,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/cat_icon.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
+import 'package:name_generator/SRC/Presentation/Widgets/Categories/Human/human.dart';
 import '../../Form/form.dart';
 
 
@@ -26,8 +27,9 @@ class _HomeState extends State<Home> {
   TextEditingController inputcontroller = TextEditingController();
 
   final List<String> categoryimages = [
-    Assets.briefcase,
+
     Assets.man,
+    Assets.briefcase,
     Assets.dog,
     Assets.game,
     Assets.team,
@@ -42,8 +44,9 @@ class _HomeState extends State<Home> {
 
 
   final List<String> categorynames = [
-    'Business',
+
     'Human',
+    'Business',
     'Pet',
     'Game',
     'Team',
@@ -54,6 +57,34 @@ class _HomeState extends State<Home> {
     'Game',
     'Book',
     'Document',
+  ];
+
+  final List<Widget> screens = [
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+    Human() ,
+
+    // Business(),
+    // Pet(),
+    // Game(),
+    // Team(),
+    // Character(),
+    // Dish(),
+    // Twins(),
+    // Book(),
+    // Game(),
+    // Book(),
+    // Document(),
+
   ];
 
   final List<String> carouselImages = [
@@ -135,9 +166,13 @@ int i=0;
                // alignment: WrapAlignment.spaceBetween,
                 children: [
                   for (int i = 0; i < categorynames.length; i++)
-                    CategoryTile(
-                      title: categorynames[i],
-                      icon: categoryimages[i],
+                    GestureDetector(onTap:(){
+                      Navigate.to(context, screens[i]);
+                    },
+                      child: CategoryTile(
+                        title: categorynames[i],
+                        icon: categoryimages[i],
+                      ),
                     )
                 ],
               ),
@@ -162,6 +197,7 @@ int i=0;
 
           child: const Icon(Icons.add,size: 30),
         ),
+
       ),
     );
   }

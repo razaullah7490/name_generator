@@ -5,12 +5,15 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
-
 import '../Form/Components/generated_name_container.dart';
 
 
 class NameGenerated extends StatefulWidget {
-  const NameGenerated({super.key});
+  const NameGenerated({super.key, required Map<String, String?> data})
+      : _data = data;
+  final Map<String, String?> _data;
+
+  Map<String, String?> get data => _data;
 
   @override
   State<NameGenerated> createState() => _FormScreenState();
@@ -39,25 +42,35 @@ class _FormScreenState extends State<NameGenerated> {
                 children: <Widget>[
                   20.y,
                   const Center(
-                    child: GeneratedNameContainer( spaceinicons: 70),
+                    child: GeneratedNameContainer(spaceinicons: 70),
                   ),
                 ],
               ),
             )
           ],
         ),
-
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16.0),
           child: CustomButton(
-            text: "Generate ",
-            ontap: () {},
+            text: "Generate",
+            ontap: () {
+              // Access the data using widget.data
+              Map<String, String?> data = widget.data;
+              printData(data);
+            },
             iconData: Image.asset(Assets.sparkle),
           ),
         ),
-
       ),
     );
   }
-}
 
+
+
+  void printData(Map<String, String?> data) {
+    // Print or use the data as needed
+    print("Data: $data");
+    // You can also display the data in the UI, update state, etc.
+  }
+
+}
