@@ -10,6 +10,8 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
 
+
+
 class GeneratedNameContainer extends StatelessWidget {
   final double? height; 
   final double? width; 

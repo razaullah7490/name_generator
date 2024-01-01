@@ -9,11 +9,11 @@ import '../Form/Components/generated_name_container.dart';
 
 
 class NameGenerated extends StatefulWidget {
-  const NameGenerated({super.key, required Map<String, String?> data})
+  const NameGenerated({super.key, required Map<String, dynamic?> data})
       : _data = data;
-  final Map<String, String?> _data;
+  final Map<String, dynamic?> _data;
 
-  Map<String, String?> get data => _data;
+  Map<String, dynamic?> get data => _data;
 
   @override
   State<NameGenerated> createState() => _FormScreenState();
@@ -55,7 +55,7 @@ class _FormScreenState extends State<NameGenerated> {
             text: "Generate",
             ontap: () {
               // Access the data using widget.data
-              Map<String, String?> data = widget.data;
+              Map<String, dynamic?> data = widget.data;
               printData(data);
             },
             iconData: Image.asset(Assets.sparkle),
@@ -67,7 +67,7 @@ class _FormScreenState extends State<NameGenerated> {
 
 
 
-  void printData(Map<String, String?> data) {
+  void printData(Map<String, dynamic?> data) {
     // Print or use the data as needed
     print("Data: $data");
     // You can also display the data in the UI, update state, etc.
