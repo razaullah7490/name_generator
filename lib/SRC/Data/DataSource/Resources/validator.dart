@@ -7,6 +7,16 @@ class Validate {
     return emailRegExp.hasMatch(email);
   }
 
+  static String? emailValidation(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    }
+    if (!Validate().isEmailValid(value)) {
+      return 'Please enter a valid email address';
+    }
+    return null;
+  }
+
   static String? password(v) {
     if (v.trim().isEmpty) {
       return "Please provide password";

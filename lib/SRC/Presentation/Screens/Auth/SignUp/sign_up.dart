@@ -9,27 +9,25 @@ import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_textfield.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/SignUp/sign_up.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Widgets/bottom_navigation.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Business/Widgets/business_category.dart';
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 
-import '../../../../../Data/DataSource/Resources/assets.dart';
+import '../../../../Data/DataSource/Resources/assets.dart';
 
-import '../../../../../Data/DataSource/Resources/styles.dart';
+import '../../../../Data/DataSource/Resources/styles.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final bool _isObscured = true;
@@ -46,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                87.y,
+                77.y,
                 Image.asset(
                   Assets.logo,
                   fit: BoxFit.fill,
@@ -61,40 +59,33 @@ class _LoginScreenState extends State<LoginScreen> {
                   textAlign: TextAlign.center,
                 ),
                 AppText(
-                  AppStrings.enterLogin,
+                  AppStrings.enterSignup,
                   style: Styles.mediumPlusJakartaSans(
                     context,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 20.y,
-                EmailField(
-                  icon: Icons.email_outlined,
+                CustomTextField(
+                  // icon: Icons.person_outline,
+                  controller: _nameController,
+                  text: AppStrings.name,
+                ),
+                20.y,
+                CustomTextField(
+                //  icon: Icons.email_outlined,
                   controller: _emailController,
                   text: AppStrings.email,
                 ),
                 20.y,
                 PasswordField(
                     controller: _passwordController, isObscured: _isObscured),
-                10.y,
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: AppText(
-                    AppStrings.forgot,
-                    style: Styles.smallPlusJakartaSans(
-                      context,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                14.y,
+                24.y,
                 CustomButton(
-                    iconData: const SizedBox(),
-                    text: AppStrings.login,
-                    ontap: () {
-                      Navigate.toReplace(
-                          context, const BottomNavigationScreen());
-                    }),
+                  text: AppStrings.signup,
+                  ontap: () {},
+                  iconData: const SizedBox(),
+                ),
                 Row(
                   children: [
                     Expanded(
@@ -127,39 +118,37 @@ class _LoginScreenState extends State<LoginScreen> {
                   textColor: AppColors.blackColor,
                   svg: SvgPicture.asset(
                     Assets.facebook,
-                    height: 100,
+                    height: 70,
                     width: 70,
                   ),
                   text: AppStrings.facebook,
                 ),
                 10.y,
                 Button(
-                  ontap: () {
-                    Navigate.to(context, const BottomNavigationScreen());
-                  },
+                  ontap: () {},
                   textColor: AppColors.blackColor,
                   svg: SvgPicture.asset(
                     Assets.google,
-                    height: 100,
+                    height: 70,
                     width: 70,
                   ),
                   text: AppStrings.google,
                 ),
-                65.y,
+                40.y,
                 GestureDetector(
                   onTap: () {
-                    Navigate.to(context, const SignupScreen());
+                    Navigate.pop(context);
                   },
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      text: AppStrings.dontAccount,
+                      text: AppStrings.alreadyAccount,
                       style: Styles.smallPlusJakartaSans(
                         context,
                       ),
                       children: [
                         TextSpan(
-                          text: AppStrings.signup,
+                          text: AppStrings.login,
                           style: Styles.smallPlusJakartaSans(context,
                               color: AppColors.primaryColor.withOpacity(0.8)),
                         ),
@@ -167,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                10.y,
+                15.y,
               ],
             ),
           ),

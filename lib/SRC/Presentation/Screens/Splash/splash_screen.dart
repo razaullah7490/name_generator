@@ -27,9 +27,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
     await Future.delayed(const Duration(seconds: 10));
 
-    completedOnboarding
-        ? Navigate.toReplace(context, const BottomNavigationScreen())
-        : Navigate.toReplace(context, const OnboardingSreen());
+    // completedOnboarding
+    //     ?
+    //      Navigate.toReplace(context, const BottomNavigationScreen())
+    //     :
+         Navigate.toReplace(context, const OnboardingSreen());
   }
 
   @override

@@ -4,55 +4,6 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/validator.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EmailField extends StatefulWidget {
-  final TextEditingController controller;
-  String text;
-  IconData icon;
-  EmailField(
-      {super.key,
-      required this.controller,
-      required this.text,
-      required this.icon});
-
-  @override
-  State<EmailField> createState() => _EmailFieldState();
-}
-
-class _EmailFieldState extends State<EmailField> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 0.06.sh,
-      child: TextFormField(
-        controller: widget.controller,
-        decoration: InputDecoration(
-          prefixIcon: Icon(
-            widget.icon,
-            color: AppColors.grey,
-          ),
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.grey),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          labelText: widget.text,
-          labelStyle: Styles.smallPlusJakartaSans(
-            context,
-            color: AppColors.grey,
-          ),
-        ),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter your email';
-          }
-          if (!Validate().isEmailValid(value)) {
-            return 'Please enter a valid email address';
-          }
-          return null;
-        },
-      ),
-    );
-  }
-}
 
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;

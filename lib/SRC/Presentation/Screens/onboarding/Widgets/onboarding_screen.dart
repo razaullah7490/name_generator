@@ -6,7 +6,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Auth/Widgets/Login/login.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Auth/Login/login_screen.dart';
 
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Components/onboard_column_widget.dart';
 

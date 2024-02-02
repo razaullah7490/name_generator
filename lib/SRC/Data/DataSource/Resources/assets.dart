@@ -1,3 +1,5 @@
+const String staticAssets = "assets/icons/";
+
 class Assets {
   static const String logo = "assets/images/logo.webp";
   static const String onboardImg = "assets/images/onboardImg.webp";
