@@ -1,22 +1,28 @@
 // login_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
+import 'package:name_generator/SRC/Data/DataSource/Resources/validator.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_outline_button.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_textfield.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/button.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Auth/Components/fields.dart';
-import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Auth/Login/login_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Auth/SignUp/cubit/sign_up_cubit.dart';
+
+import 'package:name_generator/SRC/Presentation/Screens/Root/root_screen.dart';
 
 import '../../../../Data/DataSource/Resources/assets.dart';
 
 import '../../../../Data/DataSource/Resources/styles.dart';
+import 'cubit/sign_up_state.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -26,142 +32,219 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final bool _isObscured = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.sp),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                77.y,
-                Image.asset(
-                  Assets.logo,
-                  fit: BoxFit.fill,
-                  height: 108.h,
+      body: BlocConsumer<SignUpCubit, SignUpState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          final cubit = context.read<SignUpCubit>();
+          return SingleChildScrollView(
+            child: Form(
+              key: cubit.formKey,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.w,
                 ),
-                10.y,
-                AppText(
-                  AppStrings.wellcome,
-                  style: Styles.largePlusJakartaSans(
-                    context,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                AppText(
-                  AppStrings.enterSignup,
-                  style: Styles.mediumPlusJakartaSans(
-                    context,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                20.y,
-                CustomTextField(
-                  // icon: Icons.person_outline,
-                  controller: _nameController,
-                  text: AppStrings.name,
-                ),
-                20.y,
-                CustomTextField(
-                //  icon: Icons.email_outlined,
-                  controller: _emailController,
-                  text: AppStrings.email,
-                ),
-                20.y,
-                PasswordField(
-                    controller: _passwordController, isObscured: _isObscured),
-                24.y,
-                CustomButton(
-                  text: AppStrings.signup,
-                  ontap: () {},
-                  iconData: const SizedBox(),
-                ),
-                Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Divider(
-                        height: 33,
-                        thickness: 1,
-                        color: AppColors.grey.withOpacity(0.5),
+                    55.y,
+
+                    ///logo and text ... header
+                    ///
+                    ///
+                    logoAndText(),
+                    20.y,
+
+                    ///
+                    ///Text Fields
+                    ///
+                    ///
+                    CustomTextField(
+                      prefixIcon: Icon(
+                        Icons.person_outline,
+                        size: 20.h,
+                        color: Colors.grey,
                       ),
+                      controller: cubit.emailController,
+                      text: 'Enter Email',
+                      validator: Validate.emailValidation,
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.sp),
+                    20.y,
+                    CustomTextField(
+                      prefixIcon: Icon(
+                        Icons.email_outlined,
+                        size: 20.h,
+                        color: Colors.grey,
+                      ),
+                      controller: cubit.emailController,
+                      text: 'Enter Email',
+                      validator: Validate.emailValidation,
+                    ),
+                    20.y,
+
+                    CustomTextField(
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          context
+                              .read<SignUpCubit>()
+                              .togglePasswordVisibility();
+                        },
+                        icon: Icon(state is PasswordVisibilityChanged &&
+                                !state.isObscured
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        color: AppColors.grey,
+                      ),
+                      prefixIcon: Image.asset(
+                        '${staticAssets}lock-closed-outline.png',
+                        scale: 4.0,
+                      ),
+                      controller: cubit.passwordController,
+                      text: 'Enter Password',
+                      validator: Validate.password,
+                    ),
+
+                    ///
+
+                    ///Forgot Button
+                    ///
+                    10.y,
+                    Align(
+                      alignment: Alignment.bottomRight,
                       child: AppText(
-                        AppStrings.or,
+                        AppStrings.forgot,
                         style: Styles.smallPlusJakartaSans(context,
-                            fontSize: 11, color: AppColors.grey),
+                            fontSize: 12.sp),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Expanded(
-                      child: Divider(
-                        height: 33,
-                        thickness: 1,
-                        color: AppColors.grey.withOpacity(0.5),
+                    14.y,
+
+                    ///
+                    ///login
+                    ///
+                    CustomButton(
+                        iconData: const SizedBox(),
+                        text: 'Sign up',
+                        ontap: () {
+                          Navigate.toReplace(
+                              context, const RootScreen());
+                        }),
+                    4.y,
+
+                    ///
+                    ///
+                    orAndDivider(),
+                    10.y,
+
+                    ///
+                    ///social logins
+                    ///
+                    CustomOutlinedButton(
+                      text: 'Login with Facebook',
+                      iconPath: Assets.facebook,
+                      onPressed: () {},
+                    ),
+
+                    15.y,
+
+                    CustomOutlinedButton(
+                      text: 'Login with Google',
+                      iconPath: Assets.google,
+                      onPressed: () {},
+                    ),
+
+                    25.y,
+
+                    ///
+                    ///don't have an account
+                    ///
+                    GestureDetector(
+                      onTap: () {
+                        Navigate.to(context, const LoginScreen());
+                      },
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text: AppStrings.alreadyAccount,
+                          style: Styles.smallPlusJakartaSans(
+                            context,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: AppStrings.login,
+                              style: Styles.smallPlusJakartaSans(context,
+                                  fontSize: 15.sp,
+                                  color: AppColors.primaryColor),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+                    10.y,
                   ],
                 ),
-                Button(
-                  ontap: () {},
-                  textColor: AppColors.blackColor,
-                  svg: SvgPicture.asset(
-                    Assets.facebook,
-                    height: 70,
-                    width: 70,
-                  ),
-                  text: AppStrings.facebook,
-                ),
-                10.y,
-                Button(
-                  ontap: () {},
-                  textColor: AppColors.blackColor,
-                  svg: SvgPicture.asset(
-                    Assets.google,
-                    height: 70,
-                    width: 70,
-                  ),
-                  text: AppStrings.google,
-                ),
-                40.y,
-                GestureDetector(
-                  onTap: () {
-                    Navigate.pop(context);
-                  },
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      text: AppStrings.alreadyAccount,
-                      style: Styles.smallPlusJakartaSans(
-                        context,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: AppStrings.login,
-                          style: Styles.smallPlusJakartaSans(context,
-                              color: AppColors.primaryColor.withOpacity(0.8)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                15.y,
-              ],
+              ),
             ),
+          );
+        },
+      ),
+    );
+  }
+
+  orAndDivider() {
+    return Row(
+      children: [
+        Expanded(
+          child: Divider(
+            height: 33,
+            thickness: 1,
+            color: AppColors.grey.withOpacity(0.5),
           ),
         ),
-      ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.sp),
+          child: AppText(
+            AppStrings.or,
+            style: Styles.smallPlusJakartaSans(context,
+                fontSize: 11, color: AppColors.grey),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Expanded(
+          child: Divider(
+            height: 33,
+            thickness: 1,
+            color: AppColors.grey.withOpacity(0.5),
+          ),
+        ),
+      ],
+    );
+  }
+
+  logoAndText() {
+    return Column(
+      children: [
+        Image.asset(
+          Assets.logo,
+          fit: BoxFit.fill,
+          scale: 3,
+        ),
+        10.y,
+        AppText(
+          AppStrings.wellcome,
+          style: Styles.largePlusJakartaSans(context, fontSize: 24.sp),
+          textAlign: TextAlign.center,
+        ),
+        AppText(
+          AppStrings.enterLogin,
+          style: Styles.mediumPlusJakartaSans(context,
+              fontSize: 14.sp, color: Colors.grey[600]),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

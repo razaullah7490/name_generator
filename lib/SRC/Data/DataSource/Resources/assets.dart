@@ -1,4 +1,4 @@
-const String staticAssets = "assets/icons/";
+const String staticAssets = "assets/images/";
 
 class Assets {
   static const String logo = "assets/images/logo.webp";

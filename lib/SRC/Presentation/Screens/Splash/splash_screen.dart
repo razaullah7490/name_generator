@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Widgets/bottom_navigation.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Root/root_screen.dart';
 
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Widgets/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';

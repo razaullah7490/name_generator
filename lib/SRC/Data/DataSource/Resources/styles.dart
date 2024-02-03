@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'color.dart';
 
 class Styles {
-  static TextStyle largePlusJakartaSans(BuildContext context,
+  static TextStyle largePlusJakartaSans(BuildContext? context,
       {double? fontSize,
       Color? color,
       FontWeight? fontWeight,
@@ -17,7 +17,7 @@ class Styles {
         fontWeight: fontWeight ?? FontWeight.w700);
   }
 
-  static TextStyle mediumPlusJakartaSans(BuildContext context,
+  static TextStyle mediumPlusJakartaSans(BuildContext? context,
       {double? fontSize,
       Color? color,
       FontWeight? fontWeight,
@@ -31,7 +31,7 @@ class Styles {
         fontWeight: fontWeight ?? FontWeight.w500);
   }
 
-  static TextStyle smallPlusJakartaSans(BuildContext context,
+  static TextStyle smallPlusJakartaSans(BuildContext? context,
       {double? fontSize,
       Color? color,
       FontWeight? fontWeight,
@@ -45,7 +45,7 @@ class Styles {
         fontWeight: fontWeight ?? FontWeight.w400);
   }
 
-  static TextStyle plusJakartaSans(BuildContext context,
+  static TextStyle plusJakartaSans(BuildContext? context,
       {double? fontSize,
       Color? color,
       FontWeight? fontWeight,
@@ -59,7 +59,7 @@ class Styles {
         fontWeight: fontWeight ?? FontWeight.w600);
   }
 
-  static TextStyle plusJakartaBold(BuildContext context,
+  static TextStyle? plusJakartaBold(BuildContext context,
       {double? fontSize,
       Color? color,
       FontStyle? fontStyle,

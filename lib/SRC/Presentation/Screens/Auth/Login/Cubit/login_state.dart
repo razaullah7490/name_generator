@@ -12,8 +12,12 @@ class LoginFailure extends LoginState {
   LoginFailure(this.error);
 }
 
-class PasswordVisibilityChanged extends LoginState {
-  final bool isObscured;
 
-  PasswordVisibilityChanged(this.isObscured);
+
+class PasswordVisibilityChanged extends LoginState {
+ // final bool isObscured;
+
+  PasswordVisibilityChanged();
+
+
 }

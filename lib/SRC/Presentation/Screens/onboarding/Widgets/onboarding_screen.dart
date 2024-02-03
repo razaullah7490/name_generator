@@ -6,6 +6,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
 import 'package:name_generator/SRC/Presentation/Screens/Auth/Login/login_screen.dart';
 
 import 'package:name_generator/SRC/Presentation/Screens/onboarding/Components/onboard_column_widget.dart';
@@ -132,45 +133,3 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
   }
 }
 
-class CustomButton extends StatelessWidget {
-  String text;
-  Function() ontap;
-  Widget? iconData;
-
-  CustomButton({
-    super.key,
-    required this.text,
-    required this.ontap,
-    this.iconData,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 0.8.sw,
-      height: 0.07.sh,
-      child: ElevatedButton(
-        onPressed: ontap,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AppText(
-                text,
-                style: const TextStyle(color: AppColors.white),
-                textAlign: TextAlign.center,
-              ),
-              iconData!
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

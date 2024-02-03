@@ -45,6 +45,7 @@ class CategoryTile extends StatelessWidget {
             child: AppText(title,
                 style: Styles.smallPlusJakartaSans(context, fontSize: 14.sp)),
           ),
+          
         ],
       ),
     );

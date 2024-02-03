@@ -6,22 +6,22 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-import 'package:name_generator/SRC/Presentation/Screens/Chat/Widgets/chatbot_screen.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/BottomNavigation/Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Home/Widgets/my_home_page.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Chat/chatbot_screen.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Root/Components/bottom_navigation_notifier.dart';
+import 'package:name_generator/SRC/Presentation/Screens/my_home_screen.dart';
 
 import 'package:name_generator/SRC/Presentation/Screens/Profile/Widgets/profile.dart';
-import 'package:name_generator/SRC/Presentation/Screens/Saved/Widgets/saved.dart';
+import 'package:name_generator/SRC/Presentation/Screens/Saved/saved_screen.dart';
 
-class BottomNavigationScreen extends StatefulWidget {
+class RootScreen extends StatefulWidget {
   final int? initialPage;
-  const BottomNavigationScreen({super.key, this.initialPage});
+  const RootScreen({super.key, this.initialPage});
 
   @override
-  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
+  State<RootScreen> createState() => _RootScreenState();
 }
 
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+class _RootScreenState extends State<RootScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
