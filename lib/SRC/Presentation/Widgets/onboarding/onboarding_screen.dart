@@ -7,11 +7,10 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
+import 'package:name_generator/SRC/Presentation/Widgets/Auth/Login/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Auth/Widgets/Login/login.dart';
 import 'Components/onboard_column_widget.dart';
-
 
 class OnboardingSreen extends StatefulWidget {
   const OnboardingSreen({super.key});

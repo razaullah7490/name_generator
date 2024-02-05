@@ -5,22 +5,22 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-import '../../Chat/Widgets/chatbot_screen.dart';
-import '../../Home/home.dart';
-import '../../Profile/profile.dart';
-import '../../Saved/saved.dart';
-import '../Controller/BottomNavigationNotifier/bottom_navigation_notifier.dart';
+import '../Chat/chatbot_screen.dart';
+import '../Home/home.dart';
+import '../Profile/profile.dart';
+import '../Saved/saved.dart';
+import 'Controller/bottom_navigation_notifier.dart';
 
 
-class BottomNavigationScreen extends StatefulWidget {
+class RootScreen extends StatefulWidget {
   final int? initialPage;
-  const BottomNavigationScreen({super.key, this.initialPage});
+  const RootScreen({super.key, this.initialPage});
 
   @override
-  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
+  State<RootScreen> createState() => _RootScreenState();
 }
 
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+class _RootScreenState extends State<RootScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {

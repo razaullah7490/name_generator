@@ -12,8 +12,6 @@ import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Categories/Human/human.dart';
 import '../../Form/form.dart';
 
-
-
 class Home extends StatefulWidget {
   const Home({
     super.key,
@@ -27,7 +25,6 @@ class _HomeState extends State<Home> {
   TextEditingController inputcontroller = TextEditingController();
 
   final List<String> categoryimages = [
-
     Assets.man,
     Assets.briefcase,
     Assets.dog,
@@ -42,9 +39,7 @@ class _HomeState extends State<Home> {
     Assets.document,
   ];
 
-
   final List<String> categorynames = [
-
     'Human',
     'Business',
     'Pet',
@@ -60,18 +55,18 @@ class _HomeState extends State<Home> {
   ];
 
   final List<Widget> screens = [
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
-    Human() ,
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
+    Human(),
 
     // Business(),
     // Pet(),
@@ -84,22 +79,22 @@ class _HomeState extends State<Home> {
     // Game(),
     // Book(),
     // Document(),
-
   ];
 
   final List<String> carouselImages = [
     Assets.slider1,
     Assets.slider2,
   ];
-int i=0;
+  int i = 0;
   @override
   Widget build(BuildContext context) {
-    print('rebuilddd ${ i++}');
+    print('rebuilddd ${i++}');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: AppText('Hello 👋\nFarooq Ahmad',  maxLine: 2, style: Styles.plusJakartaBold(context, fontSize: 16.sp )),
-
+        title: AppText('Hello 👋\nFarooq Ahmad',
+            maxLine: 2,
+            style: Styles.plusJakartaBold(context, fontSize: 16.sp)),
         actions: [
           RoundAvatar(
             icon: Assets.notifications,
@@ -109,14 +104,14 @@ int i=0;
             imagewidth: 23.h,
             padding: 9.sp,
           ),
-        10.x,
+          10.x,
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               10.y,
               CarouselSlider(
@@ -127,8 +122,7 @@ int i=0;
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
-                  autoPlayAnimationDuration:
-                  const Duration(milliseconds: 800),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   viewportFraction: 1,
                 ),
                 items: carouselImages.map((String url) {
@@ -149,26 +143,32 @@ int i=0;
                   );
                 }).toList(),
               ),
-              10.y,
+              7.y,
               Align(
-                alignment: Alignment.centerLeft,
+                child: Container(
+                  height: 3.h,
+                  width: 30.w,
+                  color: AppColors.primaryColor,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.sp, left: 15.sp),
                 child: AppText('Name Categories',
                     style: Styles.smallPlusJakartaSans(
                       context,
-                      fontSize: 20.sp,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     )),
               ),
 
-              10.y,
-
               Wrap(
-               // alignment: WrapAlignment.spaceBetween,
+                // alignment: WrapAlignment.spaceBetween,
                 children: [
                   for (int i = 0; i < categorynames.length; i++)
-                    GestureDetector(onTap:(){
-                      Navigate.to(context, screens[i]);
-                    },
+                    GestureDetector(
+                      onTap: () {
+                        Navigate.to(context, screens[i]);
+                      },
                       child: CategoryTile(
                         title: categorynames[i],
                         icon: categoryimages[i],
@@ -181,7 +181,6 @@ int i=0;
           ),
         ),
       ),
-
       floatingActionButton: SizedBox(
         height: 60.h,
         width: 60.w,
@@ -194,10 +193,8 @@ int i=0;
             Navigate.to(context, const FormScreen());
           },
           tooltip: 'Add',
-
-          child: const Icon(Icons.add,size: 30),
+          child: const Icon(Icons.add, size: 30),
         ),
-
       ),
     );
   }

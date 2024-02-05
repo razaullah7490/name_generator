@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Dashboard/BottomNavigation/Widgets/bottom_navigation.dart';
+import '../Dashboard/Root/root_screen.dart';
 import '../onboarding/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -41,7 +41,7 @@ completedOnboarding = prefs.getBool('completedOnboarding') ?? false;
         // Navigate to another screen (e.g., HomeScreen)
 
         completedOnboarding!
-            ? Navigate.toReplace(context, const BottomNavigationScreen())
+            ? Navigate.toReplace(context, const RootScreen())
             : Navigate.toReplace(context, const OnboardingSreen());
       }
     });
