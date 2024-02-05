@@ -7,7 +7,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
-import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Categories/Human/Controller/human_cubit.dart';
@@ -121,18 +121,21 @@ class _HumanState extends State<Human> {
                             padding: const EdgeInsets.all(12.0),
                             child: AppText(
                               selectedDate != null
-                                  ? selectedDate!.toLocal().toString().split(' ')[0]
+                                  ? selectedDate!
+                                      .toLocal()
+                                      .toString()
+                                      .split(' ')[0]
                                   : hintText[index],
                               style: (selectedDate == null)
                                   ? Styles.smallPlusJakartaSans(
-                                context,
-                                fontSize: 14,
-                                color: AppColors.lightgrey,
-                              )
+                                      context,
+                                      fontSize: 14,
+                                      color: AppColors.lightgrey,
+                                    )
                                   : Styles.plusJakartaSans(
-                                context,
-                                color: AppColors.lebelTextColor,
-                              ),
+                                      context,
+                                      color: AppColors.lebelTextColor,
+                                    ),
                             ),
                           ),
                         ),
@@ -151,15 +154,15 @@ class _HumanState extends State<Human> {
                               selectedValues['country'] ?? hintText[index],
                               style: (selectedValues['country'] == null)
                                   ? Styles.smallPlusJakartaSans(
-                                context,
-                                fontSize: 14,
-                                color: AppColors.lightgrey,
-                              )
+                                      context,
+                                      fontSize: 14,
+                                      color: AppColors.lightgrey,
+                                    )
                                   : Styles.plusJakartaSans(
-                                context,
-                                fontSize: 16,
-                                color: AppColors.lebelTextColor,
-                              ),
+                                      context,
+                                      fontSize: 16,
+                                      color: AppColors.lebelTextColor,
+                                    ),
                             ),
                           ),
                         ),
@@ -182,7 +185,9 @@ class _HumanState extends State<Human> {
                           });
                         },
                         itemsMap: [
-                          for (int i = 0; i < humanCatDropdownLists[index].length; i++)
+                          for (int i = 0;
+                              i < humanCatDropdownLists[index].length;
+                              i++)
                             DropdownMenuItem(
                               value: humanCatDropdownLists[index][i],
                               child: AppText(
@@ -236,11 +241,7 @@ class _HumanState extends State<Human> {
                 iconData: Image.asset(Assets.sparkle),
                 text: "Generate",
                 ontap: () {
-
-
-                    context.read<HumanCubit>().getHumanName(selectedValues );
-
-
+                  context.read<HumanCubit>().getHumanName(selectedValues);
                 },
               );
             },
@@ -261,11 +262,11 @@ class _HumanState extends State<Human> {
 
   Future<void> _selectDate(BuildContext context) async {
     DateTime picked = (await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-    )) ??
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(1900),
+          lastDate: DateTime.now(),
+        )) ??
         DateTime.now();
 
     setState(() {

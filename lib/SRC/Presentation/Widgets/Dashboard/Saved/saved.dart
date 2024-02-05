@@ -8,20 +8,17 @@ import '../../../Common/custom_appbar.dart';
 import '../Home/Form/Components/generated_name_container.dart';
 import 'Components/saved_word.dart';
 
-
 class SavedScreen extends StatelessWidget {
   const SavedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: CustomAppbar(
         title: 'Saved',
         autoleading: true,
         trailing: SvgPicture.asset(Assets.dots),
       ),
-
       body: Expanded(
         child: Column(
           children: [
@@ -37,34 +34,28 @@ class SavedScreen extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return
-                                AlertDialog(
-                                  contentPadding: EdgeInsets.all(0.sp ),
-                                  content: const GeneratedNameContainer(
-                                    hascross: true,
-                                    spaceinicons: 50,
-                                    height: 320,
-                                    width: 85,
-                                  ),
-                                );
+                              return AlertDialog(
+                                contentPadding: EdgeInsets.all(0.sp),
+                                content: const GeneratedNameContainer(
+                                  hascross: true,
+                                
+                                  height: 320,
+                                  width: 300,
+                                ),
+                              );
                             },
                           );
                         },
-
-
                         child: SavedWord(
                           tapoption: RoundAvatar(
                             issvg: true,
                             icon: Assets.bookmarkfilled,
-                            haveborder: true,
+                            // haveborder: true,
                             padding: 10.sp,
                             imageheight: 12.h,
                             imagewidth: 12.w,
                           ),
                         ),
-
-
-
                       ),
                     ),
                 ],

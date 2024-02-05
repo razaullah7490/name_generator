@@ -26,37 +26,30 @@ class OnboardColumnWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.sp),
+      padding: EdgeInsets.symmetric(horizontal: 20.sp),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          25.y,
           Image.asset(
             asset!,
-            fit: BoxFit.cover,
+            scale: 4.0,
+            //fit: BoxFit.cover,
           ),
+          20.y,
           Column(
             children: [
               AppText(
                 text1,
-                style: Styles.largePlusJakartaSans(
-                  context,
-                ),
+                style: Styles.largePlusJakartaSans(context, fontSize: 25.sp),
                 textAlign: TextAlign.center,
               ),
               5.y,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: AppText(
-                      "$text2\n$text3\n$text4",
-                      style: Styles.mediumPlusJakartaSans(context),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+              AppText(
+                "Simpllify the process of finding the perfect\nand professional name",
+                style: Styles.mediumPlusJakartaSans(context, fontSize: 15.sp),
+                textAlign: TextAlign.center,
               ),
             ],
           )

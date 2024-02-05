@@ -6,11 +6,10 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import '../Chat/chatbot_screen.dart';
-import '../Home/home.dart';
+import '../Home/home_screen.dart';
 import '../Profile/profile.dart';
 import '../Saved/saved.dart';
 import 'Controller/bottom_navigation_notifier.dart';
-
 
 class RootScreen extends StatefulWidget {
   final int? initialPage;
@@ -31,7 +30,6 @@ class _RootScreenState extends State<RootScreen> {
 
     BottomNotifier.checkExitTimes.value = 2;
     super.initState();
-
   }
 
   @override
@@ -66,16 +64,18 @@ class _RootScreenState extends State<RootScreen> {
             ),
           ),
           bottomNavigationBar: BottomAppBar(
-
+            padding: EdgeInsets.all(0),
             color: AppColors.white,
             shape: const CircularNotchedRectangle(),
             notchMargin: 5,
+            elevation: 2,
+            height: 60.h,
             child: ValueListenableBuilder(
               builder: (context, state, ss) {
                 return Row(
                   //children inside bottom appbar
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     //5.x,
                     ///Home
@@ -92,7 +92,6 @@ class _RootScreenState extends State<RootScreen> {
                           SvgPicture.asset(
                             state == 0 ? Assets.homefilled : Assets.home,
                           ),
-
                           AppText("Home",
                               style: Styles.smallPlusJakartaSans(context,
                                   color: state == 0
@@ -102,9 +101,6 @@ class _RootScreenState extends State<RootScreen> {
                                   fontWeight: FontWeight.w600))
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
                     ),
 
                     ///Saved
@@ -121,7 +117,6 @@ class _RootScreenState extends State<RootScreen> {
                           SvgPicture.asset(state == 1
                               ? Assets.bookmarkfilled
                               : Assets.bookmark),
-
                           AppText("Saved",
                               style: Styles.smallPlusJakartaSans(context,
                                   color: state == 1
@@ -131,9 +126,6 @@ class _RootScreenState extends State<RootScreen> {
                                   fontWeight: FontWeight.w600))
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
                     ),
 
                     ///Chat
@@ -149,7 +141,6 @@ class _RootScreenState extends State<RootScreen> {
                         children: [
                           SvgPicture.asset(
                               state == 2 ? Assets.robotfilled : Assets.robot),
-
                           AppText("Chat",
                               style: Styles.largePlusJakartaSans(context,
                                   color: state == 2
@@ -159,9 +150,6 @@ class _RootScreenState extends State<RootScreen> {
                                   fontWeight: FontWeight.w600))
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
                     ),
 
                     ///Profile
@@ -178,7 +166,6 @@ class _RootScreenState extends State<RootScreen> {
                           SvgPicture.asset(state == 3
                               ? Assets.profilefilled
                               : Assets.profile),
-
                           AppText("Profile",
                               style: Styles.plusJakartaSans(context,
                                   color: state == 3

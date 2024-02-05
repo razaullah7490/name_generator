@@ -119,10 +119,13 @@ class _OnboardingSreenState extends State<OnboardingSreen> {
                 ],
               ),
               24.y,
-              CustomButton(
-                iconData: const SizedBox(),
-                text: _currentPage < 2 ? AppStrings.next : AppStrings.started,
-                ontap: _currentPage < 2 ? _nextPage : _skipPage,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomButton(
+                  iconData: const SizedBox(),
+                  text: _currentPage < 2 ? AppStrings.next : AppStrings.started,
+                  ontap: _currentPage < 2 ? _nextPage : _skipPage,
+                ),
               ),
               24.y,
             ],

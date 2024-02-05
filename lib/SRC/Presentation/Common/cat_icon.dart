@@ -22,10 +22,11 @@ const CategoryTile({required this.title, required this.icon, super.key});
       child: Column(
         children: [
           Card(
+            
             shape: const CircleBorder(),
             elevation: 1,
             child: Container(
-              padding: EdgeInsets.all(20.sp),
+              padding: EdgeInsets.all(15.r),
               decoration: BoxDecoration(
 
                   color: Colors.white,
@@ -35,8 +36,8 @@ const CategoryTile({required this.title, required this.icon, super.key});
               child: Image.asset(
 
                 icon,
-                width: 28.w,
-                height: 28.h,
+                width: 25.w,
+                height: 25.h,
 
 
               ),

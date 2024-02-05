@@ -24,10 +24,11 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: autoleading ?? false,
-      elevation: 2,
+      elevation: 0,
       centerTitle: true,
       //pinned: true,
      // expandedHeight: 100,
+     
       backgroundColor: AppColors.scaffoldColor,
       title: AppText(
         title,

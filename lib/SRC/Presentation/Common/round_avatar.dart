@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_shadow.dart';
 
 class RoundAvatar extends StatelessWidget {
   final double? padding;
@@ -25,10 +26,13 @@ class RoundAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(padding?? 20.sp),
+      padding: EdgeInsets.all(padding ?? 20.sp),
       decoration: BoxDecoration(
           color: Colors.white,
           shape: BoxShape.circle,
+          boxShadow: [
+            AppShadow.minimum(),
+          ],
           border: haveborder == true
               ? Border.all(color: const Color(0xffDBE7F5))
               : Border.all(color: AppColors.white)),
@@ -36,7 +40,7 @@ class RoundAvatar extends StatelessWidget {
           ? SvgPicture.asset(
               icon,
               width: imagewidth ?? 20.w,
-              height: imageheight?? 20.h,
+              height: imageheight ?? 20.h,
             )
           : Image.asset(
               icon,

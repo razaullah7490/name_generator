@@ -6,6 +6,7 @@ import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_shadow.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 
@@ -13,7 +14,6 @@ import 'Profilehistory/profile_history.dart';
 import 'Profilenotifications/profile_notifications.dart';
 import 'Profilesettings/profile_settings.dart';
 import 'Supportandhelp/support_and_help.dart';
-
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -54,7 +54,7 @@ class _ProfileState extends State<Profile> {
           "Profile",
           style: Styles.plusJakartaSans(context),
         ),
-        actions: [  SvgPicture.asset(Assets.dots), 10.x],
+        // actions: [  SvgPicture.asset(Assets.dots), 10.x],
       ),
       body: Column(
         children: [
@@ -74,7 +74,7 @@ class _ProfileState extends State<Profile> {
                         issvg: false,
                         imageheight: 100.h,
                         imagewidth: 100.w,
-                        padding: 10.sp,
+                        padding: 5.sp,
                       ),
                       AppText('Muhammad Taif',
                           style: Styles.plusJakartaSans(
@@ -87,31 +87,28 @@ class _ProfileState extends State<Profile> {
                               color: AppColors.lebelTextColor)),
                       36.y,
                       ListView.builder(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20.sp,
-                        ),
+                        
                         shrinkWrap: true,
                         itemCount: profileicons.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 8),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15.w, vertical: 5.h),
                             child: GestureDetector(
                               onTap: () {
                                 Navigate.to(context, screens[index]);
                               },
                               child: Container(
-                                width: 380.w,
-                                height: 52.h,
+                                width: double.infinity,
+                                height: 48.h,
                                 decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  color: AppColors.white,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                  border: Border.all(
-                                    color: AppColors.greyvariant1,
-                                    width: 1.w,
-                                  ),
-                                ),
+                                    shape: BoxShape.rectangle,
+                                    color: AppColors.white,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    boxShadow: [
+                                      AppShadow.minimum(),
+                                    ]),
                                 child: Row(
                                   children: [
                                     20.x,

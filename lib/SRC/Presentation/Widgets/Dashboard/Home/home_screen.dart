@@ -151,6 +151,7 @@ class _HomeState extends State<Home> {
                   color: AppColors.primaryColor,
                 ),
               ),
+
               Padding(
                 padding: EdgeInsets.only(top: 10.sp, left: 15.sp),
                 child: AppText('Name Categories',
@@ -160,8 +161,10 @@ class _HomeState extends State<Home> {
                       fontWeight: FontWeight.w600,
                     )),
               ),
-
+              5.y,
               Wrap(
+              //  alignment: WrapAlignment.spaceEvenly,
+  //runSpacing: 0,
                 // alignment: WrapAlignment.spaceBetween,
                 children: [
                   for (int i = 0; i < categorynames.length; i++)

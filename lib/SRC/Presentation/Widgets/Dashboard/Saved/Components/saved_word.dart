@@ -5,8 +5,8 @@ import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_shadow.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
-
 
 class SavedWord extends StatelessWidget {
   final double? height;
@@ -19,59 +19,54 @@ class SavedWord extends StatelessWidget {
     super.key,
   });
 
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10.sp),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.sp),
             color: AppColors.white,
-            border: Border.all(
-              color: Colors.grey,
-            )),
-        width: width ?? 300.w,
-        height: height ?? 105.h,
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  AppText('Sole craft',
-                      style: Styles.smallPlusJakartaSans(context,
-                          fontSize: 16.sp, color: AppColors.blackvariant1, ))
-                ],
-              ),
-              Row(
-                children: [
-                  Image.asset(
-                    Assets.briefcase,
-                    width: 13.w,
-                    height: 13.h,
-                  ),
-                  5.x,
-                  AppText('Business name',
-                      style: Styles.mediumPlusJakartaSans(context,
-                          fontSize: 14.sp, color: AppColors.greyvariant)),
-                  Spacer(),
-                  tapoption ?? SizedBox(),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  SvgPicture.asset(Assets.clock),
-                  5.x,
-                  AppText('2 hours ago',
-                      style: Styles.smallPlusJakartaSans(context,
-                          fontSize: 12.sp, color: AppColors.lebelTextColor))
-                ],
-              ),
-            ],
-          ),
+            boxShadow: [AppShadow.normal()]),
+        width: width ?? double.infinity.w,
+        height: height ?? 90.h,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AppText('Sole craft',
+                style: Styles.smallPlusJakartaSans(
+                  context,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.sp,
+                  color: AppColors.blackvariant1,
+                )),
+            Row(
+              children: [
+                Image.asset(
+                  Assets.briefcase,
+                  width: 13.w,
+                  height: 13.h,
+                ),
+                8.x,
+                AppText('Business name',
+                    style: Styles.mediumPlusJakartaSans(context,
+                        fontSize: 14.sp, color: AppColors.greyvariant)),
+                Spacer(),
+                tapoption ?? SizedBox(),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                SvgPicture.asset(Assets.clock),
+                5.x,
+                AppText('2 hours ago',
+                    style: Styles.smallPlusJakartaSans(context,
+                        fontSize: 12.sp, color: AppColors.lebelTextColor))
+              ],
+            ),
+          ],
         ),
       ),
     );
