@@ -14,7 +14,7 @@ import 'package:name_generator/SRC/Presentation/Common/custom_textfield.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Auth/Login/Cubit/login_cubit.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Auth/Login/Cubit/login_state.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Auth/SignUp/sign_up.dart';
-import 'package:name_generator/SRC/Presentation/Widgets/Dashboard/Root/root_screen.dart';
+import 'package:name_generator/SRC/Presentation/Widgets/Root/root_screen.dart';
 
 import '../../../../Application/Services/Navigation/navigation.dart';
 

@@ -5,7 +5,7 @@ import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   final String text;
-  final String iconPath;
+  final String? iconPath;
   final VoidCallback onPressed;
   final double? width;
   final double? height;
@@ -14,7 +14,7 @@ class CustomOutlinedButton extends StatelessWidget {
   CustomOutlinedButton({
     Key? key,
     required this.text,
-    required this.iconPath,
+     this.iconPath,
     required this.onPressed,
     this.width = double.infinity,
     this.height = 43.0,
@@ -28,7 +28,7 @@ class CustomOutlinedButton extends StatelessWidget {
       height: height,
       child: OutlinedButton.icon(
         icon: SvgPicture.asset(
-          iconPath,
+          iconPath ?? "",
           height: 25.h,
           width: 25.w,
         ),

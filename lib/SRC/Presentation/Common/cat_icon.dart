@@ -4,7 +4,7 @@ import 'package:name_generator/SRC/Application/Services/Navigation/navigation.da
 import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-import '../Widgets/Business/Widgets/business_category.dart';
+import '../Widgets/SubCategory/sub_category_screen.dart';
 
 
 class CategoryTile extends StatelessWidget {

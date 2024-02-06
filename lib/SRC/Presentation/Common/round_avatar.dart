@@ -26,7 +26,7 @@ class RoundAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(padding ?? 20.sp),
+     padding: EdgeInsets.all(padding ?? 0.r),
       decoration: BoxDecoration(
           color: Colors.white,
           shape: BoxShape.circle,

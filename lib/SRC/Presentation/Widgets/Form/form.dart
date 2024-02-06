@@ -9,7 +9,7 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
-import '../Dashboard/Home/NameGenerated/name_generated.dart';
+import '../Re-generate/re_generated_screen.dart';
 
 
 class FormScreen extends StatefulWidget {
@@ -27,6 +27,7 @@ class _FormScreenState extends State<FormScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     List<String> fieldText = [
       'Key word',
       'Restaurant',
@@ -121,6 +122,7 @@ class _FormScreenState extends State<FormScreen> {
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 16.0);
                   },
+
                   itemCount: fieldText.length,
                 ),
               ),
@@ -137,6 +139,7 @@ class _FormScreenState extends State<FormScreen> {
             },
           ),
         ),
+        
       ),
     );
   }

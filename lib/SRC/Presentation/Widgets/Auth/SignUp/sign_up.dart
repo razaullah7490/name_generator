@@ -16,7 +16,7 @@ import 'package:name_generator/SRC/Presentation/Common/custom_outline_button.dar
 import 'package:name_generator/SRC/Presentation/Common/custom_textfield.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Auth/Login/login_screen.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Auth/SignUp/cubit/sign_up_cubit.dart';
-import 'package:name_generator/SRC/Presentation/Widgets/Dashboard/Root/root_screen.dart';
+import 'package:name_generator/SRC/Presentation/Widgets/Root/root_screen.dart';
 
 import '../../../../Data/DataSource/Resources/assets.dart';
 

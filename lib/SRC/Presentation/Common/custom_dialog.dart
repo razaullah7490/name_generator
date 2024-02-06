@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../Widgets/Dashboard/Home/Form/Components/generated_name_container.dart';
+import '../Widgets/Re-generate/Components/generated_name_container.dart';
 
 
 class CustomDIalog extends StatelessWidget {
