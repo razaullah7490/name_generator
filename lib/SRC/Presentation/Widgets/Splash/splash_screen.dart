@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
+import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
+import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Root/root_screen.dart';
 import '../Onboarding/onboarding_screen.dart';

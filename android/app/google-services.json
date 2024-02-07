@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608984517534",
+    "project_id": "name-generator-1ca2e",
+    "storage_bucket": "name-generator-1ca2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608984517534:android:b32aa954d3ae1d0601648f",
+        "android_client_info": {
+          "package_name": "com.generator.name.itecexperts.name_generator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVeMW8zlHpaRL70B0Wy3KG3NeKyOqlays"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

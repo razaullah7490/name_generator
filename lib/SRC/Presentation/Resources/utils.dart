@@ -1,4 +1,4 @@
-import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Resources/strings.dart';
 
 import 'assets.dart';
 

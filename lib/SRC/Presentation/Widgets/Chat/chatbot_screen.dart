@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Data/Extensions/extensions.dart';
+import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_shadow.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_outline_button.dart';
@@ -47,42 +47,88 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
 
   void _openMicBottomSheet() {
     showModalBottomSheet(
-      backgroundColor: AppColors.white,
-      shape: const BeveledRectangleBorder(),
-      elevation: 0,
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: FractionallySizedBox(
-            heightFactor: 0.3,
-            widthFactor: 0.9,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'You can ask me everything about names',
-                  style: TextStyle(fontSize: 20.0),
-                  textAlign: TextAlign.center,
+        return Container(
+          width: double.infinity,
+          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 18),
+          padding: EdgeInsets.all(20.0),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'You can ask me everything about\nnames',
+                style: TextStyle(fontSize: 15.0),
+                textAlign: TextAlign.center,
+              ),
+              15.y,
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.white,
+                  border: Border.all(),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.white,
-                      border: Border.all()),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.mic_none_outlined),
-                  ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.mic_none_outlined),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
     );
   }
+
+  // void _openMicBottomSheet() {
+  //   showModalBottomSheet(
+  //     backgroundColor: AppColors.white,
+
+  //     shape: const BeveledRectangleBorder(),
+  //     elevation: 0,
+  //     context: context,
+  //     builder: (context) {
+  //       return Padding(
+  //         padding: const EdgeInsets.all(5.0),
+  //         child: Container(
+  //           height: 150,
+  //           width: 300,
+  //           decoration: BoxDecoration(
+  //             borderRadius: BorderRadius.circular(20.0.r)
+  //           ),
+  //           child: Column(
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: [
+  //               const Text(
+  //                 'You can ask me everything about\nnames',
+  //                 style: TextStyle(fontSize: 15.0),
+  //                 textAlign: TextAlign.center,
+  //               ),
+  //               Container(
+  //                 decoration: BoxDecoration(
+  //                     shape: BoxShape.circle,
+  //                     color: AppColors.white,
+  //                     border: Border.all()),
+  //                 child: IconButton(
+  //                   onPressed: () {},
+  //                   icon: const Icon(Icons.mic_none_outlined),
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   void _copyMessage(String messageText) {
     Clipboard.setData(ClipboardData(text: messageText));
@@ -201,35 +247,35 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           ),
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(13.0),
           child: Row(
             children: [
               Expanded(
-                child: Card(
-                  elevation: 2,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(12)),
-                    height: 0.07.sh,
-                    width: 1.sw,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
-                        controller: _messageController,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                              onPressed: _openMicBottomSheet,
-                              icon: const Icon(Icons.mic_none_outlined)),
-                          border: InputBorder.none,
-                          hintText:'Generate a name of ...',
-                        ),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      boxShadow: [
+                        AppShadow.minimum(),
+                      ],
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: _messageController,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: _openMicBottomSheet,
+                            icon: const Icon(Icons.mic_none_outlined)),
+                        border: InputBorder.none,
+                        hintStyle: Styles.mediumPlusJakartaSans(context,
+                            fontSize: 14.sp),
+                        hintText: 'Generate a name of ...',
                       ),
                     ),
                   ),
@@ -277,63 +323,37 @@ class IntroMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          Assets.chatimage,
-          height: 153.h,
-          width: 137.w,
-          fit: BoxFit.contain,
-        ),
-        5.y,
-        Container(
-          decoration: BoxDecoration(
-              color: AppColors.grey.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10)),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              children: [
-                2.x,
-    
-                Image.asset(
-                  Assets.spark,
-                  height: 16.h,
-                  width: 16.w,
-                  fit: BoxFit.contain,
-                ),
-                // 8.x,
-                6.x,
-                AppText(
-                  "Hi, you can ask me anything about names",
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    color: AppColors.lightgrey,
-                  ),
-                ),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Image.asset(
+            Assets.chatimage,
+            height: 153.h,
+            width: 137.w,
+            fit: BoxFit.contain,
           ),
-        ),
-        18.y,
-        Container(
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(boxShadow: [
-            AppShadow.minimum(),
-          ], color: AppColors.white, borderRadius: BorderRadius.circular(16)),
-          child: Column(
-            children: [
-              Row(
+          5.y,
+          Container(
+            decoration: BoxDecoration(
+                color: AppColors.grey.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(10)),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
                 children: [
+                  2.x,
+
                   Image.asset(
                     Assets.spark,
                     height: 16.h,
                     width: 16.w,
                     fit: BoxFit.contain,
                   ),
-                  8.x,
+                  // 8.x,
+                  6.x,
                   AppText(
-                    "I suggest you some names you can ask\nme...",
+                    "Hi, you can ask me anything about names",
                     style: TextStyle(
                       fontSize: 13.sp,
                       color: AppColors.lightgrey,
@@ -341,52 +361,81 @@ class IntroMessage extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                height: 80.h,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: (suggestedNames.length / 2).ceil(),
-                  itemBuilder: (context, index) {
-                    int startIndex = index * 2;
-                    int endIndex = startIndex + 2;
-                    endIndex = endIndex > suggestedNames.length
-                        ? suggestedNames.length
-                        : endIndex;
-    
-                    return Column(
-                      children: suggestedNames
-                          .getRange(startIndex, endIndex)
-                          .map((name) {
-                        return Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 7.w, vertical: 4.h),
-                            decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: AppColors.primaryColor),
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Text(
-                              name,
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                color: AppColors.lightgrey,
+            ),
+          ),
+          18.y,
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(boxShadow: [
+              AppShadow.minimum(),
+            ], color: AppColors.white, borderRadius: BorderRadius.circular(16)),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      Assets.spark,
+                      height: 16.h,
+                      width: 16.w,
+                      fit: BoxFit.contain,
+                    ),
+                    8.x,
+                    AppText(
+                      "I suggest you some names you can ask\nme...",
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        color: AppColors.lightgrey,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 80.h,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: (suggestedNames.length / 2).ceil(),
+                    itemBuilder: (context, index) {
+                      int startIndex = index * 2;
+                      int endIndex = startIndex + 2;
+                      endIndex = endIndex > suggestedNames.length
+                          ? suggestedNames.length
+                          : endIndex;
+
+                      return Column(
+                        children: suggestedNames
+                            .getRange(startIndex, endIndex)
+                            .map((name) {
+                          return Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 7.w, vertical: 4.h),
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: AppColors.primaryColor),
+                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: Text(
+                                name,
+                                style: TextStyle(
+                                  fontSize: 12.sp,
+                                  color: AppColors.lightgrey,
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  },
-                ),
-              )
-            ],
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

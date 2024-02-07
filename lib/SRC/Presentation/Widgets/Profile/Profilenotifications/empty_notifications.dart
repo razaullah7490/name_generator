@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 

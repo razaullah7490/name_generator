@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/assets.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
-import '../../../../Data/DataSource/Resources/utils.dart';
+import '../../../Resources/utils.dart';
 import 'empty_notifications.dart';
 import 'profile_notifications_settings.dart';
 

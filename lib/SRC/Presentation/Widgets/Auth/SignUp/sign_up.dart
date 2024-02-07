@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:name_generator/SRC/Application/Services/Navigation/navigation.dart';
+import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/strings.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/validator.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/strings.dart';
+import 'package:name_generator/SRC/Presentation/Resources/validator.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_outline_button.dart';
@@ -18,9 +18,9 @@ import 'package:name_generator/SRC/Presentation/Widgets/Auth/Login/login_screen.
 import 'package:name_generator/SRC/Presentation/Widgets/Auth/SignUp/cubit/sign_up_cubit.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Root/root_screen.dart';
 
-import '../../../../Data/DataSource/Resources/assets.dart';
+import '../../../Resources/assets.dart';
 
-import '../../../../Data/DataSource/Resources/styles.dart';
+import '../../../Resources/styles.dart';
 import 'cubit/sign_up_state.dart';
 
 class SignupScreen extends StatefulWidget {

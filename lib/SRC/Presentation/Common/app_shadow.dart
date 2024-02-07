@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 
 class AppShadow {
   static BoxShadow normal() => const BoxShadow(

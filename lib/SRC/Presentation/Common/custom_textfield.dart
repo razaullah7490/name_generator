@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;

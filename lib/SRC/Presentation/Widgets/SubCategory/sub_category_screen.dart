@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
-import '../../../Data/DataSource/Resources/utils.dart';
+import '../../Resources/utils.dart';
 
 class SubCategoryScreen extends StatefulWidget {
   const SubCategoryScreen({super.key});
