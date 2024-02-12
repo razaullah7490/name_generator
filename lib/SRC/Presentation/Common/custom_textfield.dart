@@ -4,18 +4,21 @@ import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 
 class CustomTextField extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   String text;
   Widget? suffixIcon;
   Widget? prefixIcon;
+  Function(String)? onChanged;
+
   bool obscureText;
   String? Function(String?)? validator;
   CustomTextField({
     super.key,
+    this.onChanged,
     this.obscureText = false,
     this.suffixIcon,
     this.validator,
-    required this.controller,
+     this.controller,
     required this.text,
     this.prefixIcon,
   });
@@ -23,6 +26,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+onChanged: onChanged,
       controller: controller,
       obscureText: obscureText,
       autovalidateMode: AutovalidateMode.onUserInteraction,

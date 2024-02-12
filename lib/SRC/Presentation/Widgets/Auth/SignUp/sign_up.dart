@@ -3,11 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 
-import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
+import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Resources/strings.dart';
 import 'package:name_generator/SRC/Presentation/Resources/validator.dart';
@@ -32,160 +33,202 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SignUpCubit(),
       child: Scaffold(
         body: BlocConsumer<SignUpCubit, SignUpState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is SignUpFailure) {
+              Get.dialog(AlertDialog(
+                title: Text("Error"),
+                content: Text("${state.error}"),
+                actions: [
+                  ElevatedButton(child: Text("Ok"), onPressed: () => Get.back())
+                ],
+              ));
+            } else if (state is SignUpSuccess) {
+              Get.dialog(AlertDialog(
+                title: Text("SignUp Successfull"),
+                content: Text("Congratulations! You are logged in"),
+                actions: [
+                  ElevatedButton(child: Text("Ok"), onPressed: () => Get.back())
+
+                ],
+              ));
+               Navigate.to(context, RootScreen());
+            }
+          },
           builder: (context, state) {
             final cubit = context.read<SignUpCubit>();
-            return SingleChildScrollView(
-              child: Form(
-                key: cubit.formKey,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 15.w,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      55.y,
+            return ModalProgressHUD(
+              inAsyncCall: state is SignUpLoading,
+              progressIndicator: CircularProgressIndicator(),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: cubit.formKey,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.w,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        55.y,
 
-                      ///logo and text ... header
-                      ///
-                      ///
-                      logoAndText(),
-                      20.y,
+                        ///logo and text ... header
+                        ///
+                        ///
+                        logoAndText(),
+                        20.y,
 
-                      ///
-                      ///Text Fields
-                      ///
-                      ///
-                      CustomTextField(
-                        prefixIcon: Icon(
-                          Icons.person_outline,
-                          size: 20.h,
-                          color: Colors.grey,
-                        ),
-                        controller: cubit.emailController,
-                        text: 'Enter Email',
-                        validator: Validate.emailValidation,
-                      ),
-                      20.y,
-                      CustomTextField(
-                        prefixIcon: Icon(
-                          Icons.email_outlined,
-                          size: 20.h,
-                          color: Colors.grey,
-                        ),
-                        controller: cubit.emailController,
-                        text: 'Enter Email',
-                        validator: Validate.emailValidation,
-                      ),
-                      20.y,
-
-                      CustomTextField(
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            context
-                                .read<SignUpCubit>()
-                                .togglePasswordVisibility();
+                        ///
+                        ///Text Fields
+                        ///
+                        ///
+                        CustomTextField(
+                          onChanged: (v) {
+                            cubit.appUser.name = v;
                           },
-                          icon: Icon(state is PasswordVisibilityChanged &&
-                                  !state.isObscured
-                              ? Icons.visibility
-                              : Icons.visibility_off),
-                          color: AppColors.grey,
+                          prefixIcon: Icon(
+                            Icons.person_outline,
+                            size: 20.h,
+                            color: Colors.grey,
+                          ),
+                          // controller: cubit.emailController,
+                          text: 'Enter Name',
+                          validator: Validate.name,
                         ),
-                        prefixIcon: Image.asset(
-                          '${staticAssets}lock-closed-outline.png',
-                          scale: 4.0,
+                        20.y,
+                        CustomTextField(
+                          onChanged: (v) {
+                            cubit.appUser.email = v;
+                          },
+                          prefixIcon: Icon(
+                            Icons.email_outlined,
+                            size: 20.h,
+                            color: Colors.grey,
+                          ),
+                          controller: cubit.emailController,
+                          text: 'Enter Email',
+                          validator: Validate.emailValidation,
                         ),
-                        controller: cubit.passwordController,
-                        text: 'Enter Password',
-                        validator: Validate.password,
-                      ),
+                        20.y,
 
-                      ///
-
-                      ///Forgot Button
-                      ///
-                      10.y,
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: AppText(
-                          AppStrings.forgot,
-                          style: Styles.smallPlusJakartaSans(context,
-                              fontSize: 12.sp),
-                          textAlign: TextAlign.center,
+                        CustomTextField(
+                          onChanged: (v) {
+                            cubit.appUser.password = v;
+                          },
+                          obscureText: cubit.isPasswordObscured,
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              context
+                                  .read<SignUpCubit>()
+                                  .togglePasswordVisibility();
+                            },
+                            icon: Icon(state is PasswordVisibilityChanged &&
+                                    !state.isObscured
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            color: AppColors.grey,
+                          ),
+                          prefixIcon: Image.asset(
+                            '${staticAssets}lock-closed-outline.png',
+                            scale: 4.0,
+                          ),
+                          controller: cubit.passwordController,
+                          text: 'Enter Password',
+                          validator: Validate.password,
                         ),
-                      ),
-                      14.y,
 
-                      ///
-                      ///login
-                      ///
-                      CustomButton(
-                          iconData: const SizedBox(),
-                          text: 'Sign up',
-                          ontap: () {
-                            Navigate.toReplace(context, const RootScreen());
-                          }),
-                      4.y,
+                        ///
 
-                      ///
-                      ///
-                      orAndDivider(),
-                      10.y,
-
-                      ///
-                      ///social logins
-                      ///
-                      CustomOutlinedButton(
-                        text: 'Login with Facebook',
-                        iconPath: Assets.facebook,
-                        onPressed: () {},
-                      ),
-
-                      15.y,
-
-                      CustomOutlinedButton(
-                        text: 'Login with Google',
-                        iconPath: Assets.google,
-                        onPressed: () {},
-                      ),
-
-                      25.y,
-
-                      ///
-                      ///don't have an account
-                      ///
-                      GestureDetector(
-                        onTap: () {
-                          Navigate.to(context, const LoginScreen());
-                        },
-                        child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: AppStrings.alreadyAccount,
-                            style: Styles.smallPlusJakartaSans(
-                              context,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: AppStrings.login,
-                                style: Styles.smallPlusJakartaSans(context,
-                                    fontSize: 15.sp,
-                                    color: AppColors.primaryColor),
-                              ),
-                            ],
+                        ///Forgot Button
+                        ///
+                        10.y,
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: AppText(
+                            AppStrings.forgot,
+                            style: Styles.smallPlusJakartaSans(context,
+                                fontSize: 12.sp),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                      ),
-                      10.y,
-                    ],
+                        14.y,
+
+                        ///
+                        ///login
+                        ///
+                        CustomButton(
+                            iconData: const SizedBox(),
+                            text: 'Sign up',
+                            ontap: () {
+                              FocusScope.of(context).unfocus();
+                              if (cubit.formKey.currentState!.validate()) {
+                                 FocusScope.of(context).unfocus();
+                                context
+                                    .read<SignUpCubit>()
+                                    .signUpWithEmailAndPassword(context);
+                              }
+                              //    Navigate.toReplace(context, const RootScreen());
+                            }),
+                        4.y,
+
+                        ///
+                        ///
+                        orAndDivider(),
+                        10.y,
+
+                        ///
+                        ///social logins
+                        ///
+                        CustomOutlinedButton(
+                          text: 'Login with Facebook',
+                          iconPath: Assets.facebook,
+                          onPressed: () {},
+                        ),
+
+                        15.y,
+
+                        CustomOutlinedButton(
+                          text: 'Login with Google',
+                          iconPath: Assets.google,
+                          onPressed: () {},
+                        ),
+
+                        25.y,
+
+                        ///
+                        ///don't have an account
+                        ///
+                        GestureDetector(
+                          onTap: () {
+                            Navigate.to(context, const LoginScreen());
+                          },
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: AppStrings.alreadyAccount,
+                              style: Styles.smallPlusJakartaSans(
+                                context,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: AppStrings.login,
+                                  style: Styles.smallPlusJakartaSans(context,
+                                      fontSize: 15.sp,
+                                      color: AppColors.primaryColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        10.y,
+                      ],
+                    ),
                   ),
                 ),
               ),

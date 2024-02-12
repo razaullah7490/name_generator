@@ -1,14 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:name_generator/SRC/Presentation/Resources/color.dart';
-import 'Core/app_providers.dart';
+import 'package:name_generator/locator.dart';
+import 'SRC/Presentation/Resources/app_providers.dart';
 import 'SRC/Presentation/Widgets/Splash/splash_screen.dart';
 
-
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+    apiKey: "AIzaSyBVeMW8zlHpaRL70B0Wy3KG3NeKyOqlays",
+    appId: "1:608984517534:android:b32aa954d3ae1d0601648f",
+    messagingSenderId: "608984517534",
+    projectId: "name-generator-1ca2e",
+  ));
+  await setupLocator();
   runApp(MultiBlocProvider(providers: appProviders, child: const MyApp()));
-
 }
 
 class MyApp extends StatelessWidget {
@@ -21,14 +31,15 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       useInheritedMediaQuery: true,
       builder: (context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           title: 'Name Generator',
           theme: ThemeData(
             primaryColor: AppColors.primaryColor,
             brightness: Brightness.light, // Set the default brightness to light
           ),
 
-          themeMode: ThemeMode.system, // Use the system theme mode (light or dark)
+          themeMode:
+              ThemeMode.system, // Use the system theme mode (light or dark)
           home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
         );

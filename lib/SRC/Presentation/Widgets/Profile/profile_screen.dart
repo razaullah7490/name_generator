@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
-import 'package:name_generator/SRC/Data/DataSource/Extensions/extensions.dart';
+import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
 import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Resources/styles.dart';

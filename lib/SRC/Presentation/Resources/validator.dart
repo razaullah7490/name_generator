@@ -18,11 +18,19 @@ class Validate {
 
   static String? password(v) {
     if (v.trim().isEmpty) {
-      return "Please provide password";
+      return "Please enter your password";
     }
     if (v.length < 6) {
       return "Must be greater than 6";
     }
+    return null;
+  }
+
+  static String? name(v) {
+    if (v.trim().isEmpty) {
+      return "Please Enter Your name";
+    }
+
     return null;
   }
 }

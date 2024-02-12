@@ -12,7 +12,12 @@
           "package_name": "com.generator.name.itecexperts.name_generator"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "608984517534-rvqe549mvimfksr0ta78v6627sk3ikca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBVeMW8zlHpaRL70B0Wy3KG3NeKyOqlays"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608984517534-rvqe549mvimfksr0ta78v6627sk3ikca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
