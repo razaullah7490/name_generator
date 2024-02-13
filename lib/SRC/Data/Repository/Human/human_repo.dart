@@ -1,7 +1,7 @@
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import '../../../Application/Services/APIServices/api_services.dart';
+import '../../../Application/api_services.dart';
 import '../../../Domain/human_model.dart';
 
 class HumanRepository {

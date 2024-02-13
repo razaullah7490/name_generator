@@ -163,7 +163,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         CustomOutlinedButton(
                           text: 'Login with Facebook',
                           iconPath: Assets.facebook,
-                          onPressed: () {},
+                          onPressed: () {
+                            context.read<LoginCubit>().signUpWithFacebook();
+                          },
                         ),
 
                         15.y,

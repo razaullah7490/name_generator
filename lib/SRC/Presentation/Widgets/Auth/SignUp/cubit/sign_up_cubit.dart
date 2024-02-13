@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:name_generator/SRC/Data/Services/auth_service.dart';
+import 'package:name_generator/SRC/Application/Services/auth_service.dart';
+import 'package:name_generator/SRC/Data/Repository/auth_repository.dart';
 import 'package:name_generator/SRC/Domain/Models/app_user.dart';
 import 'package:name_generator/SRC/Domain/Models/custom_auth_result.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
@@ -20,6 +21,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   CustomAuthResult authResult = CustomAuthResult();
   AuthService _authService = locator<AuthService>();
   bool isPasswordObscured = true;
+    final _authRepo = locator<AuthRepository>();
   SignUpCubit() : super(SignUpInitial());
 
   void togglePasswordVisibility() {
@@ -30,7 +32,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   void signUpWithEmailAndPassword(context) async {
     emit(SignUpLoading());
 
-    authResult = await _authService.signUpWithEmailPassword(appUser);
+    authResult = await _authRepo.signUpWithEmailPassword(appUser);
     log('$authResult');
     if (authResult.status!) {
       print("User logged in successfully");

@@ -1,14 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:name_generator/SRC/Data/Services/auth_exception_service.dart';
-import 'package:name_generator/SRC/Data/Services/database_service.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:name_generator/SRC/Application/Services/auth_exception_service.dart';
+
+import 'package:name_generator/SRC/Application/Services/database_service.dart';
+
 import 'package:name_generator/SRC/Domain/Models/app_user.dart';
 import 'package:name_generator/SRC/Domain/Models/custom_auth_result.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   GoogleSignIn _googleSignIn = GoogleSignIn();
-
+  final _facebookSignIn = FacebookAuth.instance;
   final _auth = FirebaseAuth.instance;
   CustomAuthResult customAuthResult = CustomAuthResult();
   User? user;
@@ -27,6 +30,7 @@ class AuthService {
     if (user != null) {
       isLogin = true;
       appUser = (await _dbService.getAppUser(user!.uid));
+      
       if (appUser.id == null) {
         await logout();
       } else {}
@@ -129,6 +133,7 @@ class AuthService {
         appUser.id = authResult.user!.uid;
         appUser.email = authResult.user!.email;
         appUser.name = authResult.user!.displayName ?? '';
+           appUser.image = authResult.user!.photoURL ?? '';
         print('Google sign in AppUser username => ${appUser.name}');
         isLogin = true;
         bool isUserExist = await _dbService.checkUser(appUser);
@@ -145,6 +150,52 @@ class AuthService {
       }
     } catch (e) {
       print('Exception @sighupWithGoogle: $e');
+      customAuthResult.status = false;
+      // customAuthResult.errorMessage =
+      //     AuthExceptionsService.generateExceptionMessage(e);
+    }
+    return customAuthResult;
+  }
+
+  signupWithFacebook() async {
+    try {
+     ;
+      final LoginResult result = await _facebookSignIn.login();
+       print('lllllllllllll');
+      print('Facebook login => ${result.message}');
+      if (result.status == LoginStatus.success) {
+        print('Facebook login result success');
+        final AccessToken accessToken = result.accessToken!;
+        print("AccessToken::FaceAuth => ${accessToken.token}");
+        final firebaseAuthCred =
+            FacebookAuthProvider.credential(accessToken.token);
+        final loginResult =
+            await FirebaseAuth.instance.signInWithCredential(firebaseAuthCred);
+        final userData = await FacebookAuth.instance.getUserData();
+        this.appUser = AppUser();
+
+        /// Get user data
+        appUser.id = loginResult.user!.uid;
+        appUser.name = userData['name'];
+        appUser.email = userData['email'];
+        // appUser.imageUrl = userData['picture']['data']['url'];
+        print('facebookUserImageUrl => ${userData['picture']['data']['url']}');
+        print('facebook login => ${appUser.name}');
+        customAuthResult.status = true;
+        customAuthResult.user = appUser;
+        isLogin = true;
+        bool isUserExist = await _dbService.checkUser(appUser);
+        if (isUserExist) {
+          appUser = await _dbService.getAppUser(appUser.id);
+        } else {
+          await _dbService.registerAppUser(appUser);
+        }
+      } else {
+        customAuthResult.status = false;
+        customAuthResult.errorMessage = 'An undefined error happened.';
+      }
+    } catch (e) {
+      print('Exception @sighupWithFacebook: $e');
       customAuthResult.status = false;
       // customAuthResult.errorMessage =
       //     AuthExceptionsService.generateExceptionMessage(e);

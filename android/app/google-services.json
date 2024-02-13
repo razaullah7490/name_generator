@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "608984517534-rgmtoujkb7r5u3mtlb7cbjkhslhpa3ed.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.generator.name.itecexperts.name_generator",
+            "certificate_hash": "b0f779f1e67a9de1c35846c51ade6ca9aaae87b9"
+          }
+        },
+        {
           "client_id": "608984517534-rvqe549mvimfksr0ta78v6627sk3ikca.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
@@ -9,6 +10,7 @@ import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/cat_icon.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
+import 'package:name_generator/SRC/Presentation/Widgets/Home/cubit/home_cubit.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Input/Cubit/input_form_screen.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/SubCategory/sub_category_screen.dart';
 import '../Form/form.dart';
@@ -62,11 +64,12 @@ class _HomeState extends State<Home> {
   int i = 0;
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<HomeCubit>();
     print('rebuilddd ${i++}');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: AppText('Hello 👋\nFarooq Ahmad',
+        title: AppText('Hello 👋\n${cubit.authService.appUser.name}',
             maxLine: 2,
             style: Styles.plusJakartaBold(context, fontSize: 16.sp)),
         actions: [

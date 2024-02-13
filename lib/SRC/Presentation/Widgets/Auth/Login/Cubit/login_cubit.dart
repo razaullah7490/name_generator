@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:name_generator/SRC/Data/Services/auth_service.dart';
-import 'package:name_generator/SRC/Data/Services/database_service.dart';
+import 'package:name_generator/SRC/Application/Services/auth_service.dart';
+import 'package:name_generator/SRC/Application/Services/database_service.dart';
+import 'package:name_generator/SRC/Data/Repository/auth_repository.dart';
 import 'package:name_generator/SRC/Domain/Models/app_user.dart';
 import 'package:name_generator/SRC/Domain/Models/custom_auth_result.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
@@ -16,6 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final _dbService = locator<DatabaseService>();
+    final _authRepo = locator<AuthRepository>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   AppUser appUser = AppUser();
@@ -30,7 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void loginWithEmailAndPassword(context) async {
     emit(LoginLoading());
-    authResult = await _authService.loginWithEmailPassword(
+    authResult = await _authRepo.loginWithEmailPassword(
         email: appUser.email, password: appUser.password);
     log('$authResult');
     if (authResult.status!) {
@@ -66,4 +68,27 @@ class LoginCubit extends Cubit<LoginState> {
     }
    
   }
+
+   signUpWithFacebook() async {
+  emit(LoginLoading());
+    authResult = await _authService.signupWithFacebook();
+    if (authResult.status!) {
+      print("Facebook user created successfully");
+      _authService.appUser = await _dbService.getAppUser(authResult.user.id);
+     
+      Get.offAll(() => RootScreen());
+      emit(LoginSuccess());
+    } else {
+      emit(LoginFailure('Something went wrong!'));
+      Get.dialog(AlertDialog(
+        title: Text("Error"),
+        content: Text("Sigining with Facebook"),
+        actions: [
+          ElevatedButton(child: Text("Ok"), onPressed: () => Get.back())
+        ],
+      ));
+    }
+   
+  }
+
 }
