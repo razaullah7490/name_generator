@@ -22,6 +22,7 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController passwordController = TextEditingController();
   AppUser appUser = AppUser();
   bool isPasswordObscured = true;
+
   final _authService = locator<AuthService>();
   CustomAuthResult authResult = CustomAuthResult();
 
@@ -48,7 +49,7 @@ class LoginCubit extends Cubit<LoginState> {
 
    signUpWithGoogle() async {
    emit(LoginLoading());
-    authResult = await _authService.loginWithGoogle();
+    authResult = await _authRepo.SignInWithGoogle();
     if (authResult.status!) {
       print("Facebook user created successfully");
       _authService.appUser =

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Domain/Models/app_user.dart';
+import 'package:name_generator/SRC/Domain/Models/banners.dart';
 
 class DatabaseService{
  final _db = FirebaseFirestore.instance;
@@ -54,6 +55,34 @@ class DatabaseService{
       debugPrint(s.toString());
       return AppUser();
     }
+  }
+
+
+    ///
+  /// ==================== APP BANNERS =================== ////
+  ///
+  ///
+  /// Get all banners
+  ///
+  Future<List<Banners>> getBanners() async {
+    debugPrint('@gettingBanners====>');
+    final List<Banners> banners = [];
+    try {
+      final snapshot = await _db
+          .collection("banners")
+          // .orderBy('createdAt', descending: true)
+          .get();
+      debugPrint('banners => ${snapshot.docs.length}');
+      if (snapshot.docs.isNotEmpty) {
+        
+        for (var doc in snapshot.docs) {
+          banners.add(Banners.formJson(doc, doc.id));
+        }
+      }
+    } catch (e) {
+      debugPrint('Exception @DatabaseService/gettingBanner $e');
+    }
+    return banners;
   }
 
 }

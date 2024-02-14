@@ -12,19 +12,28 @@ class AuthRepository {
   ///[SignUp]
   ///
   Future<CustomAuthResult> signUpWithEmailPassword(AppUser appUser) async {
-    await _authService.signUpWithEmailPassword(appUser);
-    return customAuthResult;
+    return await _authService.signUpWithEmailPassword(appUser);
   }
 
   ///[Login]
   ///
-  loginWithEmailPassword({email, password}) async {
-    await _authService.loginWithEmailPassword();
+  Future<CustomAuthResult> loginWithEmailPassword({email, password}) async {
+    return await _authService.loginWithEmailPassword(
+        email: email, password: password);
   }
 
   ///[Google]
   ///
   SignInWithGoogle() async {
-    await _authService.loginWithGoogle();
+    return await _authService.loginWithGoogle();
   }
+
+///================ LogOut ===================================
+///
+  logout() async {
+    return await _authService.logout();
+  }
+
+  
+
 }

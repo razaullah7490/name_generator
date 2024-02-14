@@ -76,7 +76,7 @@ class _ProfileState extends State<Profile> {
                 padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
                 child: Column(
                   children: [
-                    cubit.authService.appUser.image == ""
+                    cubit.authService.appUser.image == null
                         ? CircleAvatar(
                             radius: 60.r,
                             backgroundColor: Colors.grey,
@@ -85,13 +85,12 @@ class _ProfileState extends State<Profile> {
                               size: 60,
                               color: Colors.white,
                             ))
-                    :
-                    CircleAvatar(
-                      radius: 60.r,
-                       backgroundColor: Colors.transparent,
-                      backgroundImage:
-                          NetworkImage('${cubit.authService.appUser.image}'),
-                    ),
+                        : CircleAvatar(
+                            radius: 60.r,
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: NetworkImage(
+                                '${cubit.authService.appUser.image}'),
+                          ),
                     AppText('${cubit.authService.appUser.name ?? ""}',
                         style: Styles.plusJakartaSans(
                           context,
@@ -110,7 +109,7 @@ class _ProfileState extends State<Profile> {
                           child: GestureDetector(
                             onTap: () {
                               log('${cubit.authService.appUser.image}');
-                                  log('${cubit.authService.appUser.name}');
+                              log('${cubit.authService.appUser.name}');
                               Navigate.to(context, screens[index]);
                             },
                             child: Container(
@@ -149,7 +148,7 @@ class _ProfileState extends State<Profile> {
                     5.y,
                     GestureDetector(
                       onTap: () {
-                        context.read<ProfileCubit>().logOut();
+                        context.read<ProfileCubit>().logOut(context);
                       },
                       child: Container(
                         width: double.infinity,

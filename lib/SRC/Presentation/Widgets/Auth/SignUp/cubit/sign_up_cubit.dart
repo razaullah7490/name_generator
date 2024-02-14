@@ -21,7 +21,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   CustomAuthResult authResult = CustomAuthResult();
   AuthService _authService = locator<AuthService>();
   bool isPasswordObscured = true;
-    final _authRepo = locator<AuthRepository>();
+  final _authRepo = locator<AuthRepository>();
   SignUpCubit() : super(SignUpInitial());
 
   void togglePasswordVisibility() {
@@ -39,11 +39,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       _authService.isLogin = true;
 
       emit(SignUpSuccess());
-     
     } else {
       emit(SignUpFailure(authResult.errorMessage!));
-    
     }
-   
   }
 }

@@ -102,17 +102,17 @@ class _HomeState extends State<Home> {
                   autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   viewportFraction: 1,
                 ),
-                items: carouselImages.map((String url) {
+                items: cubit.banners.map((url) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
                         width: MediaQuery.of(context).size.width.w,
                         decoration: BoxDecoration(
                           color: Colors.amber,
-                          borderRadius: BorderRadius.all(Radius.circular(80.r)),
+                          borderRadius: BorderRadius.all(Radius.circular(15.r)),
                         ),
-                        child: Image.asset(
-                          url,
+                        child: Image.network(
+                          url.imageUrl!,
                           fit: BoxFit.fill,
                         ),
                       );
