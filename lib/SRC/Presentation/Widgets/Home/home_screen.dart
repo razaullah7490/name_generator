@@ -11,7 +11,7 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/cat_icon.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Home/cubit/home_cubit.dart';
-import 'package:name_generator/SRC/Presentation/Widgets/Input/Cubit/input_form_screen.dart';
+
 import 'package:name_generator/SRC/Presentation/Widgets/SubCategory/sub_category_screen.dart';
 import '../Form/form.dart';
 
