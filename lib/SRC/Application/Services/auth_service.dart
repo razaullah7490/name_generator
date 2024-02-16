@@ -10,6 +10,7 @@ import 'package:name_generator/SRC/Domain/Models/custom_auth_result.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
+  
   GoogleSignIn _googleSignIn = GoogleSignIn();
   final _facebookSignIn = FacebookAuth.instance;
   final _auth = FirebaseAuth.instance;
