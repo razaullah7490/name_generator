@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:name_generator/SRC/Domain/Models/boolean_form.dart';
+
 class Blog {
   DateTime? createdAt;
   List<String>? Keyword;
@@ -6,7 +8,10 @@ class Blog {
   List<String>? topicOptions;
   String? id;
 
+  BooleanForm? booleanForm;
+
   Blog({
+    this.booleanForm,
     this.id,
     this.createdAt,
     this.Keyword,
@@ -14,7 +19,9 @@ class Blog {
     this.topicOptions,
   });
 
+
   Blog.fromJson(json, id) {
+    
     createdAt = json['createdAt'].toDate() ?? DateTime.now();
     if (json['keyword_phrases'] != null) {
       Keyword = [];

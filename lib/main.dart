@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:name_generator/SRC/Application/Services/database_service.dart';
+import 'package:name_generator/SRC/Domain/Models/blog.dart';
 import 'package:name_generator/SRC/Domain/Models/category.dart';
 import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 import 'package:name_generator/locator.dart';
@@ -23,10 +24,13 @@ Future<void> main() async {
 
   await setupLocator();
 
-  // final _db = locator<DatabaseService>();
-  // await _db.getCategories();
-  // Categories cat = Categories();
+  final _db = locator<DatabaseService>();
+// await _db.getCategories();
+ // Categories cat = Categories();
+
   // await _db.getFormData(_db.categories![0].id ?? "");
+  // await _db.addCategoriesToFirebase();
+  //await _db.addBooleanFormDataToFirebase();
 
   runApp(MultiBlocProvider(providers: appProviders, child: const MyApp()));
 }

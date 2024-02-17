@@ -28,7 +28,7 @@ class CategoryTile extends StatelessWidget {
                   color: Colors.white,
                   shape: BoxShape.circle,
                   border: Border.all(color: const Color(0xffDBE7F5))),
-              child: Image.asset(
+              child: Image.network(
                 icon,
                 width: 25.w,
                 height: 25.h,

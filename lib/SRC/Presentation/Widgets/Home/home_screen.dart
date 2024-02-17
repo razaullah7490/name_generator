@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
@@ -84,82 +85,99 @@ class _HomeState extends State<Home> {
           10.x,
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              10.y,
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 200.0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  viewportFraction: 1,
-                ),
-                items: cubit.banners.map((url) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width.w,
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                        ),
-                        child: Image.network(
-                          url.imageUrl!,
-                          fit: BoxFit.fill,
-                        ),
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
-              7.y,
-              Align(
-                child: Container(
-                  height: 3.h,
-                  width: 30.w,
-                  color: AppColors.primaryColor,
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(top: 10.sp, left: 15.sp),
-                child: AppText('Name Categories',
-                    style: Styles.smallPlusJakartaSans(
-                      context,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                    )),
-              ),
-              5.y,
-              Wrap(
-                //  alignment: WrapAlignment.spaceEvenly,
-                //runSpacing: 0,
-                // alignment: WrapAlignment.spaceBetween,
-                children: [
-                  for (int i = 0; i < categorynames.length; i++)
-                    GestureDetector(
-                      onTap: () {
-                        Navigate.to(context, SubCategoryScreen());
-                      },
-                      child: CategoryTile(
-                        title: categorynames[i],
-                        icon: categoryimages[i],
+      body: BlocConsumer<HomeCubit, HomeState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is HomeLoading,
+            progressIndicator: CircularProgressIndicator(),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    10.y,
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: 200.0,
+                        enlargeCenterPage: true,
+                        autoPlay: true,
+                        aspectRatio: 16 / 9,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enableInfiniteScroll: true,
+                        autoPlayAnimationDuration:
+                            const Duration(milliseconds: 800),
+                        viewportFraction: 1,
                       ),
-                    )
-                ],
+                      items: cubit.banners.map((url) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width.w,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.r)),
+                              ),
+                              child: Image.network(
+                                url.imageUrl!,
+                                fit: BoxFit.fill,
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    7.y,
+                    Align(
+                      child: Container(
+                        height: 3.h,
+                        width: 30.w,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.sp, left: 15.sp),
+                      child: AppText('Name Categories',
+                          style: Styles.smallPlusJakartaSans(
+                            context,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
+                          )),
+                    ),
+                    5.y,
+
+                    Wrap(
+                      //  alignment: WrapAlignment.spaceEvenly,
+                      //runSpacing: 0,
+                      // alignment: WrapAlignment.spaceBetween,
+                      children: [
+                        for (int i = 0;
+                            i < cubit.categories!.length;
+                            i++)
+                          GestureDetector(
+                            onTap: () {
+                              Navigate.to(context, SubCategoryScreen());
+                            },
+                            child: CategoryTile(
+                              title: cubit.categories![i].name ?? "",
+                              icon:
+                                  cubit.categories![i].imageUrl ?? "",
+                            ),
+                          )
+                      ],
+                    ),
+                    //50.y,
+                  ],
+                ),
               ),
-              //50.y,
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
       floatingActionButton: SizedBox(
         height: 60.h,
