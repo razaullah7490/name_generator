@@ -26,7 +26,7 @@ class CustomDropDownWidget extends StatelessWidget {
     this.hMargin = 8,
     this.vMargin = 0,
     this.dropDownHeight,
-    required this.prefixIcon,
+     this.prefixIcon,
     required this.hintText,
     required this.value,
     required this.validationText,
@@ -42,7 +42,7 @@ class CustomDropDownWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          boxShadow: isShadowRequired ? [AppShadow.normal()] : []),
+          boxShadow: isShadowRequired ? [  AppShadow.normal()] : []),
       child: ButtonTheme(
         alignedDropdown: true,
         child: DropdownButtonFormField(
@@ -91,7 +91,7 @@ class CustomDropDownWidget extends StatelessWidget {
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(borderRadius).r,
                     borderSide: BorderSide(
-                      color: AppColors.lightgrey,
+                      color:Colors.grey.withOpacity(0.5),
                       width: 1.w,
                     ))
                 : outlineInputBorder(),

@@ -19,21 +19,28 @@ class CustomSliverAppbar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      
       automaticallyImplyLeading: leading ?? false,
       elevation: 0,
       backgroundColor: Colors.transparent,
-      title: AppText(
-        title,
-        style: Styles.plusJakartaSans(context,
-            fontSize: 14.sp, fontWeight: FontWeight.w600),
-        //textAlign: TextAlign.center,
+      title: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: AppText(
+          title,
+          style: Styles.plusJakartaSans(context,
+              fontSize: 14.sp, fontWeight: FontWeight.w600),
+          //textAlign: TextAlign.center,
+        ),
       ),
       actions: [
         GestureDetector(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(icon, color: Colors.black45)),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Icon(icon, color: Colors.black45),
+            )),
       ],
     );
   }

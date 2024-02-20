@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:name_generator/SRC/Application/Services/auth_service.dart';
 import 'package:name_generator/SRC/Application/Services/database_service.dart';
 import 'package:name_generator/SRC/Data/Repository/auth_repository.dart';
+import 'package:name_generator/SRC/Data/Repository/db_repo.dart';
 import 'package:name_generator/SRC/Domain/Models/banners.dart';
+import 'package:name_generator/SRC/Domain/Models/blog.dart';
+import 'package:name_generator/SRC/Domain/Models/boolean_form.dart';
 import 'package:name_generator/SRC/Domain/Models/category.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Home/home_screen.dart';
 import 'package:name_generator/locator.dart';
@@ -17,8 +20,9 @@ class HomeCubit extends Cubit<HomeState> {
           HomeInitial(),
         ) {
     getAllBanners();
+    getForms();
     getCategories();
-    getBooleanForm();
+    //  retrieveData();
   }
 
   List<Banners> banners = [];
@@ -26,14 +30,25 @@ class HomeCubit extends Cubit<HomeState> {
   final authService = locator<AuthService>();
   final authRepository = locator<AuthRepository>();
   final dbService = locator<DatabaseService>();
-  var booleanForm = {};
+  final dbRepo = locator<DatabaseRepository>();
 
-  getBooleanForm() async {
-    await dbService.getFormData().then((value) {
-      booleanForm = value.data()!;
-      print('==========================$booleanForm');
-    });
+  List<Blog> blog = [];
+  BooleanForm? boolForm;
+
+  getForms() async {
+    blog = await dbRepo.getForms();
+    print(blog[0].targetAudience);
   }
+
+  // void retrieveData() async {
+  //   BooleanForm? booleanForm = await dbRepo.getBooleanForm();
+  //   print(booleanForm?.charType ?? 'kkkk');
+
+  //   if (booleanForm != null) {
+
+  //     print("Retrieved data: ${booleanForm.toJson()}");
+  //   }
+  // }
 
   ///==========GetBanners==============
   ///
@@ -49,7 +64,7 @@ class HomeCubit extends Cubit<HomeState> {
     print('helo');
     emit(HomeLoading());
     // if (dbService.categories != null) {
-    categories = await authRepository.getCategories();
+    categories = await dbRepo.getCategories();
     print(categories.length);
     emit(HomeSuccess());
     // } else {

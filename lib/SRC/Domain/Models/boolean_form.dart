@@ -111,17 +111,18 @@
 //   bool? twinsGender;
 //   bool? naming_style;
 //   bool? background;
-//   bool? religionn; 
+//   bool? religionn;
 //   bool? countryyy;
 //   bool? letterrrrr;
 // }
+
 class BooleanForm {
   bool? topicOptions;
   bool? targetAudienceOptions;
   bool? keywordPhrasesOptions;
-  bool? themeOptions;
+  bool? themeOptionsBook;
   bool? keywordOptions;
-  bool? toneOptions;
+  bool? toneOptionsBook;
   bool? gender;
   bool? region;
   bool? nameStyle;
@@ -133,57 +134,45 @@ class BooleanForm {
   bool? texture;
   bool? taste;
   bool? ingredient;
-  bool? cuisineRegion;
-  bool? genderR;
+  bool? cusineRegion;
   bool? nameLength;
   bool? gamingNameThemesOptions;
   bool? gameOptions;
-  bool? letterR;
-  bool? genderRR;
   bool? religion;
   bool? country;
-  bool? letterRR;
   bool? personality;
   bool? dob;
-  bool? countryY;
-  bool? nameY;
-  bool? genderRRR;
+  bool? name;
   bool? petType;
-  bool? letterRRR;
-  bool? nameLengthY;
-  bool? themeY;
+  bool? themeDog;
   bool? productTypeOptions;
   bool? targetAudienceOptionss;
   bool? productFeatures;
-  bool? styleOrTone;
-  bool? selectedKeywords;
+  bool? styleOrToneProdu;
+  bool? pr;
   bool? domainOptions;
   bool? geographicFocus;
-  bool? themeE;
+  bool? themeStory;
   bool? element;
   bool? mood;
   bool? numMembers;
-  bool? genderRRRR;
-  bool? themeEE;
+  bool? themeTeam;
   bool? title;
   bool? typeOfWork;
   bool? subject;
   bool? keywordIdeas;
-  bool? toneStyle;
+  bool? toneStyleTitle;
   bool? twinsGender;
   bool? namingStyle;
   bool? background;
-  bool? religionN;
-  bool? countryYy;
-  bool? letterRRRR;
 
   BooleanForm({
     this.topicOptions = false,
     this.targetAudienceOptions = false,
     this.keywordPhrasesOptions = false,
-    this.themeOptions = false,
+    this.themeOptionsBook = false,
     this.keywordOptions = false,
-    this.toneOptions = false,
+    this.toneOptionsBook = false,
     this.gender = false,
     this.region = false,
     this.nameStyle = false,
@@ -195,58 +184,46 @@ class BooleanForm {
     this.texture = false,
     this.taste = false,
     this.ingredient = false,
-    this.cuisineRegion = false,
-    this.genderR = false,
+    this.cusineRegion = false,
     this.nameLength = false,
     this.gamingNameThemesOptions = false,
     this.gameOptions = false,
-    this.letterR = false,
-    this.genderRR = false,
     this.religion = false,
     this.country = false,
-    this.letterRR = false,
     this.personality = false,
     this.dob = false,
-    this.countryY = false,
-    this.nameY = false,
-    this.genderRRR = false,
+    this.name = false,
     this.petType = false,
-    this.letterRRR = false,
-    this.nameLengthY = false,
-    this.themeY = false,
+    this.themeDog = false,
     this.productTypeOptions = false,
     this.targetAudienceOptionss = false,
     this.productFeatures = false,
-    this.styleOrTone = false,
-    this.selectedKeywords = false,
+    this.styleOrToneProdu = false,
+    this.pr = false,
     this.domainOptions = false,
     this.geographicFocus = false,
-    this.themeE = false,
+    this.themeStory = false,
     this.element = false,
     this.mood = false,
     this.numMembers = false,
-    this.genderRRRR = false,
-    this.themeEE = false,
+    this.themeTeam = false,
     this.title = false,
     this.typeOfWork = false,
     this.subject = false,
     this.keywordIdeas = false,
-    this.toneStyle = false,
+    this.toneStyleTitle = false,
     this.twinsGender = false,
     this.namingStyle = false,
     this.background = false,
-    this.religionN = false,
-    this.countryYy = false,
-    this.letterRRRR = false,
   });
 
-  BooleanForm.fromJson(Map<String, dynamic> json)
+  BooleanForm.fromJson(json)
       : topicOptions = json['topic_options'] ?? false,
         targetAudienceOptions = json['target_audience_options'] ?? false,
         keywordPhrasesOptions = json['keyword_phrases_options'] ?? false,
-        themeOptions = json['theme_options'] ?? false,
+        themeOptionsBook = json['theme_options_book'] ?? false,
         keywordOptions = json['keyword_options'] ?? false,
-        toneOptions = json['tone_options'] ?? false,
+        toneOptionsBook = json['tone_options_book'] ?? false,
         gender = json['gender'] ?? false,
         region = json['region'] ?? false,
         nameStyle = json['name_style'] ?? false,
@@ -258,58 +235,46 @@ class BooleanForm {
         texture = json['texture'] ?? false,
         taste = json['taste'] ?? false,
         ingredient = json['ingredient'] ?? false,
-        cuisineRegion = json['cusineRegion'] ?? false,
-        genderR = json['genderr'] ?? false,
+        cusineRegion = json['cusineRegion'] ?? false,
         nameLength = json['nameLength'] ?? false,
         gamingNameThemesOptions = json['gamingNameThemesOptions'] ?? false,
         gameOptions = json['gameOptions'] ?? false,
-        letterR = json['letterr'] ?? false,
-        genderRR = json['genderrr'] ?? false,
         religion = json['religion'] ?? false,
         country = json['country'] ?? false,
-        letterRR = json['letterrrr'] ?? false,
         personality = json['personality'] ?? false,
         dob = json['dob'] ?? false,
-        countryY = json['countryy'] ?? false,
-        nameY = json['name'] ?? false,
-        genderRRR = json['genderrrr'] ?? false,
+        name = json['name'] ?? false,
         petType = json['pet_type'] ?? false,
-        letterRRR = json['letterrr'] ?? false,
-        nameLengthY = json['name_lengh'] ?? false,
-        themeY = json['theme'] ?? false,
+        themeDog = json['theme_dog'] ?? false,
         productTypeOptions = json['product_type_options'] ?? false,
         targetAudienceOptionss = json['target_audience_optionss'] ?? false,
         productFeatures = json['product_features'] ?? false,
-        styleOrTone = json['style_or_tone'] ?? false,
-        selectedKeywords = json['selected_keywords'] ?? false,
+        styleOrToneProdu = json['style_or_tone_produ'] ?? false,
+        pr = json['pr'] ?? false,
         domainOptions = json['domain_options'] ?? false,
         geographicFocus = json['geographic_focus'] ?? false,
-        themeE = json['themee'] ?? false,
+        themeStory = json['theme_story'] ?? false,
         element = json['element'] ?? false,
         mood = json['mood'] ?? false,
         numMembers = json['num_members'] ?? false,
-        genderRRRR = json['genderrrrr'] ?? false,
-        themeEE = json['themeee'] ?? false,
+        themeTeam = json['theme_team'] ?? false,
         title = json['title'] ?? false,
         typeOfWork = json['typeOfWork'] ?? false,
         subject = json['subject'] ?? false,
         keywordIdeas = json['keyword_ideas'] ?? false,
-        toneStyle = json['tone_style'] ?? false,
+        toneStyleTitle = json['tone_style_title'] ?? false,
         twinsGender = json['twinsGender'] ?? false,
         namingStyle = json['naming_style'] ?? false,
-        background = json['background'] ?? false,
-        religionN = json['religionn'] ?? false,
-        countryYy = json['countryyy'] ?? false,
-        letterRRRR = json['letterrrrr'] ?? false;
+        background = json['background'] ?? false;
 
   Map<String, dynamic> toJson() {
     return {
       'topic_options': topicOptions,
       'target_audience_options': targetAudienceOptions,
       'keyword_phrases_options': keywordPhrasesOptions,
-      'theme_options': themeOptions,
+      'theme_options_book': themeOptionsBook,
       'keyword_options': keywordOptions,
-      'tone_options': toneOptions,
+      'tone_options_book': toneOptionsBook,
       'gender': gender,
       'region': region,
       'name_style': nameStyle,
@@ -321,49 +286,37 @@ class BooleanForm {
       'texture': texture,
       'taste': taste,
       'ingredient': ingredient,
-      'cusineRegion': cuisineRegion,
-      'genderr': genderR,
+      'cusineRegion': cusineRegion,
       'nameLength': nameLength,
       'gamingNameThemesOptions': gamingNameThemesOptions,
       'gameOptions': gameOptions,
-      'letterr': letterR,
-      'genderrr': genderRR,
       'religion': religion,
       'country': country,
-      'letterrrr': letterRR,
       'personality': personality,
       'dob': dob,
-      'countryy': countryY,
-      'name': nameY,
-      'genderrrr': genderRRR,
+      'name': name,
       'pet_type': petType,
-      'letterrr': letterRR,
-      'name_lengh': nameLengthY,
-      'theme': themeY,
+      'theme_dog': themeDog,
       'product_type_options': productTypeOptions,
       'target_audience_optionss': targetAudienceOptionss,
       'product_features': productFeatures,
-      'style_or_tone': styleOrTone,
-      'selected_keywords': selectedKeywords,
+      'style_or_tone_produ': styleOrToneProdu,
+      'pr': pr,
       'domain_options': domainOptions,
       'geographic_focus': geographicFocus,
-      'themee': themeE,
+      'theme_story': themeStory,
       'element': element,
       'mood': mood,
       'num_members': numMembers,
-      'genderrrrr': genderRRRR,
-      'themeee': themeEE,
+      'theme_team': themeTeam,
       'title': title,
       'typeOfWork': typeOfWork,
       'subject': subject,
       'keyword_ideas': keywordIdeas,
-      'tone_style': toneStyle,
+      'tone_style_title': toneStyleTitle,
       'twinsGender': twinsGender,
       'naming_style': namingStyle,
       'background': background,
-      'religionn': religionN,
-      'countryyy': countryYy,
-      'letterrrrr': letterRRRR,
     };
   }
 }

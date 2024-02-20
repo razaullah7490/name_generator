@@ -35,9 +35,4 @@ class AuthRepository {
     return await _authService.logout();
   }
 
-  /// ================GetCaregories====================
-
-  getCategories() async {
-    return await _dbService.getCategories();
-  }
 }

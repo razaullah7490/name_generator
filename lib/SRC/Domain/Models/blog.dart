@@ -8,10 +8,10 @@ class Blog {
   List<String>? topicOptions;
   String? id;
 
-  BooleanForm? booleanForm;
+  //BooleanForm? booleanForm;
 
   Blog({
-    this.booleanForm,
+  //  this.booleanForm,
     this.id,
     this.createdAt,
     this.Keyword,
@@ -21,24 +21,25 @@ class Blog {
 
 
   Blog.fromJson(json, id) {
+    id = this.id;
     
     createdAt = json['createdAt'].toDate() ?? DateTime.now();
-    if (json['keyword_phrases'] != null) {
+    if (json['keyword_phrases_options'] != null) {
       Keyword = [];
-      json['keyword_phrases'].forEach((e) {
+      json['keyword_phrases_options'].forEach((e) {
         Keyword!.add(e);
       });
     }
-    if (json['target_audience'] != null) {
+    if (json['target_audience_options'] != null) {
       targetAudience = [];
-      json['target_audience'].forEach((e) {
+      json['target_audience_options'].forEach((e) {
         targetAudience!.add(e);
       });
     }
 
-    if (json['topic_optons'] != null) {
+    if (json['topic_options'] != null) {
       topicOptions = [];
-      json['topic_optons'].forEach((e) {
+      json['topic_options'].forEach((e) {
         topicOptions!.add(e);
       });
     }

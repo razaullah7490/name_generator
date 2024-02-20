@@ -156,17 +156,14 @@ class _HomeState extends State<Home> {
                       //runSpacing: 0,
                       // alignment: WrapAlignment.spaceBetween,
                       children: [
-                        for (int i = 0;
-                            i < cubit.categories!.length;
-                            i++)
+                        for (int i = 0; i < cubit.categories!.length; i++)
                           GestureDetector(
                             onTap: () {
-                              Navigate.to(context, SubCategoryScreen());
+                              Navigate.to(context, FormScreen());
                             },
                             child: CategoryTile(
                               title: cubit.categories![i].name ?? "",
-                              icon:
-                                  cubit.categories![i].imageUrl ?? "",
+                              icon: cubit.categories![i].imageUrl ?? "",
                             ),
                           )
                       ],

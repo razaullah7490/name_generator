@@ -7,12 +7,12 @@ import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 
 
-class CustomDropdownFormField extends StatelessWidget {
+class CustomDropDownWidget extends StatelessWidget {
   final String hintText;
   final List<String> options;
   final TextEditingController controller;
 
-  const CustomDropdownFormField({
+  const CustomDropDownWidget({
     Key? key,
     required this.hintText,
     required this.options,

@@ -14,6 +14,7 @@ import 'package:name_generator/SRC/Presentation/Widgets/Root/root_screen.dart';
 import 'package:name_generator/locator.dart';
 
 class LoginCubit extends Cubit<LoginState> {
+  
   LoginCubit() : super(LoginInitial());
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final _dbService = locator<DatabaseService>();
