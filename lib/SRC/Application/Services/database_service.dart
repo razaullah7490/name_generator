@@ -1,15 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/multipart/form_data.dart';
 import 'package:name_generator/SRC/Data/dumydata.dart';
 import 'package:name_generator/SRC/Domain/Models/app_user.dart';
 import 'package:name_generator/SRC/Domain/Models/banners.dart';
 import 'package:name_generator/SRC/Domain/Models/blog.dart';
 import 'package:name_generator/SRC/Domain/Models/boolean_form.dart';
 import 'package:name_generator/SRC/Domain/Models/category.dart';
+import 'package:name_generator/SRC/Domain/Models/form_data.dart';
 
 class DatabaseService {
   BooleanForm? bool;
+  FormsDataa? forms;
   final _db = FirebaseFirestore.instance;
 
   // Blog blog = Blog();
@@ -117,29 +120,29 @@ class DatabaseService {
   }
 
   ///========================Form.============================
-  getForms() async {
-    debugPrint('@getForms');
+  // getForms() async {
+  //   debugPrint('@getForms');
 
-    try {
-      final snapshot = await _db
-          .collection("Forms")
-          // .orderBy('createdAt', descending: true)
-          .get();
-      debugPrint('Forms => ${snapshot.docs.length}');
+  //   try {
+  //     final snapshot = await _db
+  //         .collection("Forms")
+  //         // .orderBy('createdAt', descending: true)
+  //         .get();
+  //     debugPrint('Forms => ${snapshot.docs.length}');
 
-      if (snapshot.docs.isNotEmpty) {
-        for (var doc in snapshot.docs) {
-          blog.add(Blog.fromJson(doc, doc.id));
-        }
-      }
-    } catch (e) {
-      debugPrint('Exception @DatabaseService/gettingForms $e');
-    }
-    return blog;
-  }
+  //     if (snapshot.docs.isNotEmpty) {
+  //       for (var doc in snapshot.docs) {
+  //         blog.add(Blog.fromJson(doc, doc.id));
+  //       }
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Exception @DatabaseService/gettingForms $e');
+  //   }
+  //   return blog;
+  // }
 
   Future<BooleanForm?> getBooleanForm() async {
-  //  print('Category Id ${categories![0].id!}');
+    //  print('Category Id ${categories![0].id!}');
     try {
       DocumentSnapshot subDocumentSnapshot = await FirebaseFirestore.instance
           .collection('category')
@@ -162,6 +165,48 @@ class DatabaseService {
       return null;
     }
   }
+
+  Future<FormsDataa?> getFormData() async {
+    try {
+      QuerySnapshot snapshot = await _db.collection('FormData').get();
+
+      if (snapshot.docs.isNotEmpty) {
+        forms = FormsDataa.fromJson(snapshot.docs.first.data());
+        // print(forms!.targetAudienceOptions);
+        return forms;
+      } else {
+        print("No such subdocument!");
+        return null;
+      }
+    } catch (e) {
+      print("Error getting subdocument: $e");
+      return null;
+    }
+  }
+// Future<FormsDataa?> getFormData() async {
+//   try {
+//     QuerySnapshot snapshot = await _db.collection('FormData').get();
+
+//     if (snapshot.docs.isNotEmpty) {
+//       // Get the first document
+//       var documentData = snapshot.docs.first.data();
+
+//       if (documentData is Map<String, dynamic>) {
+//         // Assuming FormsDataa is a class generated from JSON serialization
+//         return FormsDataa.fromJson(documentData);
+//       } else {
+//         print("Error: Unexpected data format");
+//         return null;
+//       }
+//     } else {
+//       print("No documents found!");
+//       return null;
+//     }
+//   } catch (e) {
+//     print("Error getting subdocument: $e");
+//     return null;
+//   }
+// }
 
   // Future<void> addCategoriesToFirebase() async {
   //   // Initialize Firestore

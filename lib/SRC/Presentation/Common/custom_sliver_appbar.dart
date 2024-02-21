@@ -19,7 +19,6 @@ class CustomSliverAppbar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      
       automaticallyImplyLeading: leading ?? false,
       elevation: 0,
       backgroundColor: Colors.transparent,

@@ -2,28 +2,23 @@
 import 'package:name_generator/SRC/Domain/Models/boolean_form.dart';
 
 class Blog {
-  DateTime? createdAt;
   List<String>? Keyword;
   List<String>? targetAudience;
   List<String>? topicOptions;
-  String? id;
 
   //BooleanForm? booleanForm;
 
   Blog({
-  //  this.booleanForm,
-    this.id,
-    this.createdAt,
+    //  this.booleanForm,
+
     this.Keyword,
     this.targetAudience,
     this.topicOptions,
   });
 
-
-  Blog.fromJson(json, id) {
-    id = this.id;
-    
-    createdAt = json['createdAt'].toDate() ?? DateTime.now();
+  Blog.fromJson(
+    json,
+  ) {
     if (json['keyword_phrases_options'] != null) {
       Keyword = [];
       json['keyword_phrases_options'].forEach((e) {

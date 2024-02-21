@@ -24,7 +24,7 @@ Future<void> main() async {
 
   await setupLocator();
 
-  // final _db = locator<DatabaseService>();
+   final _db = locator<DatabaseService>();
 
   // // await _db.getCategories();
   // await _db.getBooleanForm();

@@ -20,7 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
           HomeInitial(),
         ) {
     getAllBanners();
-    getForms();
+
     getCategories();
     //  retrieveData();
   }
@@ -35,10 +35,10 @@ class HomeCubit extends Cubit<HomeState> {
   List<Blog> blog = [];
   BooleanForm? boolForm;
 
-  getForms() async {
-    blog = await dbRepo.getForms();
-    print(blog[0].targetAudience);
-  }
+  // getForms() async {
+  //   blog = await dbRepo.getForms();
+  //   print(blog[0].targetAudience);
+  // }
 
   // void retrieveData() async {
   //   BooleanForm? booleanForm = await dbRepo.getBooleanForm();

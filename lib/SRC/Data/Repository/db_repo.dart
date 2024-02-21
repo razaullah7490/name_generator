@@ -20,7 +20,7 @@ class DatabaseRepository {
   ///===========getFoems======================
 
   getForms() async {
-    return await _dbService.getForms();
+    return await _dbService.getFormData();
   }
 
   ///===========getBooleanForm======================

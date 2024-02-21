@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdowm_textfield.dart';
 
 import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
-import 'package:name_generator/SRC/Presentation/Resources/color.dart';
-import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
-import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
-import 'package:name_generator/SRC/Presentation/Common/custom_dropdown.dart';
-import 'package:name_generator/SRC/Presentation/Common/custom_sliver_appbar.dart';
+import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 
 import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_cubit.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_state.dart';
@@ -36,10 +34,7 @@ class _FormScreenState extends State<FormScreen> {
     final cubit = context.read<FormCubit>();
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppbar(
-          title: 'Forms',
-          autoleading: true,
-        ),
+    
         body: BlocConsumer<FormCubit, FormmState>(
           listener: (context, state) {
             // TODO: implement listener
@@ -83,270 +78,256 @@ class _FormScreenState extends State<FormScreen> {
   FormFields(FormCubit cubit) {
     return Column(
       children: [
-        50.y,
+       10.y,
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            AppText(
+              'Fill the Form',
+              style: Styles.plusJakartaSans(context,
+                  fontSize: 14.sp, fontWeight: FontWeight.w600),
+              //textAlign: TextAlign.center,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Icon(Icons.cancel_outlined, color: Colors.black45),
+                )),
+          ],
+        ),
 
         ///============Blog Category =====3 fields===========
 
         /// Topic Options
-        cubit.booleanForm.topicOptions == false
-            ? CustomDropDownTextField(
-                text: "Enter or choose any topic",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.topicOptions!)
+          CustomDropDownTextField(
+            text: "Enter or choose any topic",
+            options: cubit.formData?.topicOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Target Audience
-        cubit.booleanForm.targetAudienceOptions == false
-            ? CustomDropDownTextField(
-                text: "Enter or choose Target Audience",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.targetAudienceOptions!)
+          CustomDropDownTextField(
+            text: "Enter or choose Target Audience",
+            options: cubit.formData?.targetAudienceOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///keywordPhrases
-        cubit.booleanForm.keywordPhrasesOptions == false
-            ? CustomDropDownTextField(
-                text: "Enter or choose  Keyword Phrases",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.keywordPhrasesOptions!)
+          CustomDropDownTextField(
+            text: "Enter or choose  Keyword Phrases",
+            options: cubit.formData?.keywordPhrasesOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///============Book Category =====3 fields===========
 
         /// Theme Options
-        cubit.booleanForm.themeOptionsBook == true
-            ? CustomDropDownTextField(
-                text: "Enter or choose Theme",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.themeOptionsBook!)
+          CustomDropDownTextField(
+            text: "Enter or choose Theme",
+            options: cubit.formData?.themeOptionsBook ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Key word Options
         ///
-        cubit.booleanForm.keywordOptions == true
-            ? CustomDropDownTextField(
-                text: "Enter or choose Keywords",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.keywordOptions!)
+          CustomDropDownTextField(
+            text: "Enter or choose Keywords",
+            options: cubit.formData?.keywordOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///Tone options
-        cubit.booleanForm.toneOptionsBook == true
-            ? CustomDropDownTextField(
-                text: "Enter or choose  Tone",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.toneOptionsBook!)
+          CustomDropDownTextField(
+            text: "Enter or choose  Tone",
+            options: cubit.formData?.toneOptionsBook ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///============Character Category =====6 fields===========
 
         /// Gender Options
-        cubit.booleanForm.gender == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Gender",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.gender!)
+          CustomDropDownTextField(
+            text: "Enter or Select Gender",
+            options: cubit.formData?.gender ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Region Options
         ///
-        cubit.booleanForm.region == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Region",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.region!)
+          CustomDropDownTextField(
+            text: "Enter or Select Region",
+            options: cubit.formData?.region ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///Tone options
-        cubit.booleanForm.nameStyle == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Name Style",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.nameStyle!)
+          CustomDropDownTextField(
+            text: "Enter or Select Name Style",
+            options: cubit.formData?.nameStyle ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Flavour Options
-        cubit.booleanForm.flavour == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Flavour",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.flavour!)
+          CustomDropDownTextField(
+            text: "Enter or Select Flavour",
+            options: cubit.formData?.flavour ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Character type
         ///
-        cubit.booleanForm.charType == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Character Type",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.charType!)
+          CustomDropDownTextField(
+            text: "Enter or Select Character Type",
+            options: cubit.formData?.charType ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///Letter  Somefields are not related to specific category
         ///
 
-        cubit.booleanForm.letter == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Letter",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.letter!)
+          CustomDropDownTextField(
+            text: "Enter or Select Letter",
+            options: cubit.formData?.letter ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///============Dish Category =====6 fields===========
 
         /// Types
-        cubit.booleanForm.type == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Type",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.type!)
+          CustomDropDownTextField(
+            text: "Enter or Select Type",
+            options: cubit.formData?.type ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Cooking Style
         ///
-        cubit.booleanForm.cookingStyle == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Cooking Style",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.cookingStyle!)
+          CustomDropDownTextField(
+            text: "Enter or Select Cooking Style",
+            options: cubit.formData?.cookingStyle ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///Texture
-        cubit.booleanForm.texture == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Texture",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.texture!)
+          CustomDropDownTextField(
+            text: "Enter or Select Texture",
+            options: cubit.formData?.texture ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Taste
-        cubit.booleanForm.taste == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Taste",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.taste!)
+          CustomDropDownTextField(
+            text: "Enter or Select Taste",
+            options: cubit.formData?.taste ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Ingredients
         ///
-        cubit.booleanForm.ingredient == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Ingredients",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.ingredient!)
+          CustomDropDownTextField(
+            text: "Enter or Select Ingredients",
+            options: cubit.formData?.ingredient ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///  Cusine Region
         ///
-
-        cubit.booleanForm.letter == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Cusine Region",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.cusineRegion!)
+          CustomDropDownTextField(
+            text: "Enter or Select Cusine Region",
+            options: cubit.formData?.cusineRegion ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///============Gamers Category =====5 fields===========
 
-        /// Gender Options
-        cubit.booleanForm.gender == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Gender",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
-
         /// Name length
         ///
-        cubit.booleanForm.nameLength == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Name Length",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.nameLength!)
+          CustomDropDownTextField(
+            text: "Enter or Select Name Length",
+            options: cubit.formData?.nameLength ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///Gamming name theme Options
-        cubit.booleanForm.gamingNameThemesOptions == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Name Theme",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.gamingNameThemesOptions!)
+          CustomDropDownTextField(
+            text: "Enter or Select Name Theme",
+            options: cubit.formData?.gamingNameThemesOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Game Options
-        cubit.booleanForm.gameOptions == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Game options",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
-
+        if (cubit.booleanForm!.gameOptions!)
+          CustomDropDownTextField(
+            text: "Enter or Select Game options",
+            options: cubit.formData?.gameOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
         //-------Letter
 
         ///============Human Category =====6 fields===========
@@ -355,309 +336,270 @@ class _FormScreenState extends State<FormScreen> {
 
         /// Religion
         ///
-        cubit.booleanForm.religion == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Religion",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.religion!)
+          CustomDropDownTextField(
+            text: "Enter or Select Religion",
+            options: cubit.formData?.religion ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///personality
         ///
-        cubit.booleanForm.personality == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Personality",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.personality!)
+          CustomDropDownTextField(
+            text: "Enter or Select Personality",
+            options: cubit.formData?.personality ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// DOB
         ///
-        cubit.booleanForm.dob == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select DOB",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        ///
+        if (cubit.booleanForm!.dob!)
+          CustomDropDownTextField(
+            text: "Enter or Select DOB",
+            options: cubit.formData?.dob ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         ///============Nick Category =====2 fields===========
         // ---------country
         /// Names
-        cubit.booleanForm.name == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Name",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.name!)
+          CustomDropDownTextField(
+            text: "Enter or Select Name",
+            options: cubit.formData?.name ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         //============Pet Category =====6 fields===========
         // ---------country
         /// Names
-        cubit.booleanForm.name == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Name",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
 
         //============Pet Category =====5 fields===========
         // ---------gender , letter , name length
         /// Pet Type
-        cubit.booleanForm.petType == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Pet Type",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.petType!)
+          CustomDropDownTextField(
+            text: "Enter or Select Pet Type",
+            options: cubit.formData?.petType ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Theme of a Pet
         ///
-        cubit.booleanForm.themeDog == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Them",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.themeDog!)
+          CustomDropDownTextField(
+            text: "Enter or Select Them",
+            options: cubit.formData?.themeDog ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         //============Product Category =====5 fields===========
         // ---------target audience
         /// Product Types
-        cubit.booleanForm.productTypeOptions == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Product Type",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.productTypeOptions!)
+          CustomDropDownTextField(
+            text: "Enter or Select Product Type",
+            options: cubit.formData?.productTypeOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Product Features
         ///
-        cubit.booleanForm.productFeatures == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Product Features",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
-
-        /// Product Types
-        cubit.booleanForm.productTypeOptions == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Product Type",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.productFeatures!)
+          CustomDropDownTextField(
+            text: "Enter or Select Product Features",
+            options: cubit.formData?.productFeatures ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Product Features
         ///
-        cubit.booleanForm.productFeatures == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Product Features",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.productFeatures!)
+          CustomDropDownTextField(
+            text: "Enter or Select Product Features",
+            options: cubit.formData?.productFeatures ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Style or tone of a product
         ///
-        cubit.booleanForm.pr == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select keyWords",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+
+        if (cubit.booleanForm!.pr!)
+          CustomDropDownTextField(
+            text: "Enter or Select keyWords",
+            options: cubit.formData?.pr ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         //============Slogan Category =====2 fields===========
 
         /// Domain
-        cubit.booleanForm.domainOptions == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Domain",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.domainOptions!)
+          CustomDropDownTextField(
+            text: "Enter or Select Domain",
+            options: cubit.formData?.domainOptions ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Geographic Focus
         ///
-        cubit.booleanForm.geographicFocus == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Geographic Focus",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.geographicFocus!)
+          CustomDropDownTextField(
+            text: "Enter or Select Geographic Focus",
+            options: cubit.formData?.geographicFocus ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         //============Story Category =====3 fields===========
 
         /// Theme of Story
-        cubit.booleanForm.themeStory == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Theme",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.themeStory!)
+          CustomDropDownTextField(
+            text: "Enter or Select Theme",
+            options: cubit.formData?.themeStory ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Element
         ///
-        cubit.booleanForm.element == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Elemet",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.element!)
+          CustomDropDownTextField(
+            text: "Enter or Select Elemet",
+            options: cubit.formData?.element ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Moods
-        cubit.booleanForm.mood == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Mood",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+
+        if (cubit.booleanForm!.mood!)
+          CustomDropDownTextField(
+            text: "Enter or Select Mood",
+            options: cubit.formData?.mood ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         //============Team Category =====3 fields===========
         //------ gender
 
         /// Num Members
-        cubit.booleanForm.numMembers == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Number of Team Members",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.numMembers!)
+          CustomDropDownTextField(
+            text: "Enter or Select Number of Team Members",
+            options: cubit.formData?.numMembers ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Theme of a Team
         ///
-        cubit.booleanForm.themeTeam == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Theme",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.themeTeam!)
+          CustomDropDownTextField(
+            text: "Enter or Select Theme",
+            options: cubit.formData?.themeTeam ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         //============Title Category =====4 fields===========
 
         /// Type of Work
-        cubit.booleanForm.typeOfWork == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Type of Work",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.typeOfWork!)
+          CustomDropDownTextField(
+            text: "Enter or Select Type of Work",
+            options: cubit.formData?.typeOfWork ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Subjrct
         ///
-        cubit.booleanForm.subject == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Subject",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.subject!)
+          CustomDropDownTextField(
+            text: "Enter or Select Subject",
+            options: cubit.formData?.subject ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Keyword Idea
-        cubit.booleanForm.keywordIdeas == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Keyword Idea",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.keywordIdeas!)
+          CustomDropDownTextField(
+            text: "Enter or Select Keyword Idea",
+            options: cubit.formData?.keywordIdeas ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Tone or style of Title
         ///
-        cubit.booleanForm.toneStyleTitle == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Tone ",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.toneStyleTitle!)
+          CustomDropDownTextField(
+            text: "Enter or Select Tone ",
+            options: cubit.formData?.toneStyleTitle ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
+
         //============Twin Category =====6 fields===========
         // ---------name _style, religion , country ,letter done
         /// Twins Gender
-        cubit.booleanForm.twinsGender == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Gender",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.twinsGender!)
+          CustomDropDownTextField(
+            text: "Enter or Select Gender",
+            options: cubit.formData?.twinsGender ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
 
         /// Background
         ///
-        cubit.booleanForm.background == true
-            ? CustomDropDownTextField(
-                text: "Enter or Select Background",
-                options: hintText,
-                onSelected: (String value) {
-                  print("Selected: $value");
-                },
-              )
-            : Container(),
+        if (cubit.booleanForm!.background!)
+          CustomDropDownTextField(
+            text: "Enter or Select Background",
+            options: cubit.formData?.background ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          )
       ],
     );
   }
