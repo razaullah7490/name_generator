@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/multipart/form_data.dart';
-import 'package:name_generator/SRC/Data/dumydata.dart';
+
 import 'package:name_generator/SRC/Domain/Models/app_user.dart';
 import 'package:name_generator/SRC/Domain/Models/banners.dart';
 import 'package:name_generator/SRC/Domain/Models/blog.dart';
@@ -119,42 +118,19 @@ class DatabaseService {
     return categories!;
   }
 
-  ///========================Form.============================
-  // getForms() async {
-  //   debugPrint('@getForms');
-
-  //   try {
-  //     final snapshot = await _db
-  //         .collection("Forms")
-  //         // .orderBy('createdAt', descending: true)
-  //         .get();
-  //     debugPrint('Forms => ${snapshot.docs.length}');
-
-  //     if (snapshot.docs.isNotEmpty) {
-  //       for (var doc in snapshot.docs) {
-  //         blog.add(Blog.fromJson(doc, doc.id));
-  //       }
-  //     }
-  //   } catch (e) {
-  //     debugPrint('Exception @DatabaseService/gettingForms $e');
-  //   }
-  //   return blog;
-  // }
-
-  Future<BooleanForm?> getBooleanForm() async {
+  Future<BooleanForm?> getBooleanForm({required String categoryId}) async {
     //  print('Category Id ${categories![0].id!}');
     try {
-      DocumentSnapshot subDocumentSnapshot = await FirebaseFirestore.instance
+      final subDocumentSnapshot = await FirebaseFirestore.instance
           .collection('category')
-          .doc('230Pg8pk5xZXYDGsKzEN')
+          .doc(categoryId)
           .collection('booleanForm')
-          .doc('formId')
           .get();
 
-      if (subDocumentSnapshot.exists) {
+      if (subDocumentSnapshot.docs.isNotEmpty) {
         bool = BooleanForm.fromJson(
-            subDocumentSnapshot.data() as Map<String, dynamic>);
-        // print(bool!.charType);
+            subDocumentSnapshot.docs.first.data() as Map<String, dynamic>);
+        print(bool!.charType);
         return bool;
       } else {
         print("No such subdocument!");
@@ -183,30 +159,7 @@ class DatabaseService {
       return null;
     }
   }
-// Future<FormsDataa?> getFormData() async {
-//   try {
-//     QuerySnapshot snapshot = await _db.collection('FormData').get();
 
-//     if (snapshot.docs.isNotEmpty) {
-//       // Get the first document
-//       var documentData = snapshot.docs.first.data();
-
-//       if (documentData is Map<String, dynamic>) {
-//         // Assuming FormsDataa is a class generated from JSON serialization
-//         return FormsDataa.fromJson(documentData);
-//       } else {
-//         print("Error: Unexpected data format");
-//         return null;
-//       }
-//     } else {
-//       print("No documents found!");
-//       return null;
-//     }
-//   } catch (e) {
-//     print("Error getting subdocument: $e");
-//     return null;
-//   }
-// }
 
   // Future<void> addCategoriesToFirebase() async {
   //   // Initialize Firestore
@@ -321,10 +274,79 @@ class DatabaseService {
   /// =============================================================
 
   // Future<void> addBooleanFormDataToFirebase() async {
-  // // Initialize Firestore
-  // final firestore = FirebaseFirestore.instance;
+  //   final firestore = FirebaseFirestore.instance;
 
-//   // Add BooleanForm data to a subcollection in Firebase
+  //   for (int i = 0; i < categories!.length; i++) {
+  //     await firestore
+  //         .collection('category')
+  //         .doc(categories![i].id!)
+  //         .collection('booleanForm')
+  //         .add({
+  //       "categoryId": categories![i].id!,
+  //       "createdAt": DateTime.now(),
+  //       "topic_options": false,
+  //       "target_audience_options": false,
+  //       "keyword_phrases_options": false,
+  //       "theme_options_book": false,
+  //       "keyword_options": false,
+  //       "tone_options_book": false,
+  //       "gender": false,
+  //       "region": false,
+  //       "name_style": false,
+  //       "flavour": false,
+  //       "charType": false,
+  //       "letter": false,
+  //       "type": false,
+  //       "cookingStyle": false,
+  //       "texture": false,
+  //       "taste": false,
+  //       "ingredient": false,
+  //       "cusineRegion": false,
+  //       "nameLength": false,
+  //       "gamingNameThemesOptions": false,
+  //       "gameOptions": false,
+  //       "religion": false,
+  //       "country": false,
+  //       "personality": false,
+  //       "dob": false,
+  //       "name": false,
+  //       "pet_type": false,
+  //       "theme_dog": false,
+  //       "product_type_options": false,
+  //       "target_audience_optionss": false,
+  //       "product_features": false,
+  //       "style_or_tone_produ": false,
+  //       "pr": false,
+  //       "domain_options": false,
+  //       "geographic_focus": false,
+  //       "theme_story": false,
+  //       "element": false,
+  //       "mood": false,
+  //       "num_members": false,
+  //       "theme_team": false,
+  //       "title": false,
+  //       "typeOfWork": false,
+  //       "subject": false,
+  //       "keyword_ideas": false,
+  //       "tone_style_title": false,
+  //       "twinsGender": false,
+  //       "naming_style": false,
+  //       "background": false
+  //     });
+
+  //     print(
+  //         'BooleanForm data added to category ${categories![i].id} successfully!');
+  //   }
+
+  //   print(
+  //       'BooleanForm data added to Firebase in all category collections successfully!');
+  // }
+
+//   Future<void> addBooleanFormDataToFirebase() async {
+//   // Initialize Firestore
+//   final firestore = FirebaseFirestore.instance;
+
+//  // Add BooleanForm data to a subcollection in Firebase
 //   await firestore.collection('category').doc(categories![0].id!).collection('booleanForm').doc('formId').set(
 //      {
 //   "topic_options": false,

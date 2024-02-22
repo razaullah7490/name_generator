@@ -16,6 +16,7 @@ Future<void> main() async {
 
   await Firebase.initializeApp(
       options: FirebaseOptions(
+        
     apiKey: "AIzaSyBVeMW8zlHpaRL70B0Wy3KG3NeKyOqlays",
     appId: "1:608984517534:android:b32aa954d3ae1d0601648f",
     messagingSenderId: "608984517534",
@@ -26,8 +27,6 @@ Future<void> main() async {
 
    final _db = locator<DatabaseService>();
 
-  // // await _db.getCategories();
-  // await _db.getBooleanForm();
 
   runApp(MultiBlocProvider(providers: appProviders, child: const MyApp()));
 }

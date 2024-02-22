@@ -25,7 +25,7 @@ class DatabaseRepository {
 
   ///===========getBooleanForm======================
 
-  getBooleanForm() async {
-    return await _dbService.getBooleanForm();
+  getBooleanForm({required String categoryId}) async {
+    return await _dbService.getBooleanForm(categoryId: categoryId);
   }
 }

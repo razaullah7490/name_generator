@@ -159,7 +159,8 @@ class _HomeState extends State<Home> {
                         for (int i = 0; i < cubit.categories!.length; i++)
                           GestureDetector(
                             onTap: () {
-                              Navigate.to(context, FormScreen());
+                              
+                              Navigate.to(context, FormScreen(categoryId: cubit.categories[i].id! ,));
                             },
                             child: CategoryTile(
                               title: cubit.categories![i].name ?? "",
@@ -185,7 +186,7 @@ class _HomeState extends State<Home> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50.sp)),
           onPressed: () {
-            Navigate.to(context, const FormScreen());
+        //    Navigate.to(context,  FormScreen());
           },
           tooltip: 'Add',
           child: const Icon(Icons.add, size: 30),

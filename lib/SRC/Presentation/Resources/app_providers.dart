@@ -12,7 +12,7 @@ List<BlocProvider> appProviders = [
   BlocProvider<HumanCubit>(create: (context) => HumanCubit()),
   BlocProvider<HomeCubit>(create: (context) => HomeCubit()),
   BlocProvider<ProfileCubit>(create: (context) => ProfileCubit()),
-  BlocProvider<FormCubit>(create: (context) => FormCubit()),
+  // BlocProvider<FormCubit>(create: (context) => FormCubit()),
   // BlocProvider(
   //   create: (context) => LoginCubit(),
   // ),

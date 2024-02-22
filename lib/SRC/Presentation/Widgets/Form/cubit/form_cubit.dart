@@ -1,7 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/multipart/form_data.dart';
+
 import 'package:name_generator/SRC/Application/Services/database_service.dart';
 import 'package:name_generator/SRC/Data/Repository/auth_repository.dart';
 import 'package:name_generator/SRC/Data/Repository/db_repo.dart';
@@ -11,7 +14,11 @@ import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_state.da
 import 'package:name_generator/locator.dart';
 
 class FormCubit extends Cubit<FormmState> {
-  FormCubit() : super(FormInitial()) {
+  String catgoryId;
+  FormCubit(
+    this.catgoryId,
+  ) : super(FormInitial( )) {
+
     retrieveBooleanForm();
     retrieveFormData();
   }
@@ -25,7 +32,7 @@ class FormCubit extends Cubit<FormmState> {
   void retrieveBooleanForm() async {
     try {
       emit(FormLoading());
-      booleanForm = await dbRepo.getBooleanForm();
+      booleanForm = await dbRepo.getBooleanForm(categoryId: catgoryId);
       print(booleanForm?.charType ?? 'kkkk');
       emit(FormSuccess());
       if (booleanForm != null) {

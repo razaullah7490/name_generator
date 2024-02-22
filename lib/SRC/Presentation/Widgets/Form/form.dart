@@ -1,24 +1,28 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdowm_textfield.dart';
-
 import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
-
-import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
 import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
-
 import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_cubit.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_state.dart';
+
 import '../Re-generate/re_generated_screen.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  String categoryId;
+  FormScreen({
+    Key? key,
+    required this.categoryId,
+  }) : super(key: key);
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -31,44 +35,46 @@ class _FormScreenState extends State<FormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<FormCubit>();
     return SafeArea(
-      child: Scaffold(
-    
-        body: BlocConsumer<FormCubit, FormmState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is FormLoading,
-              progressIndicator: CircularProgressIndicator(),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      ////
-                      ///// There  are very huge number of fields but it will show if it's true from firebase
-                      ///
-                      child: FormFields(cubit)),
-                ),
-              ),
-            );
-          },
-        ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: CustomButton(
-            iconData: Image.asset(Assets.sparkle),
-            text: "Generate ",
-            ontap: () {
-              Navigate.to(
-                  context,
-                  const NameGenerated(
-                    data: {},
-                  ));
+      child: BlocProvider(
+        create: (context) => FormCubit(widget.categoryId),
+        child: Scaffold(
+          body: BlocConsumer<FormCubit, FormmState>(
+            listener: (context, state) {
+              // TODO: implement listener
             },
+            builder: (context, state) {
+              final cubit = context.read<FormCubit>();
+              return ModalProgressHUD(
+                inAsyncCall: state is FormLoading,
+                progressIndicator: CircularProgressIndicator(),
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    child: Padding(
+                        padding: EdgeInsets.all(20.w),
+                        ////
+                        ///// There  are very huge number of fields but it will show if it's true from firebase
+                        ///
+                        child: FormFields(cubit)),
+                  ),
+                ),
+              );
+            },
+          ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: CustomButton(
+              iconData: Image.asset(Assets.sparkle),
+              text: "Generate ",
+              ontap: () {
+                Navigate.to(
+                    context,
+                    const NameGenerated(
+                      data: {},
+                    ));
+              },
+            ),
           ),
         ),
       ),
@@ -78,7 +84,7 @@ class _FormScreenState extends State<FormScreen> {
   FormFields(FormCubit cubit) {
     return Column(
       children: [
-       10.y,
+        10.y,
 
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -369,11 +375,22 @@ class _FormScreenState extends State<FormScreen> {
           ),
 
         ///============Nick Category =====2 fields===========
-        // ---------country
+        ///Country
+        ///
+        if (cubit.booleanForm!.country!)
+          CustomDropDownTextField(
+            text: "Enter or Select Country",
+            options: cubit.formData?.country ?? [],
+            onSelected: (String value) {
+              print("Selected: $value");
+            },
+          ),
+
         /// Names
         if (cubit.booleanForm!.name!)
           CustomDropDownTextField(
             text: "Enter or Select Name",
+            sf: false,
             options: cubit.formData?.name ?? [],
             onSelected: (String value) {
               print("Selected: $value");
@@ -430,19 +447,16 @@ class _FormScreenState extends State<FormScreen> {
             },
           ),
 
-        /// Product Features
+        /// Style or tone of a product
         ///
-        if (cubit.booleanForm!.productFeatures!)
+        if (cubit.booleanForm!.styleOrToneProdu!)
           CustomDropDownTextField(
-            text: "Enter or Select Product Features",
-            options: cubit.formData?.productFeatures ?? [],
+            text: "Enter or Select Style or Tone",
+            options: cubit.formData?.styleOrToneProdu ?? [],
             onSelected: (String value) {
               print("Selected: $value");
             },
           ),
-
-        /// Style or tone of a product
-        ///
 
         if (cubit.booleanForm!.pr!)
           CustomDropDownTextField(
