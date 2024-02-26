@@ -18,7 +18,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.validator,
-     this.controller,
+    this.controller,
     required this.text,
     this.prefixIcon,
   });
@@ -26,16 +26,16 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-onChanged: onChanged,
+      onChanged: onChanged,
       controller: controller,
       obscureText: obscureText,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
+          borderSide: BorderSide(color: Colors.grey.withOpacity(0.2)),
           borderRadius: BorderRadius.circular(10.r),
         ),
         hintText: text,

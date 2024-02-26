@@ -12,7 +12,6 @@ import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/cat_icon.dart';
 import 'package:name_generator/SRC/Presentation/Common/round_avatar.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Home/cubit/home_cubit.dart';
-
 import 'package:name_generator/SRC/Presentation/Widgets/SubCategory/sub_category_screen.dart';
 import '../Form/form.dart';
 
@@ -159,8 +158,11 @@ class _HomeState extends State<Home> {
                         for (int i = 0; i < cubit.categories!.length; i++)
                           GestureDetector(
                             onTap: () {
-                              
-                              Navigate.to(context, FormScreen(categoryId: cubit.categories[i].id! ,));
+                              Navigate.to(
+                                  context,
+                                  FormScreen(
+                                    categoryId: cubit.categories[i].id!,
+                                  ));
                             },
                             child: CategoryTile(
                               title: cubit.categories![i].name ?? "",
@@ -177,21 +179,21 @@ class _HomeState extends State<Home> {
           );
         },
       ),
-      floatingActionButton: SizedBox(
-        height: 60.h,
-        width: 60.w,
-        child: FloatingActionButton(
-          backgroundColor: AppColors.blue,
-          foregroundColor: AppColors.white,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.sp)),
-          onPressed: () {
-        //    Navigate.to(context,  FormScreen());
-          },
-          tooltip: 'Add',
-          child: const Icon(Icons.add, size: 30),
-        ),
-      ),
+      // floatingActionButton: SizedBox(
+      //   height: 60.h,
+      //   width: 60.w,
+      //   child: FloatingActionButton(
+      //     backgroundColor: AppColors.blue,
+      //     foregroundColor: AppColors.white,
+      //     shape: RoundedRectangleBorder(
+      //         borderRadius: BorderRadius.circular(50.sp)),
+      //     onPressed: () {
+      //   //    Navigate.to(context,  FormScreen());
+      //     },
+      //     tooltip: 'Add',
+      //     child: const Icon(Icons.add, size: 30),
+      //   ),
+      // ),
     );
   }
 }

@@ -17,12 +17,11 @@ class FormCubit extends Cubit<FormmState> {
   String catgoryId;
   FormCubit(
     this.catgoryId,
-  ) : super(FormInitial( )) {
-
+  ) : super(FormInitial()) {
     retrieveBooleanForm();
     retrieveFormData();
   }
-
+  String v = 'hello';
   FormsDataa? formData = FormsDataa();
   BooleanForm? booleanForm = BooleanForm();
   final authRepository = locator<AuthRepository>();
@@ -56,6 +55,13 @@ class FormCubit extends Cubit<FormmState> {
     } catch (e) {
       debugPrint('Error while getting booleanForm $e');
       emit(FormFailure('Something went wrong'));
+    }
+  }
+
+  void radio(value) {
+    if (value != null) {
+      v = value;
+      emit(radiobuttonState());
     }
   }
 }

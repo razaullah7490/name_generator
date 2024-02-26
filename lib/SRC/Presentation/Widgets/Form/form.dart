@@ -3,18 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdowm_textfield.dart';
+import 'package:name_generator/SRC/Presentation/Common/custom_textfield.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
 import 'package:name_generator/SRC/Presentation/Resources/assets.dart';
 import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_cubit.dart';
 import 'package:name_generator/SRC/Presentation/Widgets/Form/cubit/form_state.dart';
-
 import '../Re-generate/re_generated_screen.dart';
 
 class FormScreen extends StatefulWidget {
@@ -113,7 +112,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or choose any topic",
             options: cubit.formData?.topicOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -123,7 +122,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or choose Target Audience",
             options: cubit.formData?.targetAudienceOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -133,7 +132,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or choose  Keyword Phrases",
             options: cubit.formData?.keywordPhrasesOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -145,7 +144,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or choose Theme",
             options: cubit.formData?.themeOptionsBook ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -156,7 +155,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or choose Keywords",
             options: cubit.formData?.keywordOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -166,7 +165,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or choose  Tone",
             options: cubit.formData?.toneOptionsBook ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -175,12 +174,43 @@ class _FormScreenState extends State<FormScreen> {
 
         /// Gender Options
         if (cubit.booleanForm!.gender!)
-          CustomDropDownTextField(
-            text: "Enter or Select Gender",
-            options: cubit.formData?.gender ?? [],
-            onSelected: (String value) {
-              print("Selected: $value");
-            },
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.withOpacity(0.3))),
+              child: Row(
+                children: [
+                  for (var i = 0;
+                      cubit.formData != null &&
+                          cubit.formData!.gender != null &&
+                          i < cubit.formData!.gender!.length;
+                      i++)
+                    Flexible(
+                      child: RadioListTile<String>(
+                        contentPadding: EdgeInsets.all(0),
+                        title: AppText(
+                          cubit.formData!.gender![i] ?? '',
+                          style: Styles.plusJakartaSans(context,
+                              fontSize: 12.sp, fontWeight: FontWeight.w400),
+                        ),
+                        value: cubit.formData!.gender![i] ?? '',
+                        groupValue: cubit.v,
+                        onChanged: (String? value) {
+                          cubit.radio(value);
+                          // setState(() {
+                          //   if (value != null) {
+                          //     cubit.v = value;
+                          //   }
+                          // });
+                        },
+                      ),
+                    ),
+                ],
+              ),
+            ),
           ),
 
         /// Region Options
@@ -189,7 +219,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Region",
             options: cubit.formData?.region ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -199,7 +229,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Name Style",
             options: cubit.formData?.nameStyle ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -209,7 +239,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Flavour",
             options: cubit.formData?.flavour ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -220,7 +250,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Character Type",
             options: cubit.formData?.charType ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -232,7 +262,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Letter",
             options: cubit.formData?.letter ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -244,7 +274,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Type",
             options: cubit.formData?.type ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -255,7 +285,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Cooking Style",
             options: cubit.formData?.cookingStyle ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -265,7 +295,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Texture",
             options: cubit.formData?.texture ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -275,7 +305,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Taste",
             options: cubit.formData?.taste ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -286,7 +316,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Ingredients",
             options: cubit.formData?.ingredient ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -297,7 +327,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Cusine Region",
             options: cubit.formData?.cusineRegion ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -310,7 +340,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Name Length",
             options: cubit.formData?.nameLength ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -320,7 +350,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Name Theme",
             options: cubit.formData?.gamingNameThemesOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -330,7 +360,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Game options",
             options: cubit.formData?.gameOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -346,7 +376,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Religion",
             options: cubit.formData?.religion ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -357,7 +387,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Personality",
             options: cubit.formData?.personality ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -369,7 +399,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select DOB",
             options: cubit.formData?.dob ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -381,20 +411,19 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Country",
             options: cubit.formData?.country ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
 
         /// Names
         if (cubit.booleanForm!.name!)
-          CustomDropDownTextField(
-            text: "Enter or Select Name",
-            sf: false,
-            options: cubit.formData?.name ?? [],
-            onSelected: (String value) {
-              print("Selected: $value");
-            },
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.h),
+            child: CustomTextField(
+              text: 'Enter your name',
+              onChanged: (v) {},
+            ),
           ),
 
         //============Pet Category =====6 fields===========
@@ -408,7 +437,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Pet Type",
             options: cubit.formData?.petType ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -419,7 +448,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Them",
             options: cubit.formData?.themeDog ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -431,7 +460,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Product Type",
             options: cubit.formData?.productTypeOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -442,7 +471,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Product Features",
             options: cubit.formData?.productFeatures ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -453,7 +482,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Style or Tone",
             options: cubit.formData?.styleOrToneProdu ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -462,7 +491,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select keyWords",
             options: cubit.formData?.pr ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -474,7 +503,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Domain",
             options: cubit.formData?.domainOptions ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -485,7 +514,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Geographic Focus",
             options: cubit.formData?.geographicFocus ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -497,7 +526,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Theme",
             options: cubit.formData?.themeStory ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -508,7 +537,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Elemet",
             options: cubit.formData?.element ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -519,7 +548,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Mood",
             options: cubit.formData?.mood ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -532,7 +561,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Number of Team Members",
             options: cubit.formData?.numMembers ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -543,7 +572,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Theme",
             options: cubit.formData?.themeTeam ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -555,7 +584,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Type of Work",
             options: cubit.formData?.typeOfWork ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -566,7 +595,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Subject",
             options: cubit.formData?.subject ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -576,7 +605,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Keyword Idea",
             options: cubit.formData?.keywordIdeas ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -587,7 +616,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Tone ",
             options: cubit.formData?.toneStyleTitle ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -599,7 +628,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Gender",
             options: cubit.formData?.twinsGender ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           ),
@@ -610,7 +639,7 @@ class _FormScreenState extends State<FormScreen> {
           CustomDropDownTextField(
             text: "Enter or Select Background",
             options: cubit.formData?.background ?? [],
-            onSelected: (String value) {
+            onSelected: (value) {
               print("Selected: $value");
             },
           )

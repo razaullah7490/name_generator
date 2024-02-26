@@ -6,26 +6,23 @@ import 'package:name_generator/SRC/Presentation/Resources/styles.dart';
 class CustomDropDownTextField extends StatelessWidget {
   final TextEditingController? controller;
   String text;
-  Widget? suffixIcon;
-  Widget? prefixIcon;
+
   bool? sf;
   // Function(String)? onChanged;
   List<String>? options;
-  bool obscureText;
+
   String? Function(String?)? validator;
-  Function(String)? onSelected;
+  Function(String?)? onSelected;
   CustomDropDownTextField({
     super.key,
     this.options,
     this.sf = true,
     this.onSelected,
     // this.onChanged,
-    this.obscureText = false,
-    this.suffixIcon,
+
     this.validator,
     this.controller,
     required this.text,
-    this.prefixIcon,
   });
 
   @override
@@ -34,87 +31,47 @@ class CustomDropDownTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Container(
         color: Colors.white,
-        child: Autocomplete<String>(
-          optionsBuilder: (TextEditingValue textEditingValue) {
-            if (textEditingValue.text == '') {
-              return const Iterable<String>.empty();
-            }
-
-            return options ?? [];
-          },
+        child: DropdownMenu<String>(
+          width: 320.w,
+          hintText: text,
+          controller: controller,
+          enableFilter: true,
+          requestFocusOnTap: true,
+          trailingIcon: sf ?? true
+              ? Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18.r,
+                  color: Colors.grey,
+                )
+              : null,
+          inputDecorationTheme: InputDecorationTheme(
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.withOpacity(0.3)),
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            hintStyle: Styles.smallPlusJakartaSans(
+              context,
+              fontSize: 12.sp,
+              color: AppColors.grey,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.withOpacity(0.3)),
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+          ),
           onSelected: onSelected,
-          fieldViewBuilder: (BuildContext context,
-              TextEditingController textEditingController,
-              FocusNode focusNode,
-              VoidCallback onFieldSubmitted) {
-            return TextFormField(
-              focusNode: focusNode,
-              //  onChanged: onChanged,
-              controller: textEditingController,
-
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: InputDecoration(
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                //  prefixIcon: prefixIcon,
-                suffixIcon: sf ?? true
-                    ? Icon(
-                        Icons.arrow_forward_ios,
-                        size: 18.r,
-                        color: Colors.grey,
-                      )
-                    : null,
-
-                fillColor: Colors.grey,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.withOpacity(0.3)),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                hintText: text,
-                hintStyle: Styles.smallPlusJakartaSans(
-                  context,
-                  fontSize: 12.sp,
-                  color: AppColors.grey,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.withOpacity(0.3)),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-              ),
-              validator: validator,
-
-              onFieldSubmitted: (String value) {
-                onFieldSubmitted();
-              },
-            );
-          },
-
-          // optionsViewBuilder: (BuildContext context,
-          //     AutocompleteOnSelected<String> onSelected, Iterable<String> options) {
-          //   return Align(
-          //     alignment: Alignment.topLeft,
-          //     child: Material(
-          //       child: Container(
-          //         width: 300,
-          //         height: 200,
-          //         child: ListView.builder(
-          //           itemCount: options.length,
-          //           itemBuilder: (BuildContext context, int index) {
-          //             final String option = options.elementAt(index);
-          //             return GestureDetector(
-          //               onTap: () {
-          //                 onSelected(option);
-          //               },
-          //               child: ListTile(
-          //                 title: Text(option),
-          //               ),
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //     ),
-          //   );
-          // },
+          dropdownMenuEntries: options!.map(
+            (String valu) {
+              return DropdownMenuEntry<String>(
+                value: valu,
+                label: valu,
+                //leadingIcon: Icon(icon.icon),
+              );
+            },
+          ).toList(),
         ),
       ),
     );
