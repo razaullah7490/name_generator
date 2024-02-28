@@ -15,3 +15,9 @@ class FormFailure extends FormmState {
 }
 
 class radiobuttonState extends FormmState {}
+
+class DatePickerState extends FormmState {
+  final DateTime? selectedDate;
+
+  DatePickerState(this.selectedDate);
+}

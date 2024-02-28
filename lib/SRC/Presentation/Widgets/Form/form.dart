@@ -1,12 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/custom_appbar.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/custom_button.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/custom_dropdowm_textfield.dart';
+
 import 'package:name_generator/SRC/Presentation/Common/custom_textfield.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Extensions/extensions.dart';
 import 'package:name_generator/SRC/Presentation/Resources/Navigation/navigation.dart';
@@ -34,82 +44,82 @@ class _FormScreenState extends State<FormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocProvider(
-        create: (context) => FormCubit(widget.categoryId),
-        child: Scaffold(
-          body: BlocConsumer<FormCubit, FormmState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
-            builder: (context, state) {
-              final cubit = context.read<FormCubit>();
-              return ModalProgressHUD(
-                inAsyncCall: state is FormLoading,
-                progressIndicator: CircularProgressIndicator(),
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: _formKey,
-                    child: Padding(
-                        padding: EdgeInsets.all(20.w),
-                        ////
-                        ///// There  are very huge number of fields but it will show if it's true from firebase
-                        ///
-                        child: FormFields(cubit)),
-                  ),
-                ),
-              );
-            },
-          ),
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: CustomButton(
-              iconData: Image.asset(Assets.sparkle),
-              text: "Generate ",
-              ontap: () {
-                Navigate.to(
-                    context,
-                    const NameGenerated(
-                      data: {},
-                    ));
-              },
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  FormFields(FormCubit cubit) {
-    return Column(
-      children: [
-        10.y,
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            AppText(
-              'Fill the Form',
-              style: Styles.plusJakartaSans(context,
-                  fontSize: 14.sp, fontWeight: FontWeight.w600),
-              //textAlign: TextAlign.center,
-            ),
-            GestureDetector(
+    return BlocProvider(
+      create: (context) => FormCubit(widget.categoryId),
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AppText(
+                'Fill the Form',
+                style: Styles.plusJakartaSans(context,
+                    fontSize: 14.sp, fontWeight: FontWeight.w600),
+                //textAlign: TextAlign.center,
+              ),
+              GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Icon(Icons.cancel_outlined, color: Colors.black45),
-                )),
-          ],
+                ),
+              ),
+            ],
+          ),
         ),
+        body: BlocConsumer<FormCubit, FormmState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            final cubit = context.read<FormCubit>();
+            return ModalProgressHUD(
+              inAsyncCall: state is FormLoading,
+              progressIndicator: CircularProgressIndicator(),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Padding(
+                      padding: EdgeInsets.all(20.w),
+                      ////
+                      ///// There  are very huge number of fields but it will show if it's true from firebase
+                      ///
+                      child: FormFields(cubit, state)),
+                ),
+              ),
+            );
+          },
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: CustomButton(
+            iconData: Image.asset(Assets.sparkle),
+            text: "Generate ",
+            ontap: () {
+              Navigate.to(
+                  context,
+                  const NameGenerated(
+                    data: {},
+                  ));
+            },
+          ),
+        ),
+      ),
+    );
+  }
 
+  FormFields(FormCubit cubit, FormmState statee) {
+    return Column(
+      children: [
         ///============Blog Category =====3 fields===========
 
         /// Topic Options
         if (cubit.booleanForm!.topicOptions!)
           CustomDropDownTextField(
+            title: 'Topic',
             text: "Enter or choose any topic",
             options: cubit.formData?.topicOptions ?? [],
             onSelected: (value) {
@@ -120,6 +130,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Target Audience
         if (cubit.booleanForm!.targetAudienceOptions!)
           CustomDropDownTextField(
+            title: 'Target Audience',
             text: "Enter or choose Target Audience",
             options: cubit.formData?.targetAudienceOptions ?? [],
             onSelected: (value) {
@@ -130,6 +141,7 @@ class _FormScreenState extends State<FormScreen> {
         ///keywordPhrases
         if (cubit.booleanForm!.keywordPhrasesOptions!)
           CustomDropDownTextField(
+            title: 'Keyword Phrases',
             text: "Enter or choose  Keyword Phrases",
             options: cubit.formData?.keywordPhrasesOptions ?? [],
             onSelected: (value) {
@@ -142,6 +154,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Theme Options
         if (cubit.booleanForm!.themeOptionsBook!)
           CustomDropDownTextField(
+            title: 'Theme',
             text: "Enter or choose Theme",
             options: cubit.formData?.themeOptionsBook ?? [],
             onSelected: (value) {
@@ -153,6 +166,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.keywordOptions!)
           CustomDropDownTextField(
+            title: 'Keyword',
             text: "Enter or choose Keywords",
             options: cubit.formData?.keywordOptions ?? [],
             onSelected: (value) {
@@ -163,6 +177,7 @@ class _FormScreenState extends State<FormScreen> {
         ///Tone options
         if (cubit.booleanForm!.toneOptionsBook!)
           CustomDropDownTextField(
+            title: 'Tone',
             text: "Enter or choose  Tone",
             options: cubit.formData?.toneOptionsBook ?? [],
             onSelected: (value) {
@@ -176,40 +191,46 @@ class _FormScreenState extends State<FormScreen> {
         if (cubit.booleanForm!.gender!)
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey.withOpacity(0.3))),
-              child: Row(
-                children: [
-                  for (var i = 0;
-                      cubit.formData != null &&
-                          cubit.formData!.gender != null &&
-                          i < cubit.formData!.gender!.length;
-                      i++)
-                    Flexible(
-                      child: RadioListTile<String>(
-                        contentPadding: EdgeInsets.all(0),
-                        title: AppText(
-                          cubit.formData!.gender![i] ?? '',
-                          style: Styles.plusJakartaSans(context,
-                              fontSize: 12.sp, fontWeight: FontWeight.w400),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Gender',
+                  style: Styles.plusJakartaSans(context,
+                      fontSize: 12.sp, fontWeight: FontWeight.w500),
+                ),
+                5.y,
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.withOpacity(0.3))),
+                  child: Row(
+                    children: [
+                      for (var i = 0;
+                          cubit.formData != null &&
+                              cubit.formData!.gender != null &&
+                              i < cubit.formData!.gender!.length;
+                          i++)
+                        Flexible(
+                          child: RadioListTile<String>(
+                            contentPadding: EdgeInsets.all(0),
+                            title: AppText(
+                              cubit.formData!.gender![i] ?? '',
+                              style: Styles.plusJakartaSans(context,
+                                  fontSize: 12.sp, fontWeight: FontWeight.w400),
+                            ),
+                            value: cubit.formData!.gender![i] ?? '',
+                            groupValue: cubit.v,
+                            onChanged: (String? value) {
+                              cubit.radio(value);
+                            },
+                          ),
                         ),
-                        value: cubit.formData!.gender![i] ?? '',
-                        groupValue: cubit.v,
-                        onChanged: (String? value) {
-                          cubit.radio(value);
-                          // setState(() {
-                          //   if (value != null) {
-                          //     cubit.v = value;
-                          //   }
-                          // });
-                        },
-                      ),
-                    ),
-                ],
-              ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
 
@@ -217,6 +238,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.region!)
           CustomDropDownTextField(
+            title: 'Region',
             text: "Enter or Select Region",
             options: cubit.formData?.region ?? [],
             onSelected: (value) {
@@ -227,6 +249,7 @@ class _FormScreenState extends State<FormScreen> {
         ///Tone options
         if (cubit.booleanForm!.nameStyle!)
           CustomDropDownTextField(
+            title: 'Name Style',
             text: "Enter or Select Name Style",
             options: cubit.formData?.nameStyle ?? [],
             onSelected: (value) {
@@ -237,6 +260,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Flavour Options
         if (cubit.booleanForm!.flavour!)
           CustomDropDownTextField(
+            title: 'Flavour',
             text: "Enter or Select Flavour",
             options: cubit.formData?.flavour ?? [],
             onSelected: (value) {
@@ -248,6 +272,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.charType!)
           CustomDropDownTextField(
+            title: 'Character Type',
             text: "Enter or Select Character Type",
             options: cubit.formData?.charType ?? [],
             onSelected: (value) {
@@ -260,6 +285,7 @@ class _FormScreenState extends State<FormScreen> {
 
         if (cubit.booleanForm!.letter!)
           CustomDropDownTextField(
+            title: 'Letter',
             text: "Enter or Select Letter",
             options: cubit.formData?.letter ?? [],
             onSelected: (value) {
@@ -272,6 +298,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Types
         if (cubit.booleanForm!.type!)
           CustomDropDownTextField(
+            title: 'Type',
             text: "Enter or Select Type",
             options: cubit.formData?.type ?? [],
             onSelected: (value) {
@@ -283,6 +310,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.cookingStyle!)
           CustomDropDownTextField(
+            title: 'Cooking Style',
             text: "Enter or Select Cooking Style",
             options: cubit.formData?.cookingStyle ?? [],
             onSelected: (value) {
@@ -293,6 +321,7 @@ class _FormScreenState extends State<FormScreen> {
         ///Texture
         if (cubit.booleanForm!.texture!)
           CustomDropDownTextField(
+            title: 'Texture',
             text: "Enter or Select Texture",
             options: cubit.formData?.texture ?? [],
             onSelected: (value) {
@@ -303,6 +332,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Taste
         if (cubit.booleanForm!.taste!)
           CustomDropDownTextField(
+            title: 'Taste',
             text: "Enter or Select Taste",
             options: cubit.formData?.taste ?? [],
             onSelected: (value) {
@@ -314,6 +344,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.ingredient!)
           CustomDropDownTextField(
+            title: 'Ingredient',
             text: "Enter or Select Ingredients",
             options: cubit.formData?.ingredient ?? [],
             onSelected: (value) {
@@ -325,6 +356,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.cusineRegion!)
           CustomDropDownTextField(
+            title: 'Cusine Region',
             text: "Enter or Select Cusine Region",
             options: cubit.formData?.cusineRegion ?? [],
             onSelected: (value) {
@@ -338,6 +370,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.nameLength!)
           CustomDropDownTextField(
+            title: 'Name Length',
             text: "Enter or Select Name Length",
             options: cubit.formData?.nameLength ?? [],
             onSelected: (value) {
@@ -348,6 +381,7 @@ class _FormScreenState extends State<FormScreen> {
         ///Gamming name theme Options
         if (cubit.booleanForm!.gamingNameThemesOptions!)
           CustomDropDownTextField(
+            title: "Theme",
             text: "Enter or Select Name Theme",
             options: cubit.formData?.gamingNameThemesOptions ?? [],
             onSelected: (value) {
@@ -358,6 +392,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Game Options
         if (cubit.booleanForm!.gameOptions!)
           CustomDropDownTextField(
+            title: 'Game Options',
             text: "Enter or Select Game options",
             options: cubit.formData?.gameOptions ?? [],
             onSelected: (value) {
@@ -374,6 +409,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.religion!)
           CustomDropDownTextField(
+            title: 'Religion',
             text: "Enter or Select Religion",
             options: cubit.formData?.religion ?? [],
             onSelected: (value) {
@@ -385,6 +421,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.personality!)
           CustomDropDownTextField(
+            title: 'Personality',
             text: "Enter or Select Personality",
             options: cubit.formData?.personality ?? [],
             onSelected: (value) {
@@ -396,10 +433,28 @@ class _FormScreenState extends State<FormScreen> {
         ///
         ///
         if (cubit.booleanForm!.dob!)
-          CustomDropDownTextField(
-            text: "Enter or Select DOB",
-            options: cubit.formData?.dob ?? [],
-            onSelected: (value) {
+          CustomTextField(
+            isTitle: true,
+            title: 'Date of Birth',
+            text:
+                "DOB:     ${statee is DatePickerState ? DateFormat.yMd().format(statee.selectedDate!) : null}",
+            readOnlt: true,
+            onTap: () async {
+              final pickedDate = await showDatePicker(
+                context: context,
+                initialDate: statee is DatePickerState
+                    ? statee.selectedDate ?? DateTime.now()
+                    : null,
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+              );
+              if (pickedDate != null) {
+                cubit.setDatePicker(pickedDate);
+              }
+            },
+
+            // options: cubit.formData?.dob ?? [],
+            onChanged: (value) {
               print("Selected: $value");
             },
           ),
@@ -409,6 +464,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.country!)
           CustomDropDownTextField(
+            title: 'Country',
             text: "Enter or Select Country",
             options: cubit.formData?.country ?? [],
             onSelected: (value) {
@@ -421,6 +477,8 @@ class _FormScreenState extends State<FormScreen> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
             child: CustomTextField(
+              title: 'Name',
+              isTitle: true,
               text: 'Enter your name',
               onChanged: (v) {},
             ),
@@ -435,6 +493,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Pet Type
         if (cubit.booleanForm!.petType!)
           CustomDropDownTextField(
+            title: 'Pet Type',
             text: "Enter or Select Pet Type",
             options: cubit.formData?.petType ?? [],
             onSelected: (value) {
@@ -446,6 +505,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.themeDog!)
           CustomDropDownTextField(
+            title: 'Theme',
             text: "Enter or Select Them",
             options: cubit.formData?.themeDog ?? [],
             onSelected: (value) {
@@ -458,6 +518,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Product Types
         if (cubit.booleanForm!.productTypeOptions!)
           CustomDropDownTextField(
+            title: 'Product Type',
             text: "Enter or Select Product Type",
             options: cubit.formData?.productTypeOptions ?? [],
             onSelected: (value) {
@@ -469,6 +530,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.productFeatures!)
           CustomDropDownTextField(
+            title: 'Product Features',
             text: "Enter or Select Product Features",
             options: cubit.formData?.productFeatures ?? [],
             onSelected: (value) {
@@ -480,6 +542,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.styleOrToneProdu!)
           CustomDropDownTextField(
+            title: 'Style or Tone',
             text: "Enter or Select Style or Tone",
             options: cubit.formData?.styleOrToneProdu ?? [],
             onSelected: (value) {
@@ -489,6 +552,7 @@ class _FormScreenState extends State<FormScreen> {
 
         if (cubit.booleanForm!.pr!)
           CustomDropDownTextField(
+            title: 'Keywords',
             text: "Enter or Select keyWords",
             options: cubit.formData?.pr ?? [],
             onSelected: (value) {
@@ -501,6 +565,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Domain
         if (cubit.booleanForm!.domainOptions!)
           CustomDropDownTextField(
+            title: 'Domain',
             text: "Enter or Select Domain",
             options: cubit.formData?.domainOptions ?? [],
             onSelected: (value) {
@@ -512,6 +577,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.geographicFocus!)
           CustomDropDownTextField(
+            title: 'Geographic',
             text: "Enter or Select Geographic Focus",
             options: cubit.formData?.geographicFocus ?? [],
             onSelected: (value) {
@@ -524,6 +590,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Theme of Story
         if (cubit.booleanForm!.themeStory!)
           CustomDropDownTextField(
+            title: "Theme",
             text: "Enter or Select Theme",
             options: cubit.formData?.themeStory ?? [],
             onSelected: (value) {
@@ -535,6 +602,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.element!)
           CustomDropDownTextField(
+            title: 'Element',
             text: "Enter or Select Elemet",
             options: cubit.formData?.element ?? [],
             onSelected: (value) {
@@ -546,6 +614,7 @@ class _FormScreenState extends State<FormScreen> {
 
         if (cubit.booleanForm!.mood!)
           CustomDropDownTextField(
+            title: 'Mood',
             text: "Enter or Select Mood",
             options: cubit.formData?.mood ?? [],
             onSelected: (value) {
@@ -559,6 +628,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Num Members
         if (cubit.booleanForm!.numMembers!)
           CustomDropDownTextField(
+            title: 'Team Members',
             text: "Enter or Select Number of Team Members",
             options: cubit.formData?.numMembers ?? [],
             onSelected: (value) {
@@ -570,6 +640,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.themeTeam!)
           CustomDropDownTextField(
+            title: 'Theme',
             text: "Enter or Select Theme",
             options: cubit.formData?.themeTeam ?? [],
             onSelected: (value) {
@@ -582,6 +653,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Type of Work
         if (cubit.booleanForm!.typeOfWork!)
           CustomDropDownTextField(
+            title: 'Type of work',
             text: "Enter or Select Type of Work",
             options: cubit.formData?.typeOfWork ?? [],
             onSelected: (value) {
@@ -593,6 +665,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.subject!)
           CustomDropDownTextField(
+            title: 'Subject',
             text: "Enter or Select Subject",
             options: cubit.formData?.subject ?? [],
             onSelected: (value) {
@@ -603,6 +676,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Keyword Idea
         if (cubit.booleanForm!.keywordIdeas!)
           CustomDropDownTextField(
+            title: 'Keyword Ideas',
             text: "Enter or Select Keyword Idea",
             options: cubit.formData?.keywordIdeas ?? [],
             onSelected: (value) {
@@ -614,6 +688,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.toneStyleTitle!)
           CustomDropDownTextField(
+            title: 'Tone',
             text: "Enter or Select Tone ",
             options: cubit.formData?.toneStyleTitle ?? [],
             onSelected: (value) {
@@ -626,6 +701,7 @@ class _FormScreenState extends State<FormScreen> {
         /// Twins Gender
         if (cubit.booleanForm!.twinsGender!)
           CustomDropDownTextField(
+            title: 'Twins Gender',
             text: "Enter or Select Gender",
             options: cubit.formData?.twinsGender ?? [],
             onSelected: (value) {
@@ -637,6 +713,7 @@ class _FormScreenState extends State<FormScreen> {
         ///
         if (cubit.booleanForm!.background!)
           CustomDropDownTextField(
+            title: 'Background',
             text: "Enter or Select Background",
             options: cubit.formData?.background ?? [],
             onSelected: (value) {

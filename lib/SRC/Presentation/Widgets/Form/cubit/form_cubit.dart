@@ -64,4 +64,8 @@ class FormCubit extends Cubit<FormmState> {
       emit(radiobuttonState());
     }
   }
+
+  void setDatePicker(DateTime? selectedDate) {
+    emit(DatePickerState(selectedDate));
+  }
 }
