@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 
 class AppShadow {
   static BoxShadow normal() => const BoxShadow(
@@ -10,9 +10,9 @@ class AppShadow {
       );
 
   static BoxShadow minimum() => BoxShadow(
-        blurRadius: 7,
-        spreadRadius: 2,
+        blurRadius: 9,
+        spreadRadius: 1,
         color: AppColors.lightgrey.withOpacity(0.1),
-        offset: const Offset(0, 3),
+        offset: const Offset(0, 0),
       );
 }

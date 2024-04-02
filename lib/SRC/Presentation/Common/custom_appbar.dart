@@ -1,43 +1,50 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/color.dart';
-import 'package:name_generator/SRC/Data/DataSource/Resources/styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:name_generator/SRC/Presentation/Resources/color.dart';
 import 'package:name_generator/SRC/Presentation/Common/app_text.dart';
 
-class CustomAppbar extends StatelessWidget {
+import '../Resources/styles.dart';
+
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   String title;
-  IconData icon;
-  bool? boolean;
+  IconData? icon;
+
+  bool? autoleading;
+  Widget? trailing;
+
   CustomAppbar({
     required this.title,
-    required this.icon,
+    this.autoleading,
+    this.trailing,
+    this.icon,
     super.key,
-    this.boolean,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      automaticallyImplyLeading: false,
-      elevation: 2,
-      centerTitle: boolean,
+    return AppBar(
+      automaticallyImplyLeading: autoleading ?? false,
+      elevation: 0,
+      centerTitle: true,
+      //pinned: true,
+     // expandedHeight: 100,
+     
       backgroundColor: AppColors.scaffoldColor,
-      floating: true,
-      pinned: true,
       title: AppText(
         title,
-        style: Styles.plusJakartaSans(
-          context,
-        ),
+        style: Styles.plusJakartaSans(context,
+            fontSize: 16.sp, fontWeight: FontWeight.w600),
         textAlign: TextAlign.center,
       ),
       actions: [
-        IconButton(
-          icon: Icon(icon),
-          onPressed: () {},
+        Padding(
+          padding: EdgeInsets.only(right: 20.sp),
+          child: trailing ?? const SizedBox(),
         ),
       ],
     );
   }
+
+  @override
+  Size get preferredSize => Size(0, 40.h);
 }
